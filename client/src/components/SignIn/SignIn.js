@@ -23,7 +23,7 @@ class SignIn extends Component {
   //handling user login
   handleLogin = (event) => {
     event.preventDefault();
-    console.log("handleing login")
+    console.log("handling login")
     //if username and password inputs have been filled...
     if (this.state.username && this.state.passwordLogin) {
       const loginUser = {
