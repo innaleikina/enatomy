@@ -64,5 +64,9 @@ router.route("/logout")
 
 router.route('/fetch').get(userController.fetch);
 
+router
+  .route("/:id")
+  .get(userController.findById)
+  .delete(userController.remove);
 
 module.exports = router;

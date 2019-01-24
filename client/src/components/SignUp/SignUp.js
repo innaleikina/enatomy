@@ -9,6 +9,7 @@ class SignUp extends Component {
     email: "",
     password: "",
     username: "",
+    role:"",
   }
 
   handleInputChange = event => {
@@ -24,7 +25,8 @@ class SignUp extends Component {
       const newUser = {
         name: this.state.name,
         email: this.state.email,
-        password: this.state.password
+        password: this.state.password,
+        role:this.state.role
       }
       API.createUser(newUser)
         .then(res => {alert("New user created.")})
@@ -35,15 +37,15 @@ class SignUp extends Component {
   };
 
   
-//   redirect = () => {
-//     this.props.fetchUser();
-//     API.fetchUser()
-//       .then(res => {
-//         if (res.data) {
-//           this.props.history.push("/home");
-//         }
-//       })
-//   };
+  // redirect = () => {
+  //   this.props.fetchUser();
+  //   API.fetchUser()
+  //     .then(res => {
+  //       if (res.data) {
+  //         this.props.history.push("/myaccount");
+  //       }
+  //     })
+  // };
 
 
   render() {
@@ -80,6 +82,15 @@ class SignUp extends Component {
               onChange={this.handleInputChange}
             >
             </Input>
+            {/* <Input
+              label="role"
+              id="role"
+              placeholder="role"
+              name="role"
+              type="role"
+              value={this.state.role}
+              onChange={this.handleInputChange}
+            ></Input> */}
             <Button
             onClick={(event) => this.handleFormSubmit(event)}
             > Sign Up

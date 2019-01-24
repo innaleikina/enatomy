@@ -5,6 +5,7 @@ import {Input, Button} from "../../components/Form"
 
 
 
+
 class SignIn extends Component {
   state = {
     email: "",
@@ -22,7 +23,7 @@ class SignIn extends Component {
   //handling user login
   handleLogin = (event) => {
     event.preventDefault();
-    console.log("handeling login")
+    console.log("handleing login")
     //if username and password inputs have been filled...
     if (this.state.username && this.state.passwordLogin) {
       const loginUser = {
@@ -44,17 +45,19 @@ class SignIn extends Component {
   };
 
   redirect = () => {
-    this.props.fetchUser();
+    // this.props.fetchUser();
     API.fetchUser()
       .then(res => {
         if (res.data) {
-          this.props.history.push("/home");
+          this.props.props.history.push("/myaccount");
         }
       })
   };
 
 
   render() {
+    console.log(this.props)
+
     return (
         <div className="signin-page">
       
