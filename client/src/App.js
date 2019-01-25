@@ -56,21 +56,21 @@ class App extends Component {
   };
 
   render() {
+    console.log("authed is " + this.state.authed);
     return (
       <Router>
       <div className="App">
          <NavBar>
- 
-   
-    <ul className="nav-items">
-        <NavItem link="/search"> search </NavItem>
-        <NavItem link="/pricing"> pricing </NavItem>
-        <NavItem link="/sketch"> sketch </NavItem>
-        <NavItem link="/cart"> cart </NavItem>
-        <LogOut handleLogout={this.handleLogout}></LogOut>
-   </ul>
+            <ul className="nav-items">
+                <NavItem link="/search"> search </NavItem>
+                <NavItem link="/pricing"> pricing </NavItem>
+                <NavItem link="/sketch"> sketch </NavItem>
+                <NavItem link="/cart"> cart </NavItem>
+                <NavItem link="/myaccount"> my account </NavItem>
 
-  </NavBar>
+                <LogOut handleLogout={this.handleLogout}></LogOut>
+            </ul>
+         </NavBar>
 
          <Switch>
             <Route exact path="/"  render={(props) => <Main {...props} fetchUser={this.fetchUser}/>}/>

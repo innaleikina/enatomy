@@ -45,7 +45,7 @@ class SignIn extends Component {
   };
 
   redirect = () => {
-    // this.props.fetchUser();
+    this.props.props.fetchUser();
     API.fetchUser()
       .then(res => {
         if (res.data) {
@@ -56,7 +56,6 @@ class SignIn extends Component {
 
 
   render() {
-    console.log(this.props)
 
     return (
         <div className="signin-page">
