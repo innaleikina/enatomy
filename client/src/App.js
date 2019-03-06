@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch,} from "react-router-dom";
 import Main from "./pages/Main";
-import { NavLink } from 'react-router-dom';
-
-
-// import SignIn from "./pages/SignIn";
+import Store from "./pages/Store";
 import MyAccount from "./pages/MyAccount";
 import API from "./utils/API";
 import {NavBar, NavItem} from "./components/Nav";
@@ -62,9 +59,9 @@ class App extends Component {
       <div className="App">
          <NavBar>
             <ul className="nav-items">
-                <NavItem link="/search"> search </NavItem>
+                <NavItem link="/store"> store </NavItem>
                 <NavItem link="/pricing"> pricing </NavItem>
-                <NavItem link="/sketch"> sketch </NavItem>
+                {/* <NavItem link="/sketch"> sketch </NavItem> */}
                 <NavItem link="/cart"> cart </NavItem>
                 <NavItem link="/myaccount"> my account </NavItem>
 
@@ -75,6 +72,7 @@ class App extends Component {
          <Switch>
             <Route exact path="/"  render={(props) => <Main {...props} fetchUser={this.fetchUser}/>}/>
             <Route exact path="/myaccount"  render={(props) => <MyAccount {...props} fetchUser={this.fetchUser}/>}/>
+            <Route exact path="/store"  render={(props) => <Store {...props} fetchUser={this.fetchUser}/>}/>
           </Switch>
       </div>
       </Router>
