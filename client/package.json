@@ -15,7 +15,6 @@
     "react-scripts": "^2.1.3",
     "react-select": "^2.1.1",
     "selz-js-sdk": "^1.0.15",
-    "webpack-dev-server": "^3.1.14",
     "yarn": "^1.10.1"
   },
   "scripts": {

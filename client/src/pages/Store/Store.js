@@ -32,6 +32,8 @@ class Store extends Component {
     return (
         <div >
            <StoreItem itemId="NJngtbLQU"></StoreItem>
+
+           
         </div>
     )
   }
