@@ -1,7 +1,7 @@
-// //const router = require("express").Router();
+const router = require("express").Router();
 const aws= require('aws-sdk');
 const config = require("../../config.json");
-
+// var photoNames = [];
 
 (async function(){
 
@@ -17,30 +17,28 @@ const config = require("../../config.json");
       const response  = await s3.listObjectsV2({
           Bucket: 'enatomy'
       }).promise();
-
       console.log(response);
+      //logs the keys for file names to be used in urls
+      for(var i =0; i < response.Contents.length; i++ ){
+        console.log(response.Contents[i].Key);
+        // photoNames.push(response.Contents[i].Key);
+      }
+     
 
     } catch (e){
         console.log("error", e );
     }
 })();
 
-// var AWS = require('aws-sdk');
-// AWS.config.update(
-//   {
-//     accessKeyId: config.aws.accessKey,
-//     secretAccessKey: config.aws.secretKey,
-//   }
-// );
-// var s3 = new AWS.S3();
-// s3.getObject(
-//   { Bucket: "enatomy", Key: "_MG_0131_web_e.jpg" },
-//   function (error, data) {
-//     if (error != null) {
-//       console.log("Failed to retrieve an object: " + error);
-//     } else {
-//       console.log("Loaded " + data.ContentLength + " bytes");
-//       // do something with data.Body
-//     }
-//   }
-// );
+const s3 = new aws.S3()
+
+
+//allows user to access the image for 20 seconds and then expires! yay
+var params = {Bucket:config.aws.bucket, Key: config.aws.key, Expires: 20}
+s3.getSignedUrl('getObject', params, function (err, url) {
+console.log('Signed URL: ' + url);
+});
+
+// router.route('/thumbnails').post(photoNames);
+
+// module.exports = router;

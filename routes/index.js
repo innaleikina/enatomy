@@ -16,7 +16,7 @@ router.get('*', function(req, res) {
   })
 })
 
-router.use("/a3", s3Routes);
+//  router.use("/a3", s3Routes);
 // router.use("/profile", profileRoutes);
 
 router.get('*', function(req, res) {
