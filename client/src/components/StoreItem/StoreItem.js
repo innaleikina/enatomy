@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 // import API from "../../utils/API";
-import Client from 'selz-js-sdk';
 
 
 
@@ -19,29 +18,18 @@ componentDidMount() {
      }
  
  
-client = new Client({
-    store: 200629,
-});
+
 
 getProduct =() => {
-    this.client
-    .getProduct('https://selz.co/'+ this.props.itemId)
-    // .then(product => {
-    //     console.log('Product', product);
-    // })
-    .then(product => this.setState({
-        image:product.featured_image.compact
-      }, console.log('Product', product)))
-    .catch(errors => console.error('Error getting product', errors));
-
 }
     
   render() {
     //   this.getProduct();
     return (
         <div >
-           {/* <Markup content={this.articleContent} /> */}
-           <img alt="cover shot" src={this.state.image}/>
+         <p> This is a store item</p>
+         {/* the cover photo is public and is displayed. Not dynamic yet */}
+         <img src="https://s3.amazonaws.com/enatomy/_MG_0131_web_e.jpg"/>
         </div>
        
     )
