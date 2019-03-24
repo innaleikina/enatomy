@@ -23,16 +23,6 @@ router.get('/user',
   }
 );
 
-//
-// router.get('/search_results',
-//   passport.authenticate('auth0', { failureRedirect: '/login' }),
-//   function(req, res) {
-//     if (!req.user) {
-//       throw new Error('user null');
-//     }
-//   }
-// );
-
 
 // Perform session logout and redirect to homepage
 router.get('/logout', (req, res) => {

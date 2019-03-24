@@ -6,7 +6,7 @@ const path = require("path")
 
 // Book routes
 router.use("/user", userRoutes);
-// router.use("/s3", s3Routes);
+router.use("/s3", s3Routes);
 
 router.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, '../client/build/index.html'), function(err) {
