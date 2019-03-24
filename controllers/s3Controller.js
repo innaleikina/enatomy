@@ -1,6 +1,6 @@
 const aws= require('aws-sdk');
 const config = require("../config.json");
-let fileNames = [{"this is not an empty array":"no it is not"}];
+let fileNames = [];
 
 module.exports = {
   allFileNames:function (req, res) {
@@ -24,16 +24,16 @@ module.exports = {
           for(var i =0; i < response.Contents.length; i++ ){
             console.log("this is the looped file names " + response.Contents[i].Key);
             var obj = {}
-            obj["filename"] = response.Contents[i].Key
+            obj["filename " + [i] ] = response.Contents[i].Key
             fileNames.push(obj)
-            res.json(fileNames)
+            //res.json(fileNames)
         }   
           } catch (e){
             console.log("error", e );
         }
     })()
     
-    //   .then(fileNames => res.json(fileNames))
+    .then(res.json(fileNames))
       .catch(err => res.status(422).json(err));
   },
   test:function(req,res){
