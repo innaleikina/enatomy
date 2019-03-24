@@ -4,8 +4,9 @@ let fileNames = [];
 
 module.exports = {
   allFileNames:function (req, res) {
-    (async function(){
 
+    (async function(){
+   
         try {
             aws.config.setPromisesDependency();
             aws.config.update({
@@ -24,7 +25,7 @@ module.exports = {
           for(var i =0; i < response.Contents.length; i++ ){
             console.log("this is the looped file names " + response.Contents[i].Key);
             var obj = {}
-            obj["filename " + [i] ] = response.Contents[i].Key
+            obj["filename"] = response.Contents[i].Key
             fileNames.push(obj)
             //res.json(fileNames)
         }   
@@ -33,8 +34,9 @@ module.exports = {
         }
     })()
     
-    .then(res.json(fileNames))
-      .catch(err => res.status(422).json(err));
+    .then(
+        res.json(fileNames),fileNames = [])
+    .catch(err => res.status(422).json(err));
   },
   test:function(req,res){
       res.json({"test":"yep this is a simple route"})
