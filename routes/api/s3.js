@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const aws= require('aws-sdk');
 const config = require("../../config.json");
-// var photoNames = [];
 
 (async function(){
 
@@ -17,11 +16,11 @@ const config = require("../../config.json");
       const response  = await s3.listObjectsV2({
           Bucket: 'enatomy'
       }).promise();
+      //this is the file form s3 bucket
       console.log(response);
       //logs the keys for file names to be used in urls
       for(var i =0; i < response.Contents.length; i++ ){
-        console.log(response.Contents[i].Key);
-        // photoNames.push(response.Contents[i].Key);
+        console.log("this is the looped file names " + response.Contents[i].Key);
       }
      
 
@@ -39,6 +38,6 @@ s3.getSignedUrl('getObject', params, function (err, url) {
 console.log('Signed URL: ' + url);
 });
 
-// router.route('/thumbnails').post(photoNames);
+
 
 // module.exports = router;

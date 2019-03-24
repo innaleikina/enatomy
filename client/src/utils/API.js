@@ -15,6 +15,10 @@ export default {
 
   logout: function() {
     return axios.get("/user/logout/");
-  }
+  },
+
+  // s3Route: function() {
+  //   return axios.get("/s3/signedlink/");
+  // }
 
 };

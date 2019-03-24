@@ -16,3 +16,7 @@ nav{
 #name{
 margin-left:20px;
 }
+
+#myAccount{
+    display:none;
+}
