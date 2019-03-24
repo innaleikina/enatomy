@@ -36,10 +36,14 @@ class App extends Component {
 
   logoutButton = (history) => {
     let logoutbtn = document.getElementById("logoutBtn");
+    let myAccount = document.getElementById("myAccount");
     if (this.state.authed === true) {
       logoutbtn.style.display = "block";
+      myAccount.style.display = "block";
     } else {
       logoutbtn.style.display = "none";
+      myAccount.style.display = "none";
+
     }
   };
 
@@ -63,7 +67,7 @@ class App extends Component {
                 <NavItem link="/pricing"> pricing </NavItem>
                 {/* <NavItem link="/sketch"> sketch </NavItem> */}
                 <NavItem link="/cart"> cart </NavItem>
-                <NavItem link="/myaccount"> my account </NavItem>
+                <NavItem id="myAccount" link="/myaccount"> my account </NavItem>
 
                 <LogOut handleLogout={this.handleLogout}></LogOut>
             </ul>
