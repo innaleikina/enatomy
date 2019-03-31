@@ -1,4 +1,6 @@
-.image{
-    width:200px;
-    height:300px;
+.image {
+    max-width: 960px;
+    margin: 0 auto 30px;
+    width:130px;
+    height:200px;
 }
