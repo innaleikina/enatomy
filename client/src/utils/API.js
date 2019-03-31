@@ -17,8 +17,8 @@ export default {
     return axios.get("/user/logout/");
   },
 
-  // s3Route: function() {
-  //   return axios.get("/s3/signedlink/");
-  // }
+  getFiles: function() {
+    return axios.get("/s3/getfiles/");
+  }
 
 };

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import "./storeitem.css";
 // import API from "../../utils/API";
 
 
@@ -29,7 +30,8 @@ getProduct =() => {
         <div >
          <p> This is a store item</p>
          {/* the cover photo is public and is displayed. Not dynamic yet */}
-         <img src="https://s3.amazonaws.com/enatomy/_MG_0131_web_e.jpg"/>
+         <img alt="model" className="image" src={`https://s3.amazonaws.com/enatomy/${this.props.fileName}`}/>
+        
         </div>
        
     )
