@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import StoreItem from '../../components/StoreItem';
 // const config = require("../../config.json");
 import API from "../../utils/API";
+import "./store.css";
+import { Link } from 'react-router-dom';
 
 
 
@@ -34,8 +36,8 @@ class Store extends Component {
     // console.log(this.state.fileNameArr[i]);
     if(this.state.fileNameArr[i].filename.endsWith("jpg")){
       //console.log("this is a jpg file " + this.state.fileNameArr[i].filename);
-      jpgCoverShotsArr.push(<StoreItem key={i} fileName={this.state.fileNameArr[i].filename}>
-      </StoreItem>)
+      jpgCoverShotsArr.push(<Link to={`/${this.state.fileNameArr[i].filename}`}><StoreItem key={this.state.fileNameArr[i].filename} fileName={this.state.fileNameArr[i].filename}>
+      </StoreItem></Link>)
     } else {
       console.log("this is not a jpg file " + this.state.fileNameArr[i].filename)
     }
@@ -50,7 +52,9 @@ console.log(this.state.fileNameArr)
     return (
         <div >
           <h1> this is a store </h1>
-       {this.renderItems()}
+          <div className="grid">
+            {this.renderItems()}
+          </div>
            
         </div>
     )
