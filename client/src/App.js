@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch,} from "react-router-dom";
 import Main from "./pages/Main";
 import Store from "./pages/Store";
 import MyAccount from "./pages/MyAccount";
+import OneSet from "./pages/OneSet";
 import API from "./utils/API";
 import {NavBar, NavItem} from "./components/Nav";
 import "./normalize.css";
@@ -77,6 +78,7 @@ class App extends Component {
             <Route exact path="/"  render={(props) => <Main {...props} fetchUser={this.fetchUser}/>}/>
             <Route exact path="/myaccount"  render={(props) => <MyAccount {...props} fetchUser={this.fetchUser}/>}/>
             <Route exact path="/store"  render={(props) => <Store {...props} fetchUser={this.fetchUser}/>}/>
+            <Route exact path="/set/:id"  render={(props) => <OneSet {...props} fetchUser={this.fetchUser}/>}/>
           </Switch>
       </div>
       </Router>

@@ -36,7 +36,7 @@ class Store extends Component {
     // console.log(this.state.fileNameArr[i]);
     if(this.state.fileNameArr[i].filename.endsWith("jpg")){
       //console.log("this is a jpg file " + this.state.fileNameArr[i].filename);
-      jpgCoverShotsArr.push(<Link to={`/${this.state.fileNameArr[i].filename}`}><StoreItem key={this.state.fileNameArr[i].filename} fileName={this.state.fileNameArr[i].filename}>
+      jpgCoverShotsArr.push(<Link to={`/set/${this.state.fileNameArr[i].filename}`}><StoreItem key={this.state.fileNameArr[i].filename} fileName={this.state.fileNameArr[i].filename}>
       </StoreItem></Link>)
     } else {
       console.log("this is not a jpg file " + this.state.fileNameArr[i].filename)
