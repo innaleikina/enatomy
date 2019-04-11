@@ -32,6 +32,9 @@ const UserSchema = new Schema({
   }],
   credits: {
       type:Number
+  },
+  cart:{
+    setName:String
   }
 });
 

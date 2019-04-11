@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import './oneset.css';
-
+import CoverPhoto from '../../components/CoverPhoto'
 
 class OneSet extends Component {
 
-   
+  state = {
+   price:10 + "$",
+  }
 
     render() {
         console.log(this.props)
@@ -15,8 +17,9 @@ class OneSet extends Component {
          <div > 
            <h1> Individual photo set page </h1>
            <h2>{modelName}</h2>
-
-           <button className="purchase-btn"> purchase </button>
+           <CoverPhoto fileName={this.props.match.params.id}> </CoverPhoto>
+            <p>{this.state.price}</p>
+           <button className="cart-btn"> add to cart </button>
         </div>
         )
       }

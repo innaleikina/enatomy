@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const userRoutes = require("./api/user");
 const s3Routes = require("./api/s3");
+const cartRoutes = require("./api/cart");
 const path = require("path")
 
 
