@@ -18,7 +18,7 @@ class OneSet extends Component {
            <h1> Individual photo set page </h1>
            <h2>{modelName}</h2>
            <CoverPhoto fileName={this.props.match.params.id}> </CoverPhoto>
-            <p>{this.state.price}</p>
+            <h4>{this.state.price}</h4>
            <button className="cart-btn"> add to cart </button>
         </div>
         )

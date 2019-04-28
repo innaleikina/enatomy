@@ -33,9 +33,10 @@ const UserSchema = new Schema({
   credits: {
       type:Number
   },
-  cart:{
-    setName:String
-  }
+  cart:[{
+      type:Array,
+    }]
+  
 });
 
 //bcrpyt - password encryption
