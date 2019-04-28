@@ -5,6 +5,8 @@ import Store from "./pages/Store";
 import MyAccount from "./pages/MyAccount";
 import OneSet from "./pages/OneSet";
 import API from "./utils/API";
+import Cart from "./pages/Cart";
+import Pricing from "./pages/Pricing";
 import {NavBar, NavItem} from "./components/Nav";
 import "./normalize.css";
 import LogOut from "./components/LogOut";
@@ -78,6 +80,8 @@ class App extends Component {
             <Route exact path="/"  render={(props) => <Main {...props} fetchUser={this.fetchUser}/>}/>
             <Route exact path="/myaccount"  render={(props) => <MyAccount {...props} fetchUser={this.fetchUser}/>}/>
             <Route exact path="/store"  render={(props) => <Store {...props} fetchUser={this.fetchUser}/>}/>
+            <Route exact path="/cart"  render={(props) => <Cart {...props} fetchUser={this.fetchUser}/>}/>
+            <Route exact path="/pricing"  render={(props) => <Pricing {...props} fetchUser={this.fetchUser}/>}/>
             <Route exact path="/set/:id"  render={(props) => <OneSet {...props} fetchUser={this.fetchUser}/>}/>
           </Switch>
       </div>
