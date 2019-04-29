@@ -47,7 +47,7 @@ class Store extends Component {
     
   render() {
 //store will render a grid of store items 
-console.log(this.state.fileNameArr)
+// console.log(this.state.fileNameArr)
 
     return (
         <div >

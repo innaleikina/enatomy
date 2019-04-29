@@ -19,6 +19,10 @@ export default {
 
   getFiles: function() {
     return axios.get("/s3/getfiles/");
+  },
+
+  addToCart: function(id,setName) {
+    return axios.put("/cart/addtocart/" + id + "/" + setName)
   }
 
 };
