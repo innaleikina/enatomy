@@ -31,6 +31,10 @@ class OneSet extends Component {
     // console.log(this.state.user._id);
     // console.log(this.props.match.params.id);
     console.log(this.state.user.cart)
+    //loop through the user's cart
+    // check if the current set is in the user's cart already
+    //if yes, alert that item is already in cart
+    //if no add to cart API call
     API.addToCart(this.state.user._id,this.props.match.params.id) 
     .catch(err => console.log(err))
   }
