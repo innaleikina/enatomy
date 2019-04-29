@@ -13,6 +13,10 @@ export default {
     return axios.get("/user/fetch");
   },
 
+  getUserCart:function(userId){
+    return axios.get("/user/" + userId)
+  }, 
+
   logout: function() {
     return axios.get("/user/logout/");
   },

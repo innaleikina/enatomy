@@ -28,13 +28,13 @@ const UserSchema = new Schema({
     required: true
   },
   purchased: [{
-    type: Array,
+    type: String,
   }],
   credits: {
       type:Number
   },
   cart:[{
-      type:Array,
+      type:String,
     }]
   
 });

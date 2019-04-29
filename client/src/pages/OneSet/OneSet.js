@@ -7,7 +7,8 @@ class OneSet extends Component {
 
   state = {
    price:10 + "$",
-   user:""
+   user:"",
+   cart:""
 
   }
 
@@ -23,27 +24,42 @@ class OneSet extends Component {
       }))
       .catch(err => console.log(err))
   };
+  
 
 
 
+addToCart = () => {
+  API.getUserCart(this.state.user._id)
+    .then(res => this.setState({
+      cart: res.data.cart
+    }));
+  // console.log(this.state.user._id);
+  // console.log(this.props.match.params.id);
+  console.log(this.state.cart)
+  // console.log(this.state.cart.length)
 
-  addToCart = () => {
-    // console.log(this.state.user._id);
-    // console.log(this.props.match.params.id);
-    console.log(this.state.user.cart)
-    //loop through the user's cart
-    // check if the current set is in the user's cart already
-    //if yes, alert that item is already in cart
-    //if no add to cart API call
-    API.addToCart(this.state.user._id,this.props.match.params.id) 
-    .catch(err => console.log(err))
+  if (this.state.cart.length === 0) {
+    API.addToCart(this.state.user._id, this.props.match.params.id)
+      .catch(err => console.log(err))
+  } else {
+   console.log("cart is longer than zero!");
+    if (this.state.cart.includes(this.props.match.params.id)) {
+      alert("item already in cart")
+    } else {
+      API.addToCart(this.state.user._id, this.props.match.params.id)
+        .catch(err => console.log(err))
+    }
   }
+}
+    
+    
+   
 
     render() {
-        console.log(this.props)
+      //  console.log("right before render " + this.state.user.cart)
         let jpgName = this.props.match.params.id;
         let modelName = jpgName.substring(0, jpgName.length - 4);
-
+        
         return (
          <div > 
            <h1> Individual photo set page </h1>

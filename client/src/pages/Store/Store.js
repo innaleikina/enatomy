@@ -39,7 +39,7 @@ class Store extends Component {
       jpgCoverShotsArr.push(<Link to={`/set/${this.state.fileNameArr[i].filename}`}><CoverPhoto key={this.state.fileNameArr[i].filename} fileName={this.state.fileNameArr[i].filename}>
       </CoverPhoto></Link>)
     } else {
-      console.log("this is not a jpg file " + this.state.fileNameArr[i].filename)
+     // console.log("this is not a jpg file " + this.state.fileNameArr[i].filename)
     }
   }
   return jpgCoverShotsArr
