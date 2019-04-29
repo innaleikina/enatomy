@@ -20,7 +20,8 @@ class OneSet extends Component {
   getUser = () => {
     API.fetchUser() 
       .then(res => this.setState({
-        user:res.data
+        user:res.data,
+        cart:res.data.cart
       }))
       .catch(err => console.log(err))
   };
@@ -29,27 +30,30 @@ class OneSet extends Component {
 
 
 addToCart = () => {
-  API.getUserCart(this.state.user._id)
-    .then(res => this.setState({
-      cart: res.data.cart
-    }));
+ 
   // console.log(this.state.user._id);
   // console.log(this.props.match.params.id);
   console.log(this.state.cart)
-  // console.log(this.state.cart.length)
+  console.log(this.state.cart.length)
 
   if (this.state.cart.length === 0) {
     API.addToCart(this.state.user._id, this.props.match.params.id)
       .catch(err => console.log(err))
+    console.log("the cart length is zero!")
   } else {
-   console.log("cart is longer than zero!");
+   //console.log("cart is longer than zero!");
     if (this.state.cart.includes(this.props.match.params.id)) {
       alert("item already in cart")
     } else {
       API.addToCart(this.state.user._id, this.props.match.params.id)
         .catch(err => console.log(err))
+      console.log("item is not in the cart");
     }
   }
+  API.getUserCart(this.state.user._id)
+  .then(res => this.setState({
+    cart: res.data.cart
+  }));
 }
     
     
