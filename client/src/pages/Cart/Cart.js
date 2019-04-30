@@ -10,7 +10,8 @@ class Cart extends Component {
     state = {
       user:"",
       cart:[],
-      allS3Files:[]
+      allS3Files:[],
+      imagesInCart:[]
      }
 
 
@@ -38,26 +39,33 @@ class Cart extends Component {
 
 
   renderItemsInCart = () => {
-  console.log(this.state.allS3Files)
-  // console.log("cart is " + this.state.cart)
-  let cart = this.state.cart;
+    console.log(this.state.allS3Files)
+    // console.log("cart is " + this.state.cart)
+    let cart = this.state.cart;
 
-  let s3FilesArr = []
-  for (var i = 0; i < this.state.allS3Files.length; i++){
-      s3FilesArr.push(this.state.allS3Files[i].filename);
-  }
-  console.log("s3 files outside the object " + s3FilesArr);
+    let s3FilesArr = []
+    for (var i = 0; i < this.state.allS3Files.length; i++){
+        s3FilesArr.push(this.state.allS3Files[i].filename);
+    }
 
    let imagesToRender = [];
-   let imagesInCart = s3FilesArr.filter(value => -1 !== cart.indexOf(value));
-   console.log("images in cart " + imagesInCart);
-  //  for(var i =0; i < imagesInCart.length; i++){
-  //   imagesToRender.push(<Link>key={imagesInCart[i]} to={`/set/${imagesInCart[i]}`}><CoverPhoto key={imagesInCart[i]} fileName={imagesInCart[i]}>
-  //   </CoverPhoto></Link>)
-  //  }
-  //  return imagesToRender
+   this.setState({
+    imagesInCart:s3FilesArr.filter(value => -1 !== cart.indexOf(value)),
+    })
+ 
+  //  console.log("images in cart " + imagesInCart[0]);
+   for(var b =0; b < this.state.imagesInCart.length; b++){
+     console.log(this.state.imagesInCart[b]);
+    imagesToRender.push(<Link key={this.state.imagesInCart[b]} to={`/set/${this.state.imagesInCart[b]}`}><CoverPhoto key={this.state.imagesInCart[b]} fileName={this.state.imagesInCart[b]}>
+    </CoverPhoto></Link>)
+    }
+   return imagesToRender
   }
 
+
+  renderBuyButton = () =>{
+    
+  }
 
      
 

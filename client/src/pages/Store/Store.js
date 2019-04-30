@@ -31,7 +31,7 @@ class Store extends Component {
  }
 
  renderItems = () => {
-   console.log(this.state.fileNameArr);
+  //  console.log(this.state.fileNameArr);
    let jpgCoverShotsArr = []
    
   for(var i=0; i < this.state.fileNameArr.length; i++){
