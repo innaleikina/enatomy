@@ -16,7 +16,37 @@ module.exports = {
             .then(dbUser => res.json(dbUser))
             .catch(err => res.status(422).json(err));
     },
-
+    emptyCart:function (req, res) {
+        db.User
+            .findOneAndUpdate({
+                _id: req.params.id
+            }, {
+                $set: {
+                    cart: []
+                }},
+                {
+                    new: true
+                }
+            )
+            .then(dbUser => res.json(dbUser))
+            .catch(err => res.status(422).json(err));
+    },
+    removeOneFromCart:function(req,res){
+        db.User
+        .findOneAndUpdate({
+          _id: req.params.id
+        }, {
+            $pull: {
+                cart: req.params.setname
+            }},
+            {
+                new: true
+            },
+        )
+        // .then(dbModel => dbModel.remove())
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+    },
     test: function (req, res) {
         res.json({
             "test": "yep this is a simple route"

@@ -13,12 +13,23 @@ export default {
     return axios.get("/user/fetch");
   },
 
+  getUserCart:function(userId){
+    return axios.get("/user/" + userId)
+  }, 
+
   logout: function() {
     return axios.get("/user/logout/");
   },
 
   getFiles: function() {
     return axios.get("/s3/getfiles/");
-  }
+  },
 
+  addToCart: function(id,setName) {
+    return axios.put("/cart/addtocart/" + id + "/" + setName)
+  },
+
+  removeOneFromCart:function(id,setName){
+    return axios.put("cart/remove/" + id + "/" + setName)
+  }
 };

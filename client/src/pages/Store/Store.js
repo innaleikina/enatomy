@@ -31,15 +31,17 @@ class Store extends Component {
  }
 
  renderItems = () => {
+  //  console.log(this.state.fileNameArr);
    let jpgCoverShotsArr = []
+   
   for(var i=0; i < this.state.fileNameArr.length; i++){
     // console.log(this.state.fileNameArr[i]);
     if(this.state.fileNameArr[i].filename.endsWith("jpg")){
       //console.log("this is a jpg file " + this.state.fileNameArr[i].filename);
-      jpgCoverShotsArr.push(<Link to={`/set/${this.state.fileNameArr[i].filename}`}><CoverPhoto key={this.state.fileNameArr[i].filename} fileName={this.state.fileNameArr[i].filename}>
+      jpgCoverShotsArr.push(<Link key={this.state.fileNameArr[i].filename} to={`/set/${this.state.fileNameArr[i].filename}`}><CoverPhoto key={this.state.fileNameArr[i].filename} fileName={this.state.fileNameArr[i].filename}>
       </CoverPhoto></Link>)
     } else {
-      console.log("this is not a jpg file " + this.state.fileNameArr[i].filename)
+     // console.log("this is not a jpg file " + this.state.fileNameArr[i].filename)
     }
   }
   return jpgCoverShotsArr
@@ -47,7 +49,7 @@ class Store extends Component {
     
   render() {
 //store will render a grid of store items 
-console.log(this.state.fileNameArr)
+// console.log(this.state.fileNameArr)
 
     return (
         <div >

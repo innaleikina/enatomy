@@ -1,0 +1,12 @@
+.cartBorder{
+    border:1px red solid;
+}
+
+.imageBtnWrap{
+    display:flex;
+}
+
+.removeBtn{
+    width:80px;
+    height:20px;
+}

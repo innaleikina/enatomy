@@ -23,7 +23,6 @@ class MyAccount extends Component {
 
 
   render() {
-      console.log(this.props)
     return (
         <div id="timeline-wrap" >
            <h1> Welcome to your account, {this.state.user.name} </h1>

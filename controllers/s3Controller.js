@@ -20,10 +20,10 @@ module.exports = {
               Bucket: 'enatomy'
           }).promise();
           //this is the file form s3 bucket
-        //   console.log(response);
+          console.log("got all files from s3!");
           //logs the keys for file names to be used in urls
           for(var i =0; i < response.Contents.length; i++ ){
-            console.log("this is the looped file names " + response.Contents[i].Key);
+           // console.log("this is the looped file names " + response.Contents[i].Key);
             var obj = {}
             obj["filename"] = response.Contents[i].Key
             fileNames.push(obj)
