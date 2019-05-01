@@ -49,24 +49,27 @@ class Cart extends Component {
     }
 
    let imagesToRender = [];
-   this.setState({
-    imagesInCart:s3FilesArr.filter(value => -1 !== cart.indexOf(value)),
-    })
- 
+   let imagesInCart = s3FilesArr.filter(value => -1 !== cart.indexOf(value));
   //  console.log("images in cart " + imagesInCart[0]);
-   for(var b =0; b < this.state.imagesInCart.length; b++){
-     console.log(this.state.imagesInCart[b]);
-    imagesToRender.push(<Link key={this.state.imagesInCart[b]} to={`/set/${this.state.imagesInCart[b]}`}><CoverPhoto key={this.state.imagesInCart[b]} fileName={this.state.imagesInCart[b]}>
-    </CoverPhoto></Link>)
+   for(var b =0; b < imagesInCart.length; b++){
+     console.log(imagesInCart[b]);
+    imagesToRender.push(<div className="imageBtnWrap" key={imagesInCart[b]}>
+                          <Link key={imagesInCart[b]} to={`/set/${imagesInCart[b]}`}>
+                               <CoverPhoto key={imagesInCart[b]} fileName={imagesInCart[b]}>
+                               </CoverPhoto>
+                          </Link> 
+                          <button onClick={this.onRemoveClick} className="removeBtn" data-id={imagesInCart[b]}> remove</button>
+                        </div>)
     }
    return imagesToRender
   }
 
 
-  renderBuyButton = () =>{
-    
+  onRemoveClick = (e) => {
+    console.log(e.target.getAttribute('data-id'));
+    API.removeOneFromCart(this.state.user._id, e.target.getAttribute('data-id'))
+    .catch(err => console.log(err))
   }
-
      
 
      render() {

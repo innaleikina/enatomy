@@ -27,6 +27,9 @@ export default {
 
   addToCart: function(id,setName) {
     return axios.put("/cart/addtocart/" + id + "/" + setName)
-  }
+  },
 
+  removeOneFromCart:function(id,setName){
+    return axios.put("cart/remove/" + id + "/" + setName)
+  }
 };
