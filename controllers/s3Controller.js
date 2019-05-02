@@ -41,8 +41,4 @@ module.exports = {
   test:function(req,res){
       res.json({"test":"yep this is a simple route"})
   }
-
-
-
-
 }
