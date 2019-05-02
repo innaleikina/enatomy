@@ -18,7 +18,7 @@
     "passport-local": "^1.0.0",
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
-    "react-scripts": "^2.1.5"
+    "react-stripe-elements": "^3.0.0"
   },
   "scripts": {
     "start": "node server.js",
@@ -35,5 +35,6 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {}
 }

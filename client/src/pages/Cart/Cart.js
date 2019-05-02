@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import API from "../../utils/API";
 import { Link } from 'react-router-dom';
 import CoverPhoto from '../../components/CoverPhoto';
+import BuyButton from '../../components/BuyButton';
+import {Elements, StripeProvider} from 'react-stripe-elements';
+import CheckoutForm from "../../components/Checkout";
+
+
 import "./cart.css";
 
 
@@ -52,7 +57,7 @@ class Cart extends Component {
 
    let imagesToRender = [];
    let imagesInCart = s3FilesArr.filter(value => -1 !== cart.indexOf(value));
-   console.log("initial length" + imagesInCart.length)
+  //  console.log("initial length" + imagesInCart.length)
   //  console.log("images in cart " + imagesInCart[0]);
    for(var b =0; b < imagesInCart.length; b++){
     imagesToRender.push(<div className="imageBtnWrap" key={imagesInCart[b]}>
@@ -70,7 +75,7 @@ class Cart extends Component {
 
 
   onRemoveClick = (e) => {
-    console.log(e.target.getAttribute('data-id'));
+    // console.log(e.target.getAttribute('data-id'));
     API.removeOneFromCart(this.state.user._id, e.target.getAttribute('data-id'))
     .catch(err => console.log(err))
   }
@@ -80,40 +85,28 @@ class Cart extends Component {
     .catch(err => console.log(err))
   }
 
-  getItemsInCart = () => {
-
-  }
 
   getTotal = () => {
     let s3FilesArr = []
     let cart = this.state.cart;
-
-    for (var i = 0; i < this.state.allS3Files.length; i++){
+     for (var i = 0; i < this.state.allS3Files.length; i++){
         s3FilesArr.push(this.state.allS3Files[i].filename);
     }
-    console.log(this.state.alls3Files);
+    
     let imagesInCart = s3FilesArr.filter(value => -1 !== cart.indexOf(value));
-     console.log(imagesInCart);
 
     let total = (imagesInCart.length * this.state.price);
-    console.log(total);
 
-    let renderTotal = (<div> <p> total {total}$</p></div>)
+    let renderTotal = (<div> 
+                         <p> total {total}$</p>
+                      </div>)
 
    return renderTotal;
-  }
+ }
 
 
-
-
-     
-
-     render() {
-
-        //store will render a grid of store items 
-       
-        
-            return (
+render() {
+          return (
                 <div >
                   <h1> this is  the cart page </h1>
                   <button onClick = {this.onEmptyClick}>empty your cart</button>
@@ -122,8 +115,16 @@ class Cart extends Component {
                     {this.renderItemsInCart()}
                   </div>
                      {this.getTotal()}
-                  
-                  <button>buy</button>
+                  {/* <BuyButton></BuyButton> */}
+
+                  <StripeProvider apiKey="pk_test_Dnlcd3u8fxuOGycdNZ68LyJ200n3Qm5pGW">
+                      <div className="example">
+                        <h1>React Stripe Elements Example</h1>
+                        <Elements>
+                          <CheckoutForm />
+                        </Elements>
+                       </div>
+                   </StripeProvider>
                    
                 </div>
             )
