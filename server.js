@@ -41,10 +41,13 @@ app.use(routes);
 
 ////SETTING UP PASSPORT END---------------------------------------------------
 
-app.post("/charge/", async (req, res) => {
+app.post("/charge/:amount/", async (req, res) => {
+  //   let amount = parseInt(req.params.amount, 10)
+  // console.log(amount)
+ console.log(req.params.amount)
   try {
     let {status} = await stripe.charges.create({
-      amount: 100,
+      amount: req.params.amount,
       currency: "usd",
       description: "Enatomy charge",
       source: req.body

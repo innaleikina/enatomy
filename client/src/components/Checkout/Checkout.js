@@ -10,8 +10,14 @@ class CheckoutForm extends Component {
   }
 
   async submit(ev) {
+    let billableTotal = this.props.amount * 100; 
+    console.log(billableTotal);
+    //console.log(typeof(billableTotal))
     let {token} = await this.props.stripe.createToken({name: "Name"});
-    let response = await fetch("/charge/", {
+
+    let url = "/charge/" + billableTotal;
+    console.log(url);
+    let response = await fetch(url , {
     method: "POST",
     headers: {"Content-Type": "text/plain"},
     body: token.id
