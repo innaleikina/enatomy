@@ -52,14 +52,22 @@ class Cart extends Component {
   onRemoveClick = (e) => {
     // console.log(e.target.getAttribute('data-id'));
     API.removeOneFromCart(this.state.user._id, e.target.getAttribute('data-id'))
+   .then( API.fetchUser() 
+    .then(res => this.setState({
+      // user:res.data,
+      cart:res.data.cart
+    }))
+    .catch(err => console.log(err)))
+    // .then(this.getUser())
     .then(this.getImagesInCart())
     .catch(err => console.log(err));
   }
 
   onEmptyClick = () => {
     API.emptyCart(this.state.user._id)
+    .then(this.getUser())
+    .then(this.getImagesInCart())
     .catch(err => console.log(err))
-    this.getImagesInCart();
 
   }
 
@@ -72,6 +80,7 @@ class Cart extends Component {
  }
 
  getImagesInCart = () => {
+   console.log("got images in cart!")
   let s3FilesArr = []
   let cart = this.state.cart;
    for (var i = 0; i < this.state.allS3Files.length; i++){
@@ -80,11 +89,13 @@ class Cart extends Component {
     this.setState({
     imagesInCart:s3FilesArr.filter(value => -1 !== cart.indexOf(value))
   }) 
+  console.log(this.state.imagesInCart)
  }
 
 
 render() {
-  console.log(this.state.imagesInCart);
+  // console.log(this.state.cart);
+
           return (
                 <div >
                   <h1> this is  the cart page </h1>
@@ -114,7 +125,7 @@ render() {
                       <div className="example">
                         <h1>React Stripe Elements Example</h1>
                         <Elements>
-                          <CheckoutForm amount={this.state.total} />
+                          <CheckoutForm userId={this.state.user._id} cartItems={this.state.cart} amount={this.state.total} />
                         </Elements>
                        </div>
                    </StripeProvider>
