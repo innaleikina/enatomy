@@ -13,6 +13,9 @@ router.route("/remove/:id/:setname")
 router.route("/emptycart/:id")
     .put(cartController.emptyCart);
 
+router.route("/emptypurchased/:id")
+    .put(cartController.emptyPurchased);
+
 router.route("/test")
     .get(cartController.test);
 

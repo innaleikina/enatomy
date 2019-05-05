@@ -125,7 +125,7 @@ render() {
                       <div className="example">
                         <h1>React Stripe Elements Example</h1>
                         <Elements>
-                          <CheckoutForm userId={this.state.user._id} cartItems={this.state.cart} amount={this.state.total} />
+                          <CheckoutForm emptyCart={this.onEmptyClick} userId={this.state.user._id} cartItems={this.state.cart} amount={this.state.total} />
                         </Elements>
                        </div>
                    </StripeProvider>
