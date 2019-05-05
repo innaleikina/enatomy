@@ -8,7 +8,8 @@ class OneSet extends Component {
   state = {
    price:10 + "$",
    user:"",
-   cart:""
+   cart:[],
+   purchased:[]
 
   }
 
@@ -21,22 +22,26 @@ class OneSet extends Component {
     API.fetchUser() 
       .then(res => this.setState({
         user:res.data,
-        cart:res.data.cart
+        cart:res.data.cart,
+        purchased:res.data.purchased
       }))
       .catch(err => console.log(err))
   };
   
+checkIfPurchased = () => {
+    if(this.state.purchased.includes(this.props.match.params.id)){
+      return <button  className="cart-btn"> download this set</button>
+
+    } else {
+     return <button onClick={this.addToCart} className="cart-btn"> add to cart </button>
+
+    }
+  }
 
 
 
 addToCart = () => {
- 
-  // console.log(this.state.user._id);
-  // console.log(this.props.match.params.id);
-  console.log(this.state.cart)
-  console.log(this.state.cart.length)
-
-  if (this.state.cart.length === 0) {
+   if (this.state.cart.length === 0) {
     API.addToCart(this.state.user._id, this.props.match.params.id)
       .catch(err => console.log(err))
     console.log("the cart length is zero!")
@@ -70,7 +75,8 @@ addToCart = () => {
            <h2>{modelName}</h2>
            <CoverPhoto fileName={this.props.match.params.id}> </CoverPhoto>
             <h4>{this.state.price}</h4>
-           <button onClick={this.addToCart} className="cart-btn"> add to cart </button>
+           {/* <button onClick={this.addToCart} className="cart-btn"> add to cart </button> */}
+           {this.checkIfPurchased()}
         </div>
         )
       }

@@ -49,34 +49,26 @@ class Cart extends Component {
       .catch(err => console.log(err))
   };
 
-
-  renderItemsInCart = () => {
-   let imagesToRender = [];
-
-   for(var b =0; b < this.state.imagesInCart.length; b++){
-    imagesToRender.push(<div className="imageBtnWrap" key={this.state.imagesInCart[b]}>
-                          <Link key={this.state.imagesInCart[b]} to={`/set/${this.state.imagesInCart[b]}`}>
-                               <CoverPhoto key={this.state.imagesInCart[b]} fileName={this.state.imagesInCart[b]}>
-                               </CoverPhoto>
-                          </Link> 
-                          <p> {this.state.price}$</p>
-                          <button onClick={this.onRemoveClick} className="removeBtn" data-id={this.state.imagesInCart[b]}> remove</button>
-                        
-                        </div>)
-    }
-   return imagesToRender
-  }
-
-
   onRemoveClick = (e) => {
     // console.log(e.target.getAttribute('data-id'));
     API.removeOneFromCart(this.state.user._id, e.target.getAttribute('data-id'))
-    .catch(err => console.log(err))
+   .then( API.fetchUser() 
+    .then(res => this.setState({
+      // user:res.data,
+      cart:res.data.cart
+    }))
+    .catch(err => console.log(err)))
+    // .then(this.getUser())
+    .then(this.getImagesInCart())
+    .catch(err => console.log(err));
   }
 
   onEmptyClick = () => {
     API.emptyCart(this.state.user._id)
+    .then(this.getUser())
+    .then(this.getImagesInCart())
     .catch(err => console.log(err))
+
   }
 
 
@@ -88,27 +80,44 @@ class Cart extends Component {
  }
 
  getImagesInCart = () => {
+   console.log("got images in cart!")
   let s3FilesArr = []
   let cart = this.state.cart;
    for (var i = 0; i < this.state.allS3Files.length; i++){
       s3FilesArr.push(this.state.allS3Files[i].filename);
   }
-  
-  this.setState({
+    this.setState({
     imagesInCart:s3FilesArr.filter(value => -1 !== cart.indexOf(value))
   }) 
+  console.log(this.state.imagesInCart)
  }
 
 
 render() {
-  console.log(this.state.imagesInCart)
+  // console.log(this.state.cart);
+
           return (
                 <div >
                   <h1> this is  the cart page </h1>
                   <button onClick = {this.onEmptyClick}>empty your cart</button>
                   {/* <h2> first in cart is {this.state.cart[0]}</h2> */}
                   <div className="cartBorder">
-                    {this.renderItemsInCart()}
+                  {(this.state.imagesInCart.length > 0) ? 
+                  // <div> The is stuff in your cart!!!! </div>
+                  this.state.imagesInCart.map((image,index) => (
+                    <div className="imageBtnWrap" key={index}>
+                    <Link key={index} to={`/set/${image}`}>
+                         <CoverPhoto key={index} fileName={image}>
+                         </CoverPhoto>
+                    </Link> 
+                    <p> {this.state.price}$</p>
+                    <button onClick={this.onRemoveClick} className="removeBtn" data-id={image}> remove</button>
+                  
+                  </div>
+                  ))
+                  : <div>Your cart is empty</div>}
+                    {/* {this.renderItemsInCart()} */}
+
                   </div>
                      <h4>total is : {this.state.total}$</h4>
 
@@ -116,7 +125,7 @@ render() {
                       <div className="example">
                         <h1>React Stripe Elements Example</h1>
                         <Elements>
-                          <CheckoutForm amount={this.state.total} />
+                          <CheckoutForm emptyCart={this.onEmptyClick} userId={this.state.user._id} cartItems={this.state.cart} amount={this.state.total} />
                         </Elements>
                        </div>
                    </StripeProvider>

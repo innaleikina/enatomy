@@ -29,6 +29,13 @@ export default {
     return axios.put("/cart/addtocart/" + id + "/" + setName)
   },
 
+  addToPurchased: function(id,setName) {
+    return axios.put("/cart/addtopurchased/" + id + "/" + setName)
+  },
+  emptyPurchases:function(id){
+    return axios.put("cart/emptypurchased/" + id)
+ },
+
   removeOneFromCart:function(id,setName){
     return axios.put("cart/remove/" + id + "/" + setName)
   },

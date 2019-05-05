@@ -47,6 +47,36 @@ module.exports = {
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
+    addToPurchased:function(req,res){
+        db.User
+        .findOneAndUpdate({
+            _id: req.params.id
+        }, {
+            $push: {
+                purchased: req.params.setname
+            }},
+            {
+                new: true
+            }
+        )
+        .then(dbUser => res.json(dbUser))
+        .catch(err => res.status(422).json(err));
+    },
+    emptyPurchased:function (req, res) {
+        db.User
+            .findOneAndUpdate({
+                _id: req.params.id
+            }, {
+                $set: {
+                    purchased: []
+                }},
+                {
+                    new: true
+                }
+            )
+            .then(dbUser => res.json(dbUser))
+            .catch(err => res.status(422).json(err));
+    },
     test: function (req, res) {
         res.json({
             "test": "yep this is a simple route"
