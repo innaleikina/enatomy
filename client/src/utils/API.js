@@ -37,10 +37,14 @@ export default {
  },
 
   removeOneFromCart:function(id,setName){
-    return axios.put("cart/remove/" + id + "/" + setName)
+    return axios.put("/cart/remove/" + id + "/" + setName)
   },
 
   emptyCart:function(id){
-     return axios.put("cart/emptycart/" + id)
+     return axios.put("/cart/emptycart/" + id)
+  },
+
+  downloadSet:function(setName){
+    return axios.get("/s3/download/"+ setName)
   }
 };

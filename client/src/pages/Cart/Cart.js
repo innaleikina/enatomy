@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import API from "../../utils/API";
 import { Link } from 'react-router-dom';
 import CoverPhoto from '../../components/CoverPhoto';
-// import BuyButton from '../../components/BuyButton';
 import {Elements, StripeProvider} from 'react-stripe-elements';
 import CheckoutForm from "../../components/Checkout";
 

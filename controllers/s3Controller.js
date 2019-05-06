@@ -38,6 +38,24 @@ module.exports = {
         res.json(fileNames),fileNames = [])
     .catch(err => res.status(422).json(err));
   },
+  download: function(req,res){
+    aws.config.setPromisesDependency();
+    aws.config.update({
+      accessKeyId: config.aws.accessKey,
+      secretAccessKey: config.aws.secretKey,
+      region: "us-east-1"
+  });
+
+      const s3 = new aws.S3();
+       
+      var params = {
+        Bucket:config.aws.bucket, 
+        Key: req.params.setname + "zip", 
+        Expires: 60}
+      s3.getSignedUrl('getObject', params, function (err, url) {
+      console.log('Signed URL: ' + url);
+      });
+    },
   test:function(req,res){
       res.json({"test":"yep this is a simple route"})
   }
