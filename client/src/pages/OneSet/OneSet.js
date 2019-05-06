@@ -27,10 +27,16 @@ class OneSet extends Component {
       }))
       .catch(err => console.log(err))
   };
+
+  downloadSet = () => {
+    console.log("download set clicked");
+    API.downloadSet(this.props.match.params.id)
+    .catch(err => console.log(err))
+  }
   
 checkIfPurchased = () => {
     if(this.state.purchased.includes(this.props.match.params.id)){
-      return <button  className="cart-btn"> download this set</button>
+      return <button onClick={this.downloadSet} className="cart-btn"> download this set</button>
 
     } else {
      return <button onClick={this.addToCart} className="cart-btn"> add to cart </button>
