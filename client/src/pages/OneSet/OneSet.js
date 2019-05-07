@@ -3,6 +3,7 @@ import './oneset.css';
 import CoverPhoto from '../../components/CoverPhoto'
 import API from "../../utils/API";
 
+
 class OneSet extends Component {
 
   state = {
@@ -31,6 +32,8 @@ class OneSet extends Component {
   downloadSet = () => {
     console.log("download set clicked");
     API.downloadSet(this.props.match.params.id.slice(0, -3))
+    // .then(res=> console.log(res.data))
+    .then(res => window.location.href = res.data)
     .catch(err => console.log(err))
   }
   

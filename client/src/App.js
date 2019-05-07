@@ -67,7 +67,7 @@ class App extends Component {
          <NavBar>
             <ul className="nav-items">
                 <NavItem link="/store"> store </NavItem>
-                <NavItem link="/pricing"> pricing </NavItem>
+                {/* <NavItem link="/pricing"> pricing </NavItem> */}
                 {/* <NavItem link="/sketch"> sketch </NavItem> */}
                 <NavItem link="/cart"> cart </NavItem>
                 <NavItem id="myAccount" link="/myaccount"> my account </NavItem>
