@@ -2,8 +2,8 @@ const router = require("express").Router();
 const stripeController = require("../../controllers/stripeController");
 
 
-router.route("/checkout")
-  .post(stripeController.stripePayment);
+// router.route("/checkout")
+//   .post(stripeController.stripePayment);
 
 
 router.route("/test")

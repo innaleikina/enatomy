@@ -46,5 +46,9 @@ export default {
 
   downloadSet:function(setName){
     return axios.get("/s3/download/"+ setName)
+  },
+
+  sendWelcomeEmail:function(name, email){
+    return axios.post("sendgrid/sendwelcomeemail/" + name + "/" + email)
   }
 };
