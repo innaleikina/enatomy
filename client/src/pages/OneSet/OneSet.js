@@ -38,6 +38,10 @@ class OneSet extends Component {
   }
   
 checkIfPurchased = () => {
+
+  if(this.state.user === ""){
+    return <button className="cart-btn"> log in to download</button>
+  } else {
     if(this.state.purchased.includes(this.props.match.params.id)){
       return <button onClick={this.downloadSet} className="cart-btn"> download this set</button>
 
@@ -46,6 +50,7 @@ checkIfPurchased = () => {
 
     }
   }
+}
 
 
 
