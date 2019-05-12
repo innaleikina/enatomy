@@ -38,9 +38,13 @@ class App extends Component {
   componentDidMount() {
 
     this.fetchUser();
+    
   };
 
-  logoutButton = (history) => {
+  logoutButton = () => {
+    this.setState({
+      loggedOut:false
+    })
     let logoutbtn = document.getElementById("logoutBtn");
     let myAccount = document.getElementById("myAccount");
     let myCart = document.getElementById("myCart");
@@ -64,11 +68,13 @@ class App extends Component {
         loggedOut:true
       }, this.logoutButton))
       .catch(err => console.log(err));
+ 
   };
 
 
   render() {
     console.log(this.state.loggedOut)
+    
 
     return (
       <Router>
