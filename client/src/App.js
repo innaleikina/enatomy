@@ -18,7 +18,8 @@ class App extends Component {
 
   state = {
     user: {},
-    authed: false
+    authed: false,
+    loggedOut:false,
   }
 
   fetchUser = () => {
@@ -27,13 +28,15 @@ class App extends Component {
         if (res.data) {
           this.setState({
             user: res.data,
-            authed: true
+            authed: true,
+            loggedOut:false
           }, this.logoutButton)
         }
       })
   };
 
   componentDidMount() {
+
     this.fetchUser();
   };
 
@@ -57,14 +60,16 @@ class App extends Component {
     API.logout() 
       .then(res => this.setState({
         user: {},
-        authed: false
+        authed: false,
+        loggedOut:true
       }, this.logoutButton))
       .catch(err => console.log(err));
-
   };
 
 
   render() {
+    console.log(this.state.loggedOut)
+
     return (
       <Router>
       <div className="App">
@@ -80,7 +85,7 @@ class App extends Component {
             </ul>
          </NavBar>
 
-          {!this.state.authed ? <Redirect to='/'/> : <div></div> }
+          {this.state.loggedOut ?  <Redirect to='/'/> : <div></div> }
 
          <Switch>
             <Route exact path="/"  render={(props) => <Main {...props} fetchUser={this.fetchUser}/>}/>
