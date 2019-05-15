@@ -8,6 +8,7 @@ import API from "./utils/API";
 import Cart from "./pages/Cart";
 // import Pricing from "./pages/Pricing";
 import {NavBar, NavItem} from "./components/Nav";
+import LogInSignUp from "./components/LogInSignUp";
 import "./normalize.css";
 import LogOut from "./components/LogOut";
 import "./components/Nav/nav.css";
@@ -20,6 +21,8 @@ class App extends Component {
     user: {},
     authed: false,
     loggedOut:false,
+    // logInPopUp:false,
+    // signUpPopUp:false
   }
 
   fetchUser = () => {
@@ -38,9 +41,13 @@ class App extends Component {
   componentDidMount() {
 
     this.fetchUser();
+    
   };
 
-  logoutButton = (history) => {
+  logoutButton = () => {
+    this.setState({
+      loggedOut:false
+    })
     let logoutbtn = document.getElementById("logoutBtn");
     let myAccount = document.getElementById("myAccount");
     let myCart = document.getElementById("myCart");
@@ -64,11 +71,13 @@ class App extends Component {
         loggedOut:true
       }, this.logoutButton))
       .catch(err => console.log(err));
+ 
   };
 
 
-  render() {
-    console.log(this.state.loggedOut)
+
+
+  render() {    
 
     return (
       <Router>
@@ -80,13 +89,15 @@ class App extends Component {
                 {/* <NavItem link="/sketch"> sketch </NavItem> */}
                 <NavItem id="myCart" link="/cart"> cart </NavItem>
                 <NavItem id="myAccount" link="/myaccount"> my account </NavItem>
-
+                <LogInSignUp></LogInSignUp>
                 <LogOut handleLogout={this.handleLogout} ></LogOut>
             </ul>
          </NavBar>
 
           {this.state.loggedOut ?  <Redirect to='/'/> : <div></div> }
-
+         
+         
+        
          <Switch>
             <Route exact path="/"  render={(props) => <Main {...props} fetchUser={this.fetchUser}/>}/>
             <Route exact path="/myaccount"  render={(props) => <MyAccount {...props} fetchUser={this.fetchUser}/>}/>
