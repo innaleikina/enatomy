@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button} from "../../components/Form"
+import { Button} from "../Form"
 import "./logout.css";
 
 const LogOut = (props) => (

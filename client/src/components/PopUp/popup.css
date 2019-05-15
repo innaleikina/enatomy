@@ -1,0 +1,13 @@
+.popUp {
+    border: 3px #EB5E28 solid;
+    /* display:none; */
+    width: 300px;
+    height: 300px;
+    top: 50%;
+    left: 50%;
+    margin-top: -150px; 
+    margin-left: -150px;
+    position: fixed;
+    background-color:white;
+    opacity:.8;
+}
