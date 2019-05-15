@@ -11,43 +11,42 @@ class LogInSignUp extends Component {
        popUpOpen:false
       }
 
-    setLogInState = () => {
+    handleLogIn = () => {
         this.setState({
             buttonClicked:"log in",
             popUpOpen:true
           })
     }
+
+    handleSignUp = () => {
+        this.setState({
+            buttonClicked:"sign up",
+            popUpOpen:true
+          })
+    }
     
    
-    handleLogInClick = () => {
-       this.setLogInState()
-    //    console.log("clicked")
-    //       let popUp = document.getElementById("popUp");
-    //       if (this.state.logInClicked === true) {
-    //           popUp.style.display = "block";
-    //       } else {
-    //           popUp.style.display = "none";
-    //       }
-     }
 
-     handleSignUpClick = () => {
-     
-     }
+
+
 
      closePopUp = () => {
         this.setState({
-           popUpOpen:false
+           popUpOpen:false,
+           buttonClicked:"none",
+
           })
      }
 
 
   render() {
+      console.log(this.state.buttonClicked)
     return (
         <div>
-          <Button onClick={this.handleSignUpClick}> Sign Up</Button>
-          <Button onClick={this.handleLogInClick}> Log In </Button>
+          <Button onClick={this.handleSignUp}> Sign Up</Button>
+          <Button onClick={this.handleLogIn}> Log In </Button>
 
-          {this.state.popUpOpen? <PopUp closePopUp={this.closePopUp}></PopUp>: <div></div>}
+          {this.state.popUpOpen? <PopUp buttonClicked={this.state.buttonClicked} closePopUp={this.closePopUp}></PopUp>: <div></div>}
 
         </div>
     );
