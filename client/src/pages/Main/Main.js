@@ -11,13 +11,13 @@ class Main extends Component {
    
 
     render() {
-
+       console.log(this.props)
         return (
          <div > 
            <AboutUs></AboutUs>
            <div className="formsContainer">
-             <SignUp props={this.props} ></SignUp>
-             <SignIn props={this.props} ></SignIn>
+             <SignUp allProps={this.props} ></SignUp>
+             <SignIn allProps={this.props} ></SignIn>
            </div>
         </div>
         )

@@ -3,12 +3,18 @@ import React, { Component } from 'react';
 import "./popup.css"
 import SignIn from '../SignIn';
 import SignUp from '../SignUp';
+import API from "../../utils/API";
+
 
 
 class PopUp extends Component {
   state = {
-
+    buttonsShown:true,
+    authed:false
   }
+
+
+
 
 
 
@@ -18,8 +24,7 @@ class PopUp extends Component {
         <div id="popUp" className="popUp">
           <button onClick={this.props.closePopUp}> X </button>
           {this.props.buttonClicked === "log in" ? <SignIn></SignIn> : <div></div>}
-
-          {this.props.buttonClicked === "sign up" ? <SignUp></SignUp> : <div></div>}
+          {this.props.buttonClicked === "sign up" ? <SignUp  ></SignUp> : <div></div>}
 
         </div>
     )

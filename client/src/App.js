@@ -74,11 +74,16 @@ class App extends Component {
  
   };
 
-
+  // showLogInSignUp = (props) => {
+  //   console.log({...props})
+  //   return (
+  //     <LogInSignUp {...props} />
+  //   )
+  // }
 
 
   render() {    
-
+    // console.log("app " + this.props)
     return (
       <Router>
       <div className="App">
@@ -89,7 +94,8 @@ class App extends Component {
                 {/* <NavItem link="/sketch"> sketch </NavItem> */}
                 <NavItem id="myCart" link="/cart"> cart </NavItem>
                 <NavItem id="myAccount" link="/myaccount"> my account </NavItem>
-                <LogInSignUp></LogInSignUp>
+                
+                {!this.state.authed ? <LogInSignUp></LogInSignUp> : <div></div> }
                 <LogOut handleLogout={this.handleLogout} ></LogOut>
             </ul>
          </NavBar>
