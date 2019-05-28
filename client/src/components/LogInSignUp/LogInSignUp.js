@@ -61,12 +61,13 @@ class LogInSignUp extends Component {
 
 
   render() {
+    console.log(this.props)
     return (
         <div>
           <Button onClick={this.handleSignUp} id="signUpBtn"> Sign Up</Button>
           <Button onClick={this.handleLogIn} id="logInBtn"> Log In </Button>
 
-          {this.state.popUpOpen? <PopUp  buttonClicked={this.state.buttonClicked} closePopUp={this.closePopUp}></PopUp>: <div></div>}
+          {this.state.popUpOpen? <PopUp fetchUser={this.props.fetchUser}  buttonClicked={this.state.buttonClicked} closePopUp={this.closePopUp}></PopUp>: <div></div>}
 
         </div>
     );

@@ -40,6 +40,7 @@ class SignIn extends Component {
             
             alert("Incorrect email or password.")
           } else {
+            this.props.fetchUser();
             this.setState({
               loggedIn:true
             })
@@ -50,23 +51,11 @@ class SignIn extends Component {
     }
   };
 
-  // redirect = () => {
-  //   this.props.allProps.fetchUser();
-  //   API.fetchUser()
-  //     .then(res => {
-  //       if (res.data) {
-  //         this.props.allProps.history.push("/myaccount");
-  //       }
-  //     })
-  // };
 
-  // redirect = () => {
-  //  if(this.state.loggedIn){
-  //   <Redirect to='/myaccount'/> : <div></div>
-  //  }
-  // }
 
   render() {
+    console.log(this.props)
+
      return (
         <div className="signin-page">
            <form>
@@ -92,11 +81,7 @@ class SignIn extends Component {
               onChange={this.handleInputChange}
             >
             </Input>
-            <Button
-          
-            onClick={(event) => this.handleLogin(event)}
-            > Sign In
-            </Button>
+            <Button onClick={(event) => this.handleLogin(event)}> Sign In </Button>
      
         </form>
 

@@ -20,11 +20,12 @@ class PopUp extends Component {
 
 
   render() {
+
     return (
         <div id="popUp" className="popUp">
           <button onClick={this.props.closePopUp}> X </button>
-          {this.props.buttonClicked === "log in" ? <SignIn></SignIn> : <div></div>}
-          {this.props.buttonClicked === "sign up" ? <SignUp  ></SignUp> : <div></div>}
+          {this.props.buttonClicked === "log in" ? <SignIn fetchUser={this.props.fetchUser}></SignIn> : <div></div>}
+          {this.props.buttonClicked === "sign up" ? <SignUp   ></SignUp> : <div></div>}
 
         </div>
     )

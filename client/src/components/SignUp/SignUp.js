@@ -92,9 +92,7 @@ class SignUp extends Component {
               value={this.state.role}
               onChange={this.handleInputChange}
             ></Input> */}
-            <Button
-            onClick={(event) => this.handleFormSubmit(event)}
-            > Sign Up
+            <Button onClick={(event) => this.handleFormSubmit(event)}> Sign Up
             </Button>
        
           </form>

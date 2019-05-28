@@ -83,6 +83,7 @@ class App extends Component {
 
 
   render() {    
+
     // console.log("app " + this.props)
     return (
       <Router>
@@ -95,7 +96,7 @@ class App extends Component {
                 <NavItem id="myCart" link="/cart"> cart </NavItem>
                 <NavItem id="myAccount" link="/myaccount"> my account </NavItem>
                 
-                {!this.state.authed ? <LogInSignUp></LogInSignUp> : <div></div> }
+                {!this.state.authed ? <LogInSignUp fetchUser={this.fetchUser}></LogInSignUp> : <div></div> }
                 <LogOut handleLogout={this.handleLogout} ></LogOut>
             </ul>
          </NavBar>
