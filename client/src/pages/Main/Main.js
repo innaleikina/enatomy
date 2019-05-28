@@ -8,7 +8,10 @@ import AboutUs from "../../components/AboutUs";
 
 class Main extends Component {
 
-   
+  state = {
+    photosArr:[]
+
+   }
 
     render() {
         return (

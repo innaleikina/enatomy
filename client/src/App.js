@@ -12,7 +12,7 @@ import LogInSignUp from "./components/LogInSignUp";
 import "./normalize.css";
 import LogOut from "./components/LogOut";
 import "./components/Nav/nav.css";
-
+import "./app.css"
 
 
 class App extends Component {

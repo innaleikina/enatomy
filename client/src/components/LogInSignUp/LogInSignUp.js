@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import API from "../../utils/API";
 import { Button} from "../Form"
 import PopUp from "../PopUp";
+import "./loginsignup.css"
 
 
 
@@ -61,11 +62,12 @@ class LogInSignUp extends Component {
 
 
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     return (
-        <div>
-          <Button onClick={this.handleSignUp} id="signUpBtn"> Sign Up</Button>
-          <Button onClick={this.handleLogIn} id="logInBtn"> Log In </Button>
+        <div className="buttons-container">
+          <Button className="button" onClick={this.handleSignUp} id="signUpBtn"> Sign Up</Button>
+          <span id="divider"> / </span>
+          <Button className="button" onClick={this.handleLogIn} id="logInBtn"> Log In </Button>
 
           {this.state.popUpOpen? <PopUp fetchUser={this.props.fetchUser}  buttonClicked={this.state.buttonClicked} closePopUp={this.closePopUp}></PopUp>: <div></div>}
 
