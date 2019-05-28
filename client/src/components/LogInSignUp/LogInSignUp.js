@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
-// import API from "../../utils/API";
+import API from "../../utils/API";
 import { Button} from "../Form"
 import PopUp from "../PopUp";
+import "./loginsignup.css"
 
 
 
 class LogInSignUp extends Component {
     state = {
        buttonClicked :"none",
-       popUpOpen:false
+       popUpOpen:false,
+       buttonsShown:true
       }
 
     handleLogIn = () => {
         this.setState({
             buttonClicked:"log in",
             popUpOpen:true
-          })
+          },)
     }
 
     handleSignUp = () => {
@@ -25,12 +27,7 @@ class LogInSignUp extends Component {
           })
     }
     
-   
-
-
-
-
-     closePopUp = () => {
+       closePopUp = () => {
         this.setState({
            popUpOpen:false,
            buttonClicked:"none",
@@ -39,14 +36,40 @@ class LogInSignUp extends Component {
      }
 
 
-  render() {
-      console.log(this.state.buttonClicked)
-    return (
-        <div>
-          <Button onClick={this.handleSignUp}> Sign Up</Button>
-          <Button onClick={this.handleLogIn}> Log In </Button>
+ logInSignUpButtons = () => {
+    // this.setState({
+    //   buttonsShown:false
+    // })
+    let logInBtn = document.getElementById("signUpBtn");
+    let signUpBtn = document.getElementById("logInBtn");
 
-          {this.state.popUpOpen? <PopUp buttonClicked={this.state.buttonClicked} closePopUp={this.closePopUp}></PopUp>: <div></div>}
+    if (this.state.buttonsShown === true) {
+      logInBtn.style.display = "block";
+      signUpBtn.style.display = "block";
+    } else {
+      logInBtn.style.display = "none";
+      signUpBtn.style.display = "none";
+    }
+  };
+
+  hideBtns= () => {
+     this.setState({
+        buttonsShown:false
+      }, this.logInSignUpButtons)
+     
+ 
+  };
+
+
+  render() {
+    // console.log(this.props)
+    return (
+        <div className="buttons-container">
+          <Button className="button" onClick={this.handleSignUp} id="signUpBtn"> Sign Up</Button>
+          <span id="divider"> / </span>
+          <Button className="button" onClick={this.handleLogIn} id="logInBtn"> Log In </Button>
+
+          {this.state.popUpOpen? <PopUp fetchUser={this.props.fetchUser}  buttonClicked={this.state.buttonClicked} closePopUp={this.closePopUp}></PopUp>: <div></div>}
 
         </div>
     );

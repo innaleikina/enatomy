@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import API from "../../utils/API";
 // import { withRouter } from 'react-router-dom'
 import {Input, Button} from "../../components/Form"
+import { Redirect} from "react-router-dom";
+
 
 
 
@@ -10,7 +12,8 @@ class SignIn extends Component {
   state = {
     email: "",
     username: "",
-    passwordLogin: ""
+    passwordLogin: "",
+    loggedIn:false
   }
 
   handleInputChange = event => {
@@ -34,9 +37,13 @@ class SignIn extends Component {
       API.getUser(loginUser)
         .then(res => {
           if(typeof(res.data) === "string") {
+            
             alert("Incorrect email or password.")
           } else {
-            this.redirect()
+            this.props.fetchUser();
+            this.setState({
+              loggedIn:true
+            })
           }})
         .catch(err => console.log(err));
     } else {
@@ -44,23 +51,13 @@ class SignIn extends Component {
     }
   };
 
-  redirect = () => {
-    this.props.props.fetchUser();
-    API.fetchUser()
-      .then(res => {
-        if (res.data) {
-          this.props.props.history.push("/myaccount");
-        }
-      })
-  };
 
 
   render() {
 
-    return (
+     return (
         <div className="signin-page">
-      
-        <form>
+           <form>
 
 
           <Input
@@ -83,13 +80,12 @@ class SignIn extends Component {
               onChange={this.handleInputChange}
             >
             </Input>
-            <Button
-          
-            onClick={(event) => this.handleLogin(event)}
-            > Sign In
-            </Button>
+            <Button onClick={(event) => this.handleLogin(event)}> Sign In </Button>
      
         </form>
+
+        {this.state.loggedIn ?  <Redirect to='/myaccount'/> : <div></div> }
+
       </div>
     )
   }
