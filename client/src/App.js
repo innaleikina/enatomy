@@ -9,6 +9,8 @@ import Cart from "./pages/Cart";
 // import Pricing from "./pages/Pricing";
 import {NavBar, NavItem} from "./components/Nav";
 import LogInSignUp from "./components/LogInSignUp";
+import Footer from "./components/Footer";
+
 import "./normalize.css";
 import LogOut from "./components/LogOut";
 import "./components/Nav/nav.css";
@@ -112,6 +114,10 @@ class App extends Component {
             <Route exact path="/cart"  render={(props) => <Cart {...props} fetchUser={this.fetchUser}/>}/>
             <Route exact path="/set/:id"  render={(props) => <OneSet {...props} fetchUser={this.fetchUser}/>}/>
           </Switch>
+          
+          
+          <Footer></Footer>
+
       </div>
       </Router>
     );

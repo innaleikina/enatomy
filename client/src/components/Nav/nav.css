@@ -3,9 +3,13 @@ nav {
     justify-content: space-between;
     border-bottom: 1px #403D39 solid;
     padding-bottom: 30px;
+    margin:0;
     margin-top: 30px;
     margin-bottom: 60px;
     align-items: center;
+    padding-right:40px;
+    padding-left:40px;
+
     
 }
 
