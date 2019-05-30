@@ -1,5 +1,10 @@
 body{
     font-family:"Source Sans Pro";
-    padding:40px;
     padding-top:0;
+}
+
+h2{
+    font-variant: small-caps;
+    color:#FFFFFF;
+    letter-spacing: 2px;
 }

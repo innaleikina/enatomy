@@ -1,11 +1,11 @@
-.formsContainer{
-    display:flex;
-    width:80%;
-    justify-content: space-between;
-    padding:40px;
-}
-
 
 body{
     background-color:rgb(255 ,255 ,255);
+}
+
+.about-container{
+    display:flex;
+    justify-content: space-between;
+    padding-right:40px;
+    padding-left:40px;
 }

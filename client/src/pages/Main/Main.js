@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import SignIn from "../../components/SignIn/SignIn";
-import SignUp from "../../components/SignUp/SignUp";
-import './main.css';
 import AboutUs from "../../components/AboutUs";
+import WhatIs from "../../components/WhatIs";
+
+import './main.css';
+
 
 
 
@@ -15,12 +16,9 @@ class Main extends Component {
 
     render() {
         return (
-         <div > 
+         <div className="about-container"> 
            <AboutUs></AboutUs>
-           <div className="formsContainer">
-             {/* <SignUp allProps={this.props} ></SignUp>
-             <SignIn allProps={this.props} ></SignIn> */}
-           </div>
+           <WhatIs></WhatIs>
         </div>
         )
       }
