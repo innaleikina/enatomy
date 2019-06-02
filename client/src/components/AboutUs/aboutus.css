@@ -2,7 +2,7 @@
     width:500px;
     padding:60px;
     background-color:#EB5E28;
-    height:500px;
+    padding-bottom:40px;
     /* border:1px red solid; */
 }
 
@@ -10,4 +10,11 @@
     color:white;
     line-height:1.5;
     font-weight:300;
+}
+
+.art-container{
+    display:flex;
+    width:100%;
+    justify-content: space-between;
+    margin-top:40px;
 }

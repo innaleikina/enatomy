@@ -70,7 +70,6 @@ class Main extends Component {
       }
     }
      
-    console.log(jpgFiles)
     
     for(var b =0; b < 4; b++){
       toRender.push(<Link key={b} to={`/set/${jpgFiles[b]}`}><HomeImage key={b} fileName={jpgFiles[b]}>
