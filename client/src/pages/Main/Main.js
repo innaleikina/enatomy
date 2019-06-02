@@ -58,20 +58,25 @@ class Main extends Component {
 
    renderItems = () => {
     //  console.log(this.state.fileNameArr);
-     let jpgCoverShotsArr = []
+     let jpgFiles = [];
+     let toRender = [];
      this.shuffle(this.state.fileNameArr);
     
     for(var i=0; i < this.state.fileNameArr.length; i++){
       // console.log(this.state.fileNameArr[i]);
       if(this.state.fileNameArr[i].filename.endsWith("jpg")){
-        //console.log("this is a jpg file " + this.state.fileNameArr[i].filename);
-        jpgCoverShotsArr.push(<Link key={this.state.fileNameArr[i].filename} to={`/set/${this.state.fileNameArr[i].filename}`}><HomeImage key={this.state.fileNameArr[i].filename} fileName={this.state.fileNameArr[i].filename}>
-        </HomeImage></Link>)
-      } else {
-       // console.log("this is not a jpg file " + this.state.fileNameArr[i].filename)
+        // console.log("this is a jpg file " + this.state.fileNameArr[i].filename);
+        jpgFiles.push( this.state.fileNameArr[i].filename); 
       }
     }
-    return jpgCoverShotsArr
+     
+    console.log(jpgFiles)
+    
+    for(var b =0; b < 4; b++){
+      toRender.push(<Link key={b} to={`/set/${jpgFiles[b]}`}><HomeImage key={b} fileName={jpgFiles[b]}>
+      </HomeImage></Link>) 
+    }
+    return toRender
    }
 
     render() {
