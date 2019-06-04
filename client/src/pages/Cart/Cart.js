@@ -60,7 +60,7 @@ class Cart extends Component {
 
   onEmptyClick = () => {
     API.emptyCart(this.state.user._id)
-    .then(this.getUser(), this.getImagesInCart())
+    .then(this.getUser(), this.getFiles())
     .catch(err => console.log(err))
 
   }
