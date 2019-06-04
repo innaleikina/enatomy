@@ -51,12 +51,8 @@ class Cart extends Component {
   onRemoveClick = (e) => {
     // console.log(e.target.getAttribute('data-id'));
     API.removeOneFromCart(this.state.user._id, e.target.getAttribute('data-id'))
-   .then( API.fetchUser() 
-    .then(res => this.setState({
-      // user:res.data,
-      cart:res.data.cart
-    }))
-    .catch(err => console.log(err)))
+   .then( this.getUser(), this.getFiles())
+    .catch(err => console.log(err))
     // .then(this.getUser())
     .then(this.getImagesInCart())
     .catch(err => console.log(err));
@@ -64,8 +60,7 @@ class Cart extends Component {
 
   onEmptyClick = () => {
     API.emptyCart(this.state.user._id)
-    .then(this.getUser())
-    .then(this.getImagesInCart())
+    .then(this.getUser(), this.getImagesInCart())
     .catch(err => console.log(err))
 
   }
