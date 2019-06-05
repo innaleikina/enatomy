@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 // import { BrowserRouter as  Redirect } from "react-router-dom";
 import API from "../../utils/API";
 import {Input, Button} from "../../components/Form"
+import "./signup.css";
+
 
 class SignUp extends Component {
   state = {
@@ -53,36 +55,44 @@ class SignUp extends Component {
     return (
     <div className="signup-page">
       
-          <form>
-          <Input
-              label="Name"
-              id="name"
-              placeholder="John Smith"
-              name="name"
-              value={this.state.name}
-              onChange={this.handleInputChange}
-            >
-            </Input>
-            <Input
-              label="Email"
-              id="email"
-              placeholder="John@Smith.com"
-              name="email"
-              type="email"
-              value={this.state.email}
-              onChange={this.handleInputChange}
-            >
-            </Input>
-            <Input
-              label="Password"
-              id="password"
-              placeholder="password"
-              name="password"
-              type="password"
-              value={this.state.password}
-              onChange={this.handleInputChange}
-            >
-            </Input>
+          <form className="sign-up-form">
+            <div className="input-continer">
+                    <label className="label"> name </label>
+                    <Input
+                    id="name"
+                    name="name"
+                    value={this.state.name}
+                    onChange={this.handleInputChange}
+                  >
+                  </Input>
+            </div>
+           
+            <div className="input-continer">
+                <label className="label"> email</label>
+                <Input
+                  id="email"
+                  placeholder="John@Smith.com"
+                  name="email"
+                  type="email"
+                  value={this.state.email}
+                  onChange={this.handleInputChange}
+                >
+                </Input>
+             </div>
+           
+           
+             <div className="input-continer">
+                    <label className="label"> password </label>
+                    <Input
+                      id="password"
+                      placeholder="password"
+                      name="password"
+                      type="password"
+                      value={this.state.password}
+                      onChange={this.handleInputChange}
+                    >
+                    </Input>
+              </div>
             {/* <Input
               label="role"
               id="role"
@@ -92,7 +102,7 @@ class SignUp extends Component {
               value={this.state.role}
               onChange={this.handleInputChange}
             ></Input> */}
-            <Button onClick={(event) => this.handleFormSubmit(event)}> Sign Up
+            <Button className="form-button" onClick={(event) => this.handleFormSubmit(event)}> Sign Up
             </Button>
        
           </form>

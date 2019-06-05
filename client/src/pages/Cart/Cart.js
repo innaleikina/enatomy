@@ -74,7 +74,7 @@ class Cart extends Component {
  }
 
  getImagesInCart = () => {
-   console.log("got images in cart!")
+  //  console.log("got images in cart!")
   let s3FilesArr = []
   let cart = this.state.cart;
    for (var i = 0; i < this.state.allS3Files.length; i++){
@@ -83,7 +83,7 @@ class Cart extends Component {
     this.setState({
     imagesInCart:s3FilesArr.filter(value => -1 !== cart.indexOf(value))
   }) 
-  console.log(this.state.imagesInCart)
+  // console.log(this.state.imagesInCart)
  }
 
 
@@ -92,7 +92,6 @@ render() {
 
           return (
                 <div >
-                  <h1> this is  the cart page </h1>
                   <button onClick = {this.onEmptyClick}>empty your cart</button>
                   {/* <h2> first in cart is {this.state.cart[0]}</h2> */}
                   <div className="cartBorder">
