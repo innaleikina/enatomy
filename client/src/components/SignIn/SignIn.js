@@ -56,48 +56,48 @@ class SignIn extends Component {
 
   render() {
 
-     return (
-        <div >
-           <form className="sign-in-form">
+    return (
+       <div >
+          <form className="sign-in-form">
 
-          <div className="input-continer">
-              <label className="label"> email </label>
-              <Input
-                  className = "input"
-                  id="username"
-                  placeholder="john@smith.com"
-                  type="email"
-                  name="username"
-                  value={this.state.username}
-                  onChange={this.handleInputChange}
-                >
-                </Input>
-            </div>
+         <div className="input-continer">
+             <label className="label"> email </label>
+             <Input
+                 className = "input"
+                 id="username"
+                 placeholder="john@smith.com"
+                 type="email"
+                 name="username"
+                 value={this.state.username}
+                 onChange={this.handleInputChange}
+               >
+               </Input>
+           </div>
 
 
-            <div className="input-continer">
-                <label className="label"> password </label>
-                <Input
-                className = "input"
+           <div className="input-continer">
+               <label className="label"> password </label>
+               <Input
+               className = "input"
 
-                  id="passwordLogin"
-                  placeholder="password"
-                  name="passwordLogin"
-                  type="password"
-                  value={this.state.passwordLogin}
-                  onChange={this.handleInputChange}
-                >
-                
-                </Input>
-            </div>
-            <Button className="form-button" onClick={(event) => this.handleLogin(event)}> Sign In </Button>
-     
-        </form>
+                 id="passwordLogin"
+                 placeholder="password"
+                 name="passwordLogin"
+                 type="password"
+                 value={this.state.passwordLogin}
+                 onChange={this.handleInputChange}
+               >
+               
+               </Input>
+           </div>
+           <Button className="form-button" onClick={(event) => this.handleLogin(event)}> Sign In </Button>
+            <Button> forgot password? </Button>
+       </form>
 
-        {this.state.loggedIn ?  <Redirect to='/myaccount'/> : <div></div> }
+       {this.state.loggedIn ?  <Redirect to='/myaccount'/> : <div></div> }
 
-      </div>
-    )
+     </div>
+   )
   }
 };
 
