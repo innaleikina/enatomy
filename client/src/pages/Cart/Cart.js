@@ -86,6 +86,20 @@ class Cart extends Component {
   // console.log(this.state.imagesInCart)
  }
 
+ downloadAllSets = () => {
+    console.log("dowload all sets");
+
+    for(var i=0; i < this.state.imagesInCart.length;i++){
+      console.log(this.state.imagesInCart[i])
+      API.downloadSet(this.state.imagesInCart[i].slice(0, -3))
+      // .then(res=> console.log(res.data))
+      .then(res => window.location.href = res.data)
+      .catch(err => console.log(err))
+    }
+   
+
+ }
+
 
 render() {
   // console.log(this.state.cart);
@@ -118,7 +132,7 @@ render() {
                       <div className="example">
                         <h1>React Stripe Elements Example</h1>
                         <Elements>
-                          <CheckoutForm emptyCart={this.onEmptyClick} userId={this.state.user._id} cartItems={this.state.cart} amount={this.state.total} />
+                          <CheckoutForm  downloadAllSets={this.downloadAllSets} emptyCart={this.onEmptyClick} userId={this.state.user._id} cartItems={this.state.cart} amount={this.state.total} />
                         </Elements>
                        </div>
                    </StripeProvider>

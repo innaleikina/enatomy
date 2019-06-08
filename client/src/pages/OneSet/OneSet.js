@@ -30,7 +30,7 @@ class OneSet extends Component {
   };
 
   downloadSet = () => {
-    console.log("download set clicked");
+    // console.log("download set clicked");
     API.downloadSet(this.props.match.params.id.slice(0, -3))
     // .then(res=> console.log(res.data))
     .then(res => window.location.href = res.data)
@@ -58,7 +58,7 @@ addToCart = () => {
    if (this.state.cart.length === 0) {
     API.addToCart(this.state.user._id, this.props.match.params.id)
       .catch(err => console.log(err))
-    console.log("the cart length is zero!")
+    // console.log("the cart length is zero!")
   } else {
    //console.log("cart is longer than zero!");
     if (this.state.cart.includes(this.props.match.params.id)) {
@@ -66,7 +66,7 @@ addToCart = () => {
     } else {
       API.addToCart(this.state.user._id, this.props.match.params.id)
         .catch(err => console.log(err))
-      console.log("item is not in the cart");
+      // console.log("item is not in the cart");
     }
   }
   API.getUserCart(this.state.user._id)
