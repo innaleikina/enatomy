@@ -76,13 +76,6 @@ class App extends Component {
  
   };
 
-  // showLogInSignUp = (props) => {
-  //   console.log({...props})
-  //   return (
-  //     <LogInSignUp {...props} />
-  //   )
-  // }
-
 
   render() {    
 
@@ -93,8 +86,6 @@ class App extends Component {
          <NavBar>
             <ul className="nav-items">
                 <NavItem link="/store"> store </NavItem>
-                {/* <NavItem link="/pricing"> pricing </NavItem> */}
-                {/* <NavItem link="/sketch"> sketch </NavItem> */}
                 <NavItem id="myCart" link="/cart"> cart </NavItem>
                 <NavItem id="myAccount" link="/myaccount"> my account </NavItem>
                 

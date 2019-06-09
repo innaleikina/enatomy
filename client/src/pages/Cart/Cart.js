@@ -60,7 +60,7 @@ class Cart extends Component {
 
   onEmptyClick = () => {
     API.emptyCart(this.state.user._id)
-    .then(this.getUser(), this.getImagesInCart())
+    .then(this.getUser(), this.getFiles())
     .catch(err => console.log(err))
 
   }
@@ -74,7 +74,7 @@ class Cart extends Component {
  }
 
  getImagesInCart = () => {
-   console.log("got images in cart!")
+  //  console.log("got images in cart!")
   let s3FilesArr = []
   let cart = this.state.cart;
    for (var i = 0; i < this.state.allS3Files.length; i++){
@@ -83,7 +83,21 @@ class Cart extends Component {
     this.setState({
     imagesInCart:s3FilesArr.filter(value => -1 !== cart.indexOf(value))
   }) 
-  console.log(this.state.imagesInCart)
+  // console.log(this.state.imagesInCart)
+ }
+
+ downloadAllSets = () => {
+    console.log("dowload all sets");
+
+    for(var i=0; i < this.state.imagesInCart.length;i++){
+      console.log(this.state.imagesInCart[i])
+      API.downloadSet(this.state.imagesInCart[i].slice(0, -3))
+      // .then(res=> console.log(res.data))
+      .then(res => window.open(res.data))
+      .catch(err => console.log(err))
+    }
+   
+
  }
 
 
@@ -92,7 +106,6 @@ render() {
 
           return (
                 <div >
-                  <h1> this is  the cart page </h1>
                   <button onClick = {this.onEmptyClick}>empty your cart</button>
                   {/* <h2> first in cart is {this.state.cart[0]}</h2> */}
                   <div className="cartBorder">
@@ -119,7 +132,7 @@ render() {
                       <div className="example">
                         <h1>React Stripe Elements Example</h1>
                         <Elements>
-                          <CheckoutForm emptyCart={this.onEmptyClick} userId={this.state.user._id} cartItems={this.state.cart} amount={this.state.total} />
+                          <CheckoutForm  downloadAllSets={this.downloadAllSets} emptyCart={this.onEmptyClick} userId={this.state.user._id} cartItems={this.state.cart} amount={this.state.total} />
                         </Elements>
                        </div>
                    </StripeProvider>

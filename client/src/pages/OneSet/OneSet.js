@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './oneset.css';
 import CoverPhoto from '../../components/CoverPhoto'
 import API from "../../utils/API";
-
+import LogInSignUp from "../../components/LogInSignUp"
 
 class OneSet extends Component {
 
@@ -30,7 +30,7 @@ class OneSet extends Component {
   };
 
   downloadSet = () => {
-    console.log("download set clicked");
+    // console.log("download set clicked");
     API.downloadSet(this.props.match.params.id.slice(0, -3))
     // .then(res=> console.log(res.data))
     .then(res => window.location.href = res.data)
@@ -40,7 +40,7 @@ class OneSet extends Component {
 checkIfPurchased = () => {
 
   if(this.state.user === ""){
-    return <button className="cart-btn"> log in to download</button>
+    return <p> you must be signed in to purchase </p>
   } else {
     if(this.state.purchased.includes(this.props.match.params.id)){
       return <button onClick={this.downloadSet} className="cart-btn"> download this set</button>
@@ -58,7 +58,7 @@ addToCart = () => {
    if (this.state.cart.length === 0) {
     API.addToCart(this.state.user._id, this.props.match.params.id)
       .catch(err => console.log(err))
-    console.log("the cart length is zero!")
+    // console.log("the cart length is zero!")
   } else {
    //console.log("cart is longer than zero!");
     if (this.state.cart.includes(this.props.match.params.id)) {
@@ -66,7 +66,7 @@ addToCart = () => {
     } else {
       API.addToCart(this.state.user._id, this.props.match.params.id)
         .catch(err => console.log(err))
-      console.log("item is not in the cart");
+      // console.log("item is not in the cart");
     }
   }
   API.getUserCart(this.state.user._id)
@@ -85,8 +85,7 @@ addToCart = () => {
         
         return (
          <div > 
-           <h1> Individual photo set page </h1>
-           <h2>{modelName}</h2>
+           <h2 id="model-name">{modelName}</h2>
            <CoverPhoto fileName={this.props.match.params.id}> </CoverPhoto>
             <h4>{this.state.price}</h4>
            {/* <button onClick={this.addToCart} className="cart-btn"> add to cart </button> */}

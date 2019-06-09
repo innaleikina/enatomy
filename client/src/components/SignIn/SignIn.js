@@ -3,6 +3,7 @@ import API from "../../utils/API";
 // import { withRouter } from 'react-router-dom'
 import {Input, Button} from "../../components/Form"
 import { Redirect} from "react-router-dom";
+import "./signin.css";
 
 
 
@@ -55,39 +56,48 @@ class SignIn extends Component {
 
   render() {
 
-     return (
-        <div className="signin-page">
-           <form>
+    return (
+       <div >
+          <form className="sign-in-form">
+
+         <div className="input-continer">
+             <label className="label"> email </label>
+             <Input
+                 className = "input"
+                 id="username"
+                 placeholder="john@smith.com"
+                 type="email"
+                 name="username"
+                 value={this.state.username}
+                 onChange={this.handleInputChange}
+               >
+               </Input>
+           </div>
 
 
-          <Input
-              label="Email"
-              id="username"
-              placeholder="john@smith.com"
-              type="email"
-              name="username"
-              value={this.state.username}
-              onChange={this.handleInputChange}
-            >
-            </Input>
-            <Input
-              label="Password"
-              id="passwordLogin"
-              placeholder="password"
-              name="passwordLogin"
-              type="password"
-              value={this.state.passwordLogin}
-              onChange={this.handleInputChange}
-            >
-            </Input>
-            <Button onClick={(event) => this.handleLogin(event)}> Sign In </Button>
-     
-        </form>
+           <div className="input-continer">
+               <label className="label"> password </label>
+               <Input
+               className = "input"
 
-        {this.state.loggedIn ?  <Redirect to='/myaccount'/> : <div></div> }
+                 id="passwordLogin"
+                 placeholder="password"
+                 name="passwordLogin"
+                 type="password"
+                 value={this.state.passwordLogin}
+                 onChange={this.handleInputChange}
+               >
+               
+               </Input>
+           </div>
+           <Button className="form-button" onClick={(event) => this.handleLogin(event)}> Sign In </Button>
+            <Button> forgot password? </Button>
+       </form>
 
-      </div>
-    )
+       {this.state.loggedIn ?  <Redirect to='/myaccount'/> : <div></div> }
+
+     </div>
+   )
   }
 };
 

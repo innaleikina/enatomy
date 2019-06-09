@@ -1,3 +1,7 @@
 .purchase-btn:hover{
     cursor:pointer;
 }
+
+#model-name{
+    color:black;
+}
