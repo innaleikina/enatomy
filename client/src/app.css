@@ -8,3 +8,7 @@ h2{
     color:#FFFFFF;
     letter-spacing: 2px;
 }
+
+button:focus{
+    outline:0;
+}

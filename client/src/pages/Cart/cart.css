@@ -1,12 +1,135 @@
-.cartBorder{
+.empty-cart-btn {
+    font-size: 14px;
+    border: none;
+    color: #EB5E28;
+    padding-bottom: 5px;
+    border: 1px white solid;
+    border-bottom: 1px #EB5E28 solid;
+    letter-spacing: 1px;
+}
+
+.empty-cart-btn:hover {
+    border: 1px #EB5E28 solid;
+    transition: .2s linear;
+    cursor: pointer;
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.empty-cart-btn:active {
+    box-shadow: none;
+}
+
+.empty-cart-btn:focus {
+    outline: none;
+}
+
+.image-info-container {
+    display: flex;
+    border-bottom: 1px #EB5E28 solid;
+    margin-bottom: 40px;
+    justify-content: space-between;
+}
+
+.remove-btn {
+    width: 80px;
+    height: 30px;
+    border: 1px #EB5E28 solid;
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    color: #EB5E28;
+}
+
+.remove-btn:hover {
+    background-color: #EB5E28;
+    color: white;
+    transition: .2s linear;
+}
+
+.remove-btn:active {
+    box-shadow: none;
+    top: 1px;
+}
+
+
+
+.cart-container {
+    padding: 40px;
+    margin-bottom:100px;
+}
+
+#title-cart {
+    color: #EB5E28;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 16px;
+}
+
+.title-empty-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    align-items: center;
+}
+
+.cart-items-container {
+    border-top: 1px #EB5E28 solid;
+    /* border-bottom:1px #EB5E28 solid; */
+    padding-top: 40px;
+    margin-bottom: 100px;
     /* border:1px red solid; */
+
 }
 
-.imageBtnWrap{
-    display:flex;
+.name-price-container {
+    display: flex;
+    width: 120px;
+    justify-content: space-between;
+    align-content: center;
+
 }
 
-.removeBtn{
-    width:80px;
-    height:20px;
+.cart-model-name {
+    font-weight: 300;
+}
+
+.cart-separator {
+    color: #EB5E28;
+    font-size: 30px;
+    margin-top: -10px;
+}
+
+.cart-price {
+    font-weight: bold;
+
+}
+
+
+.total-purchase-container {
+    display: flex;
+    align-items: center;
+    width: 250px;
+    justify-content: space-between;
+    float:right;
+    position:absolute;
+    right: 40px;
+
+
+}
+
+.purchase-btn {
+    height: 40px;
+    color: white;
+    background-color: #EB5E28;
+    border-radius: 10px;
+    width: 100px;
+    border: none;
+}
+
+.total-span {
+    font-weight: 300;
+}
+
+.total-all {
+    font-size: 20px;
 }
