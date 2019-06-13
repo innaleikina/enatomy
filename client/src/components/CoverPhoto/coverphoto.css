@@ -3,4 +3,6 @@
     margin: 0 auto 30px;
     width:130px;
     height:200px;
+    border-radius:10px;
+    border:1px #EB5E28 solid;
 }

@@ -105,20 +105,27 @@ render() {
   // console.log(this.state.cart);
 
           return (
-                <div >
-                  <button onClick = {this.onEmptyClick}>empty your cart</button>
+                <div className="cart-container">
+                  <div className="title-empty-container">
+                    <span id="title-cart">items in your cart</span>
+                    <button className="empty-cart-btn" onClick = {this.onEmptyClick}>empty your cart</button>
+                  </div>
                   {/* <h2> first in cart is {this.state.cart[0]}</h2> */}
-                  <div className="cartBorder">
+                  <div className="cart-items-container">
                   {(this.state.imagesInCart.length > 0) ? 
                   // <div> The is stuff in your cart!!!! </div>
                   this.state.imagesInCart.map((image,index) => (
-                    <div className="imageBtnWrap" key={index}>
+                    <div className="image-info-container" key={index}>
                     <Link key={index} to={`/set/${image}`}>
                          <CoverPhoto key={index} fileName={image}>
                          </CoverPhoto>
                     </Link> 
-                    <p> {this.state.price}$</p>
-                    <button onClick={this.onRemoveClick} className="removeBtn" data-id={image}> remove</button>
+                    <div className="name-price-container">
+                      <span className="cart-model-name"> {image.slice(0, -4)} </span>
+                      <span className="cart-separator"> / </span>
+                      <span className="cart-price"> ${this.state.price}</span>
+                    </div>
+                    <button onClick={this.onRemoveClick} className="remove-btn" data-id={image}> remove</button>
                   
                   </div>
                   ))
@@ -126,16 +133,20 @@ render() {
                     {/* {this.renderItemsInCart()} */}
 
                   </div>
-                     <h4>total is : {this.state.total}$</h4>
-
-                  <StripeProvider apiKey="pk_test_Dnlcd3u8fxuOGycdNZ68LyJ200n3Qm5pGW">
+                     
+                  {/* <StripeProvider apiKey="pk_test_Dnlcd3u8fxuOGycdNZ68LyJ200n3Qm5pGW">
                       <div className="example">
                         <h1>React Stripe Elements Example</h1>
                         <Elements>
                           <CheckoutForm  downloadAllSets={this.downloadAllSets} emptyCart={this.onEmptyClick} userId={this.state.user._id} cartItems={this.state.cart} amount={this.state.total} />
                         </Elements>
                        </div>
-                   </StripeProvider>
+                   </StripeProvider> */}
+                   <div className="total-purchase-container">
+                      <h4 className="total-all"><span className="total-span">total is : </span>{this.state.total}$</h4>
+
+                      <button className="purchase-btn"> purchase </button>
+                   </div>
                    
                 </div>
             )

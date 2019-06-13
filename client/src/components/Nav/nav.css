@@ -16,12 +16,9 @@ nav {
 .nav-items {
     display: flex;
     list-style: none;
-    /* width:350px; */
-    /* margin-right:20px; */
     justify-content: space-between;
     /* border:1px red solid; */
     padding-left: 20px;
-    padding-right: 20px;
 
 }
 
