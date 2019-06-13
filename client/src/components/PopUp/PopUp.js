@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 import "./popup.css"
 import SignIn from '../SignIn';
 import SignUp from '../SignUp';
-import API from "../../utils/API";
+// import API from "../../utils/API";
+import {Elements, StripeProvider} from 'react-stripe-elements';
+import CheckoutForm from "../../components/Checkout";
 
 
 
@@ -27,6 +29,8 @@ class PopUp extends Component {
           <div id="form">
             {this.props.buttonClicked === "log in" ? <SignIn fetchUser={this.props.fetchUser}></SignIn> : <div></div>}
             {this.props.buttonClicked === "sign up" ? <SignUp   ></SignUp> : <div></div>}
+            {this.props.buttonClicked === "purchase" ? 
+              this.props.paymentForm : <div></div>}
           </div>
         </div>
     )

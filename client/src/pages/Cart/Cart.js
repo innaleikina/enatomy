@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import API from "../../utils/API";
 import { Link } from 'react-router-dom';
 import CoverPhoto from '../../components/CoverPhoto';
+import PopUp from "../../components/PopUp";
+
 import {Elements, StripeProvider} from 'react-stripe-elements';
 import CheckoutForm from "../../components/Checkout";
 
@@ -18,6 +20,7 @@ class Cart extends Component {
       imagesInCart:[],
       price:10,
       total:"",
+      purchaseClicked:false,
      }
 
 
@@ -63,6 +66,19 @@ class Cart extends Component {
     .then(this.getUser(), this.getFiles())
     .catch(err => console.log(err))
 
+  }
+
+  closePopUp = () => {
+    this.setState({
+       purchaseClicked:false,
+      })
+ }
+
+  onPurchaseClick = () => {
+    console.log("purchase clicked")
+    this.setState({
+       purchaseClicked:true
+    })
   }
 
 
@@ -134,19 +150,22 @@ render() {
 
                   </div>
                      
-                  {/* <StripeProvider apiKey="pk_test_Dnlcd3u8fxuOGycdNZ68LyJ200n3Qm5pGW">
+                  
+                   <div className="total-purchase-container">
+                      <h4 className="total-all"><span className="total-span">total is : </span>{this.state.total}$</h4>
+
+                      <button onClick={this.onPurchaseClick} className="purchase-btn"> purchase </button>
+                   </div>
+
+                   {this.state.purchaseClicked? <PopUp buttonClicked="purchase" fetchUser={this.props.fetchUser} closePopUp={this.closePopUp} paymentForm={<StripeProvider apiKey="pk_test_Dnlcd3u8fxuOGycdNZ68LyJ200n3Qm5pGW">
                       <div className="example">
-                        <h1>React Stripe Elements Example</h1>
                         <Elements>
                           <CheckoutForm  downloadAllSets={this.downloadAllSets} emptyCart={this.onEmptyClick} userId={this.state.user._id} cartItems={this.state.cart} amount={this.state.total} />
                         </Elements>
                        </div>
-                   </StripeProvider> */}
-                   <div className="total-purchase-container">
-                      <h4 className="total-all"><span className="total-span">total is : </span>{this.state.total}$</h4>
-
-                      <button className="purchase-btn"> purchase </button>
-                   </div>
+                   </StripeProvider>}>
+                   
+                   </PopUp>: <div></div>}
                    
                 </div>
             )
