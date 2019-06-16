@@ -91,7 +91,7 @@ class SignIn extends Component {
                </Input>
            </div>
            <Button className="form-button" onClick={(event) => this.handleLogin(event)}> Sign In </Button>
-            <Button> forgot password? </Button>
+            <Button className="pass-reset-btn"> forgot password? </Button>
        </form>
 
        {this.state.loggedIn ?  <Redirect to='/myaccount'/> : <div></div> }

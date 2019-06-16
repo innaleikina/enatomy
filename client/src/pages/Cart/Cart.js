@@ -54,10 +54,10 @@ class Cart extends Component {
   onRemoveClick = (e) => {
     // console.log(e.target.getAttribute('data-id'));
     API.removeOneFromCart(this.state.user._id, e.target.getAttribute('data-id'))
-   .then( this.getUser(), this.getFiles())
+   .then( this.getUser(), this.getFiles(),this.getImagesInCart())
     .catch(err => console.log(err))
     // .then(this.getUser())
-    .then(this.getImagesInCart())
+    // .then(this.getImagesInCart())
     .catch(err => console.log(err));
   }
 
