@@ -112,10 +112,9 @@ class Cart extends Component {
       console.log(this.state.imagesInCart[i])
       API.downloadSet(this.state.imagesInCart[i].slice(0, -3))
       // .then(res=> console.log(res.data))
-      .then(res => window.open(res.data))
+      .then(res => window.open(res.data), this.onEmptyClick())
       .catch(err => console.log(err))
     }
-   
 
  }
 
@@ -163,7 +162,7 @@ render() {
                    {this.state.purchaseClicked && this.state.imagesInCart.length > 0? <PopUp buttonClicked="purchase" fetchUser={this.props.fetchUser} closePopUp={this.closePopUp} paymentForm={<StripeProvider apiKey="pk_test_Dnlcd3u8fxuOGycdNZ68LyJ200n3Qm5pGW">
                       <div className="example">
                         <Elements>
-                          <CheckoutForm  downloadAllSets={this.downloadAllSets} emptyCart={this.onEmptyClick} userId={this.state.user._id} cartItems={this.state.cart} amount={this.state.total} />
+                          <CheckoutForm  downloadAllSets={this.downloadAllSets}  userId={this.state.user._id} cartItems={this.state.cart} amount={this.state.total} />
                         </Elements>
                        </div>
                    </StripeProvider>}>
