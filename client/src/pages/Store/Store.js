@@ -53,7 +53,6 @@ class Store extends Component {
 
     return (
         <div >
-          <h1> this is a store </h1>
           <div className="grid">
             {this.renderItems()}
           </div>

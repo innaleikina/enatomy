@@ -80,7 +80,7 @@ class MyAccount extends Component {
            <button> change password </button>
 
             { /* pop up to confirm */}
-           <button> change password </button>
+           <button> delete account </button>
         </div>
     );
   }

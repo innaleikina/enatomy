@@ -19,7 +19,7 @@
     float: right;
     border: none;
     margin-top: 5px;
-    border-radius: 10px;
+    border-radius: 5px;
     margin-right:10px;
     /* padding:10px; */
 }
@@ -33,6 +33,3 @@
 }
 
 
-#form {
-    margin-top: 20px;
-}

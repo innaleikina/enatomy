@@ -37,7 +37,7 @@ class CheckoutForm extends Component {
   });
   if (response.ok) this.addToPurchased();
   if (response.ok) this.props.downloadAllSets();
-  if (response.ok) this.props.emptyCart();
+  // if (response.ok) this.props.emptyCart();
 
 
   if (response.ok) console.log("Purchase Complete!")
