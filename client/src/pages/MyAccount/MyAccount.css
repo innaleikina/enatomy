@@ -1,6 +1,11 @@
 .purchased-sets{
     width:100%;
-    height:200px;
-    border:1px red solid;
+    height:300px;
     display:flex;
+    align-items: center;
+}
+
+.purchased-img{
+    margin-left:10px;
+    margin-right:10px;
 }

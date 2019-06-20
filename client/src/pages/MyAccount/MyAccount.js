@@ -57,7 +57,7 @@ class MyAccount extends Component {
   render() {
     return (
         <div id="timeline-wrap" >
-           <h1> Welcome to your account, {this.state.user.name} </h1>
+           <h1> {this.state.user.name}'s account </h1>
            
            <h3> Purchased Sets </h3>
            {/* render sets that have been purchased before, if lcicked go to imgae page */}
@@ -65,7 +65,7 @@ class MyAccount extends Component {
            {(this.state.imagesPurchased.length > 0) ? 
                   // <div> The is stuff in your cart!!!! </div>
                   this.state.imagesPurchased.map((image,index) => (
-                    <div className="imageBtnWrap" key={index}>
+                    <div className="purchased-img" key={index}>
                       <Link key={index} to={`/set/${image}`}>
                           <CoverPhoto key={index} fileName={image}>
                           </CoverPhoto>
