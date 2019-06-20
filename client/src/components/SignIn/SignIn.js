@@ -27,7 +27,7 @@ class SignIn extends Component {
   //handling user login
   handleLogin = (event) => {
     event.preventDefault();
-    console.log("handling login")
+    // console.log("handling login")
     //if username and password inputs have been filled...
     if (this.state.username && this.state.passwordLogin) {
       const loginUser = {
@@ -41,10 +41,14 @@ class SignIn extends Component {
             
             alert("Incorrect email or password.")
           } else {
+            console.log(this.props)
             this.props.fetchUser();
+            // put a times ui element here to acknowledge successful log in?
+           // alert("welcome!")
             this.setState({
               loggedIn:true
-            })
+            })               
+          
           }})
         .catch(err => console.log(err));
     } else {
@@ -55,7 +59,9 @@ class SignIn extends Component {
 
 
   render() {
-
+  if(this.state.loggedIn === true){
+    return <Redirect to="/myaccount"/>
+  }
     return (
        <div >
           <form className="sign-in-form">
@@ -94,7 +100,6 @@ class SignIn extends Component {
             <Button className="pass-reset-btn"> forgot password? </Button>
        </form>
 
-       {this.state.loggedIn ?  <Redirect to='/myaccount'/> : <div></div> }
 
      </div>
    )
