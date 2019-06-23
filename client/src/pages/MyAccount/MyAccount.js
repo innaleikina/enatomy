@@ -21,12 +21,12 @@ class MyAccount extends Component {
      }
 
      getFiles = () => {
-       console.log("files were gotten!")
+      //  console.log("files were gotten!")
       API.getFiles() 
         .then(res => this.setState({
           allS3Files:res.data
-        }), console.log("s3 files state set"))
-        .then(res => this.getPurchasedImages(), console.log("get purchased images called"))
+        }))
+        .then(res => this.getPurchasedImages())
         .catch(err => console.log(err))
     };
  
@@ -51,7 +51,6 @@ class MyAccount extends Component {
           this.setState({
           imagesPurchased:s3FilesArr.filter(value => -1 !== purchased.indexOf(value))
         }) 
-        console.log("get images ran as well!")
        }
 
   render() {
