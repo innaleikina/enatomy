@@ -59,9 +59,9 @@ class SignIn extends Component {
 
 
   render() {
-  if(this.state.loggedIn === true){
-    return <Redirect to="/myaccount"/>
-  }
+  // if(this.state.loggedIn === true){
+  //   return <Redirect to="/myaccount"/>
+  // }
     return (
        <div >
           <form className="sign-in-form">

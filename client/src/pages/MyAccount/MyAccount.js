@@ -25,8 +25,8 @@ class MyAccount extends Component {
       API.getFiles() 
         .then(res => this.setState({
           allS3Files:res.data
-        }))
-        .then(res => this.getPurchasedImages())
+        }), console.log("s3 files state set"))
+        .then(res => this.getPurchasedImages(), console.log("get purchased images called"))
         .catch(err => console.log(err))
     };
  
