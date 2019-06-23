@@ -16,17 +16,17 @@ class MyAccount extends Component {
       }
 
     componentWillMount() {
-        this.getUser()
-        this.getFiles()
+        this.getUser();
+        this.getFiles();
      }
 
      getFiles = () => {
+       console.log("files were gotten!")
       API.getFiles() 
         .then(res => this.setState({
           allS3Files:res.data
-        }))
-        .then(res => this.getPurchasedImages())
-        .then(res => this.getTotal())
+        }), console.log("s3 files state set"))
+        .then(res => this.getPurchasedImages(), console.log("get purchased images called"))
         .catch(err => console.log(err))
     };
  
@@ -51,21 +51,31 @@ class MyAccount extends Component {
           this.setState({
           imagesPurchased:s3FilesArr.filter(value => -1 !== purchased.indexOf(value))
         }) 
-        // console.log(this.state.imagesInCart)
+        console.log("get images ran as well!")
        }
 
   render() {
     return (
         <div id="timeline-wrap" >
-           <h1> Welcome to your account, {this.state.user.name} </h1>
+           <span className="title-account"> {this.state.user.name}'s account </span>
            
-           <h3> Purchased Sets </h3>
+          
+
+           <h3>Settings </h3>
+           {/* when button is clicked a pop up shows up to change password */}
+           <button> change password </button>
+
+            { /* pop up to confirm */}
+           <button> delete account </button>
+
+          
            {/* render sets that have been purchased before, if lcicked go to imgae page */}
            <div className="purchased-sets">
+           <h4 className="title-sets"> Purchased Sets </h4>
+           <div className="purchased-all-imgs">
            {(this.state.imagesPurchased.length > 0) ? 
-                  // <div> The is stuff in your cart!!!! </div>
                   this.state.imagesPurchased.map((image,index) => (
-                    <div className="imageBtnWrap" key={index}>
+                    <div className="purchased-img" key={index}>
                       <Link key={index} to={`/set/${image}`}>
                           <CoverPhoto key={index} fileName={image}>
                           </CoverPhoto>
@@ -74,14 +84,10 @@ class MyAccount extends Component {
                   ))
                   : <div>You haven't purchased any sets yet</div>}
            </div>
-
-           <h3>Settings </h3>
-           {/* when button is clicked a pop up shows up to change password */}
-           <button> change password </button>
-
-            { /* pop up to confirm */}
-           <button> delete account </button>
+           </div>
         </div>
+
+
     );
   }
 }

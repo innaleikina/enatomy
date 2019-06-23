@@ -5,6 +5,9 @@
     align-items: center;
     padding-left:40px;
     padding-right:40px;
+    border-top:.5px #403D39 solid;
+    border-bottom:.5px #403D39 solid;
+
     
 }
 

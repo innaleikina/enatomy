@@ -99,7 +99,7 @@ class App extends Component {
          
         
          <Switch>
-            <Route exact path="/"  render={(props) => <Main {...props} fetchUser={this.fetchUser}/>}/>
+            <Route exact path="/"  render={(props) => <Main {...props} fetchUser={this.fetchUser}/> }/>
             <Route exact path="/myaccount"  render={(props) => <MyAccount {...props} fetchUser={this.fetchUser}/>}/>
             <Route exact path="/store"  render={(props) => <Store {...props} fetchUser={this.fetchUser}/>}/>
             <Route exact path="/cart"  render={(props) => <Cart {...props} fetchUser={this.fetchUser}/>}/>
