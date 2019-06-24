@@ -62,12 +62,13 @@ class MyAccount extends Component {
               
               
 
-              <h3>Settings </h3>
               {/* when button is clicked a pop up shows up to change password */}
-              <button> change password </button>
+              <div className="buttons-containe-account">
+                  <button className="button-account"> change password </button>
 
-                { /* pop up to confirm */}
-                <button> delete account </button>
+                    { /* pop up to confirm */}
+                    <button className="button-account" id="delete-account"> delete account </button>
+              </div>
            </div>
           
            {/* render sets that have been purchased before, if lcicked go to imgae page */}
@@ -78,7 +79,7 @@ class MyAccount extends Component {
                           this.state.imagesPurchased.map((image,index) => (
                             <div className="purchased-img" key={index}>
                               <Link key={index} to={`/set/${image}`}>
-                                  <CoverPhoto key={index} fileName={image}>
+                                  <CoverPhoto id="purchased-img-border" key={index} fileName={image}>
                                   </CoverPhoto>
                               </Link> 
                             </div>

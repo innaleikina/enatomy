@@ -21,6 +21,11 @@
 
 .purchased-img{
     margin-right:10px;
+   
+}
+
+#purchased-img-border{
+    border:1px white solid;
 }
 
 .title-account{
@@ -45,6 +50,26 @@
     text-transform:uppercase;
     font-size:12px;
     letter-spacing:1px;
+    margin-bottom:40px;
 
 
 }
+
+.buttons-containe-account{
+    width:250px;
+    display:flex;
+    justify-content: space-between;
+    margin-top:40px;
+
+}
+
+.button-account{
+    border-radius:10px;
+    height:40px;
+    padding-left:10px;
+    padding-right:10px;
+    font-weight:bold;
+    font-size:12px;
+    letter-spacing:.5px;
+}
+
