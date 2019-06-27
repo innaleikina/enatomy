@@ -21,12 +21,12 @@ class MyAccount extends Component {
      }
 
      getFiles = () => {
-       console.log("files were gotten!")
+      //  console.log("files were gotten!")
       API.getFiles() 
         .then(res => this.setState({
           allS3Files:res.data
-        }), console.log("s3 files state set"))
-        .then(res => this.getPurchasedImages(), console.log("get purchased images called"))
+        }))
+        .then(res => this.getPurchasedImages())
         .catch(err => console.log(err))
     };
  
@@ -51,39 +51,41 @@ class MyAccount extends Component {
           this.setState({
           imagesPurchased:s3FilesArr.filter(value => -1 !== purchased.indexOf(value))
         }) 
-        console.log("get images ran as well!")
        }
 
   render() {
     return (
         <div id="timeline-wrap" >
-           <span className="title-account"> {this.state.user.name}'s account </span>
-           
-          
 
-           <h3>Settings </h3>
-           {/* when button is clicked a pop up shows up to change password */}
-           <button> change password </button>
+          <div className="top-account">
+              <span className="title-account"> {this.state.user.name}'s account </span>
+              
+              
 
-            { /* pop up to confirm */}
-           <button> delete account </button>
+              {/* when button is clicked a pop up shows up to change password */}
+              <div className="buttons-containe-account">
+                  <button className="button-account"> change password </button>
 
+                    { /* pop up to confirm */}
+                    <button className="button-account" id="delete-account"> delete account </button>
+              </div>
+           </div>
           
            {/* render sets that have been purchased before, if lcicked go to imgae page */}
            <div className="purchased-sets">
-           <h4 className="title-sets"> Purchased Sets </h4>
-           <div className="purchased-all-imgs">
-           {(this.state.imagesPurchased.length > 0) ? 
-                  this.state.imagesPurchased.map((image,index) => (
-                    <div className="purchased-img" key={index}>
-                      <Link key={index} to={`/set/${image}`}>
-                          <CoverPhoto key={index} fileName={image}>
-                          </CoverPhoto>
-                      </Link> 
-                    </div>
-                  ))
-                  : <div>You haven't purchased any sets yet</div>}
-           </div>
+              <h4 className="title-sets"> Purchased Sets </h4>
+              <div className="purchased-all-imgs">
+                  {(this.state.imagesPurchased.length > 0) ? 
+                          this.state.imagesPurchased.map((image,index) => (
+                            <div className="purchased-img" key={index}>
+                              <Link key={index} to={`/set/${image}`}>
+                                  <CoverPhoto id="purchased-img-border" key={index} fileName={image}>
+                                  </CoverPhoto>
+                              </Link> 
+                            </div>
+                          ))
+                          : <div>You haven't purchased any sets yet</div>}
+              </div>
            </div>
         </div>
 

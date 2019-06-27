@@ -19,7 +19,7 @@ class Cart extends Component {
       allS3Files:[],
       imagesInCart:[],
       price:10,
-      total:"",
+      total:0,
       purchaseClicked:false,
      }
 
@@ -126,7 +126,7 @@ render() {
                 <div className="cart-container">
                   <div className="title-empty-container">
                     <span id="title-cart">items in your cart</span>
-                    <button className="empty-cart-btn" onClick = {this.onEmptyClick}>empty your cart</button>
+                    {(this.state.imagesInCart.length > 0) ?  <button className="empty-cart-btn" onClick = {this.onEmptyClick}>empty your cart</button>: <div></div>}
                   </div>
                   {/* <h2> first in cart is {this.state.cart[0]}</h2> */}
                   <div className="cart-items-container">
@@ -147,7 +147,7 @@ render() {
                   
                   </div>
                   ))
-                  : <div>Your cart is empty</div>}
+                  : <div className="empty-cart-message">Your cart is empty</div>}
                     {/* {this.renderItemsInCart()} */}
 
                   </div>
