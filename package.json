@@ -10,7 +10,6 @@
     "bcrypt": "^3.0.2",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.3",
-    "eslint": "^6.0.1",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "history": "^4.7.2",

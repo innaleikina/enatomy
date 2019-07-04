@@ -35,7 +35,11 @@ const UserSchema = new Schema({
   },
   cart:[{
       type:String,
-    }]
+    }],
+    confirmed: {
+      type: Boolean,
+      default: false
+    }
   
 });
 
