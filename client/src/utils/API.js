@@ -50,5 +50,9 @@ export default {
 
   sendWelcomeEmail:function(name, email){
     return axios.post("sendgrid/sendwelcomeemail/" + name + "/" + email)
-  }
+  },
+
+  // emailConfirmURL:function(id){
+  //   return axios.get("sendgrid/confirm/" + id )
+  // }
 };
