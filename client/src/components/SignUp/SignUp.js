@@ -32,9 +32,7 @@ class SignUp extends Component {
         role:this.state.role
       }
       API.createUser(newUser)
-        .then(res => this.setState({
-           newUserId:res.data._id
-        }))
+        .then(res => API.sendWelcomeEmail(this.state.name, this.state.email, res.data._id))
         .catch(err => {alert("Please put in a valid email.")});
     } else {
       alert("Please fill in your name, email, and password.")
@@ -56,7 +54,6 @@ class SignUp extends Component {
 
 
   render() {
-    console.log("new user id: " + this.state.newUserId)
     return (
     <div className="signup-page">
       

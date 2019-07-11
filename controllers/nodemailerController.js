@@ -3,7 +3,7 @@ const nodemailer = require("nodemailer");
 // const User = require('../user.model')
 // const sendEmail = require('./email.send')
 // const msgs = require('./email.msgs')
-// const templates = require('./email.templates')
+// const template = require('../client/src/components/Emails/EmailTemplate')
 
 
 
@@ -27,8 +27,9 @@ module.exports = {
       from: config.gmail.MAIL_USER,
       to: req.params.email,
       subject: 'Welcome to Enatomy',
-      html: '<body> <h1>' + req.params.name + ', </h1>' +
-          'Welcome to Enatomy. Hopefully you will find a lot of inspiration on our website </body>'
+      html: '<h1>' + req.params.name + ', </h1> <p>click <a href="http://localhost:3000/nodemailer/confirm/' + req.params.id+ '">here</a> to confirm your account</p>'
+
+          
     };
 
     transporter.sendMail(mailOptions, function (error, info) {

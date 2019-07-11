@@ -1,11 +1,11 @@
 const router = require("express").Router();
-const sendGridController = require("../../controllers/sendGridController");
+const nodemailerController = require("../../controllers/nodemailerController");
   
 // let randomNum = Math.floor(Math.random() * 500) + 100  
 
 
-router.route("/sendwelcomeemail/:name/:email")
-  .post(sendGridController.sendWelcomeEmail);
+router.route("/sendwelcomeemail/:name/:email/:id")
+  .post(nodemailerController.sendWelcomeEmail);
 
   // router.route("/confirm/:id/")
   // .post(sendGridController.emailConfirmURL);

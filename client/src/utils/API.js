@@ -52,8 +52,8 @@ export default {
     return axios.get("/s3/download/"+ setName)
   },
 
-  sendWelcomeEmail:function(name, email){
-    return axios.post("sendgrid/sendwelcomeemail/" + name + "/" + email)
+  sendWelcomeEmail:function(name, email, id){
+    return axios.post("/nodemailer/sendwelcomeemail/" + name + "/" + email + "/" + id)
   },
 
   // emailConfirmURL:function(id){
