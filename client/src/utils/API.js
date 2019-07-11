@@ -9,6 +9,10 @@ export default {
     return axios.post("/user/login", userLogin);
   },
 
+  findUserByEmail: function(userEmail){
+    return axios.get("/user/email/" + userEmail)
+  },
+
   fetchUser: function() {
     return axios.get("/user/fetch");
   },

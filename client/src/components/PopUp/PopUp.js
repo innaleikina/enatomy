@@ -4,8 +4,8 @@ import "./popup.css"
 import SignIn from '../SignIn';
 import SignUp from '../SignUp';
 // import API from "../../utils/API";
-import {Elements, StripeProvider} from 'react-stripe-elements';
-import CheckoutForm from "../../components/Checkout";
+// import {Elements, StripeProvider} from 'react-stripe-elements';
+// import CheckoutForm from "../../components/Checkout";
 
 
 
