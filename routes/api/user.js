@@ -57,7 +57,7 @@ router.route("/login")
 
 //logout
 router.route("/logout")
-  .get(function(req, res){
+  .get(function (req, res) {
     req.logout();
     res.redirect('/');
   })
@@ -68,5 +68,10 @@ router
   .route("/:id")
   .get(userController.findById)
   .delete(userController.remove);
+
+router
+  .route("/email/:email")
+  .get(userController.findByEmail)
+
 
 module.exports = router;
