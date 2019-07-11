@@ -31,8 +31,7 @@ class SignUp extends Component {
         role:this.state.role
       }
       API.createUser(newUser)
-        .then(res => {alert("New user created.")})
-        .then(API.sendWelcomeEmail(this.state.name, this.state.email))
+        .then(res => alert("New user created."), API.sendWelcomeEmail(this.state.name, this.state.email))
         .catch(err => {alert("Please put in a valid email.")});
     } else {
       alert("Please fill in your name, email, and password.")

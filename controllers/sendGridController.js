@@ -1,26 +1,10 @@
 const config = require("../config.json");
-// const sgMail = require('@sendgrid/mail');
-// sgMail.setApiKey(config.sendGrid.SENDGRID_API_KEY);
-
-// module.exports = {
-//     sendWelcomeEmail : function(req,res) {
-
-//     const msg = {
-//       to: req.params.email,
-//       //replace with enatomy email
-//       from: 'designbyinna@gmail.com',
-//       subject: 'Welcome to Enatomy',
-//       html:  '<body> <h1>' + req.params.name + '</h1>,' +
-//     'Welcome to Enatomy. Hopefully you will find a lot of inspiration on our website' +
-//     '</body>'
-//     };
-//     sgMail.send(msg);
-//     // res.json({"test":"yep this is a simple route"})
-
-//   } 
-// }
-
 const nodemailer = require("nodemailer");
+// const User = require('../user.model')
+// const sendEmail = require('./email.send')
+// const msgs = require('./email.msgs')
+// const templates = require('./email.templates')
+
 
 
 module.exports = {
@@ -42,8 +26,9 @@ module.exports = {
     var mailOptions = {
       from: config.gmail.MAIL_USER,
       to: req.params.email,
-      subject: 'Sending Email using Node.js',
-      text: 'That was easy!'
+      subject: 'Welcome to Enatomy',
+      html: '<body> <h1>' + req.params.name + ', </h1>' +
+          'Welcome to Enatomy. Hopefully you will find a lot of inspiration on our website </body>'
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
@@ -53,6 +38,15 @@ module.exports = {
         console.log('Email sent: ' + info.response);
       }
     });
+  },
+  
+
+  sendPasswordReset:function(req,res){
+
+  },
+
+  sendPurchaseReceipt:function(req,res){
+
   }
 }
 
@@ -65,12 +59,13 @@ module.exports = {
 //       //replace with enatomy email
 //       from: 'designbyinna@gmail.com',
 //       subject: 'Welcome to Enatomy',
-//       html:  '<body> <h1>' + req.params.name + '</h1>,' +
-//     'Welcome to Enatomy. Hopefully you will find a lot of inspiration on our website' +
-//     '</body>'
+//       html:  
 //     };
 //     sgMail.send(msg);
 //     // res.json({"test":"yep this is a simple route"})
 
 //   } 
 // }
+
+
+// The callback that is invoked when the user submits the form on the client.
