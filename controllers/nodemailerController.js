@@ -1,5 +1,7 @@
 const config = require("../config.json");
 const nodemailer = require("nodemailer");
+const db = require("../models");
+
 // const User = require('../user.model')
 // const sendEmail = require('./email.send')
 // const msgs = require('./email.msgs')
@@ -27,9 +29,9 @@ module.exports = {
       from: config.gmail.MAIL_USER,
       to: req.params.email,
       subject: 'Welcome to Enatomy',
-      html: '<h1>' + req.params.name + ', </h1> <p>click <a href="http://localhost:3000/nodemailer/confirm/' + req.params.id+ '">here</a> to confirm your account</p>'
+      html: '<h1>' + req.params.name + ', </h1> <p>click <a href="http://localhost:3000/nodemailer/confirm/' + req.params.id + '">here</a> to confirm your account</p>'
 
-          
+
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
@@ -40,13 +42,29 @@ module.exports = {
       }
     });
   },
-  
 
-  sendPasswordReset:function(req,res){
+  confirmFromEmail: function (req, res) {
+    db.User
+      .findOneAndUpdate({
+        _id: req.params.id
+      }, {
+        set: {
+          confirmed: true
+        }
+      }, {
+        new: true
+      }, )
+      // .then(dbModel => dbModel.remove())
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+
+
+  sendPasswordReset: function (req, res) {
 
   },
 
-  sendPurchaseReceipt:function(req,res){
+  sendPurchaseReceipt: function (req, res) {
 
   }
 }

@@ -10,3 +10,21 @@
     margin-top:40px;
 }
 
+.success-msg-container{
+    text-align: center;
+    width:100%;
+    display:flex;
+    justify-content: center;
+    margin-top:20%;
+    /* border:1px red solid; */
+}
+
+.success-msg{
+    width:80%;
+    color:white;
+    letter-spacing: 1px;
+    line-height: 1.7;
+    font-size:18px;
+    /* border:1px black solid; */
+
+}
