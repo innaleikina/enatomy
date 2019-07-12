@@ -23,7 +23,6 @@ class Main extends Component {
   state = {
     photosArr:[],
     fileNameArr:"",
-    error:false,
     staticFilesArr:['jaylynn.jpg', 'sarah.jpg',
   'sarah-1.jpg', 'ty.jpg' ]
 
@@ -35,12 +34,9 @@ class Main extends Component {
 
     API.getFiles() 
       .then(res => this.setState({
-        fileNameArr:res.data,
-        error:false
-      }),)
-      .catch(err =>console.log(err), this.setState({
-        error:true
+        fileNameArr:res.data
       }))
+      .catch(err =>console.log(err))
   };
 
 
@@ -80,7 +76,8 @@ class Main extends Component {
      this.shuffle(this.state.fileNameArr);
     
 
-     if(!this.state.error){
+     if(this.state.fileNameArr.length !== 0) {
+       console.log("not empty")
     for(var i=0; i < this.state.fileNameArr.length; i++){
       // console.log(this.state.fileNameArr[i]);
       if(this.state.fileNameArr[i].filename.endsWith("jpg")){
@@ -96,7 +93,8 @@ class Main extends Component {
     }
     return toRender
    } else {
-    
+    console.log("empty")
+
       let toRender = []
       let staticFilesArr = this.state.staticFilesArr;
       
