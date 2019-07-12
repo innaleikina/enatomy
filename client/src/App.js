@@ -4,6 +4,8 @@ import Main from "./pages/Main";
 import Store from "./pages/Store";
 import MyAccount from "./pages/MyAccount";
 import OneSet from "./pages/OneSet";
+import Confirm from "./pages/Confirm";
+
 import API from "./utils/API";
 import Cart from "./pages/Cart";
 // import Pricing from "./pages/Pricing";
@@ -104,6 +106,7 @@ class App extends Component {
             <Route exact path="/store"  render={(props) => <Store {...props} fetchUser={this.fetchUser}/>}/>
             <Route exact path="/cart"  render={(props) => <Cart {...props} fetchUser={this.fetchUser}/>}/>
             <Route exact path="/set/:id"  render={(props) => <OneSet {...props} fetchUser={this.fetchUser}/>}/>
+            <Route exact path="/nodemailer/confirm/:id"  render={(props) => <Confirm {...props} fetchUser={this.fetchUser}/>}/>
           </Switch>
           
           

@@ -12,7 +12,8 @@ class SignUp extends Component {
     password: "",
     username: "",
     role:"",
-    newUserId:""
+    newUserId:"",
+    userSuccessPopUp:false
   }
 
   handleInputChange = event => {
@@ -32,7 +33,9 @@ class SignUp extends Component {
         role:this.state.role
       }
       API.createUser(newUser)
-        .then(res => API.sendWelcomeEmail(this.state.name, this.state.email, res.data._id))
+        .then(res => API.sendWelcomeEmail(this.state.name, this.state.email, res.data._id), this.setState({
+          userSuccessPopUp:true
+        }))
         .catch(err => {alert("Please put in a valid email.")});
     } else {
       alert("Please fill in your name, email, and password.")
@@ -55,8 +58,8 @@ class SignUp extends Component {
 
   render() {
     return (
-    <div className="signup-page">
-      
+ <div className="signup-page">
+         {!this.state.userSuccessPopUp ?
           <form className="sign-up-form">
             <div className="input-continer">
                     <label className="label"> name </label>
@@ -107,7 +110,7 @@ class SignUp extends Component {
             <Button className="form-button" onClick={(event) => this.handleFormSubmit(event)}> Sign Up
             </Button>
        
-          </form>
+          </form> : <div className="success-msg-container"> <p className="success-msg">Successful sign up! Please check your email to confirm</p> </div>}
         </div>
     )
   }

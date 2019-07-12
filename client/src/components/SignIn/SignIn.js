@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import API from "../../utils/API";
 // import { withRouter } from 'react-router-dom'
 import {Input, Button} from "../../components/Form"
-import { Redirect} from "react-router-dom";
+// import { Redirect} from "react-router-dom";
 import "./signin.css";
 
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './oneset.css';
 import CoverPhoto from '../../components/CoverPhoto'
 import API from "../../utils/API";
-import LogInSignUp from "../../components/LogInSignUp"
+// import LogInSignUp from "../../components/LogInSignUp"
 
 class OneSet extends Component {
 
