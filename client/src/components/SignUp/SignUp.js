@@ -13,7 +13,7 @@ class SignUp extends Component {
     username: "",
     role:"",
     newUserId:"",
-    userSuccessPopUp:false
+    userSuccessPopUp:false,
   }
 
   handleInputChange = event => {
@@ -30,13 +30,16 @@ class SignUp extends Component {
         name: this.state.name,
         email: this.state.email,
         password: this.state.password,
-        role:this.state.role
+        role:this.state.role,
+        signUpMessage:"Welcome to ENatomy. Please visit you email to confirm your account"
       }
-      API.createUser(newUser)
-        .then(res => API.sendWelcomeEmail(this.state.name, this.state.email, res.data._id), this.setState({
-          userSuccessPopUp:true
-        }))
-        .catch(err => {alert("Please put in a valid email.")});
+      API.checkUser(newUser)
+        .then(res =>console.log(res)
+        // API.sendWelcomeEmail(this.state.name, this.state.email, res.data._id), this.setState({
+        //   userSuccessPopUp:true,
+        // })
+         )
+        .catch(err => console.log(err));
     } else {
       alert("Please fill in your name, email, and password.")
     }
