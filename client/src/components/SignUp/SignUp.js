@@ -22,6 +22,8 @@ class SignUp extends Component {
     });
   };
 
+
+
   handleFormSubmit = (event) => {
     event.preventDefault();
     if (this.state.name && this.state.email && this.state.password) {
@@ -35,7 +37,10 @@ class SignUp extends Component {
         this.setState({
           userSuccessPopUp:true,
           resCheckUser: res
-        }), () => API.sendWelcomeEmail(this.state.name, this.state.email, this.state.resCheckUser.data._id)
+        }, () => {if(!res.data.confirmed){
+          API.sendWelcomeEmail(this.state.name, this.state.email, res.data._id)
+          .catch(err => console.log("email cant be sent"))
+         }} )
          )
         .catch(err => console.log(err))
         

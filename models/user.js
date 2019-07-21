@@ -35,10 +35,11 @@ const UserSchema = new Schema({
     }],
     confirmed: {
       type: Boolean,
-      default: false
+      default: true
     },
     signUpMessage:{
-      type:String
+      type:String,
+      default: "Welcome to Enatomy, please check your email to confirm"
     }
   
 });
