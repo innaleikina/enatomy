@@ -8,5 +8,3 @@ module.exports = {
     res.json({"test":"yep this is a simple route"})
  }
 }
-
-  
