@@ -4,10 +4,6 @@ import WhatIs from "../../components/WhatIs";
 import HomeImage from "../../components/HomeImage";
 import { Link } from 'react-router-dom';
 import API from "../../utils/API";
-// import image1 from "../../images/jaylynn.jpg"
-// import image2 from "./images/sarah.jpg"
-// import image3 from "./images/sarah-1jpg"
-// import image4 from "./images/ty.jpg"
 
 
 
@@ -68,16 +64,14 @@ class Main extends Component {
 
 
    renderItems = () => {
-     console.log(this.state.fileNameArr);
-     console.log("main error is " + this.state.error);
-    //  console.log(this.state.fileNameArr);
+
      let jpgFiles = [];
      let toRender = [];
      this.shuffle(this.state.fileNameArr);
     
 
      if(this.state.fileNameArr.length !== 0) {
-       console.log("not empty")
+      //  console.log("not empty")
     for(var i=0; i < this.state.fileNameArr.length; i++){
       // console.log(this.state.fileNameArr[i]);
       if(this.state.fileNameArr[i].filename.endsWith("jpg")){
@@ -93,7 +87,7 @@ class Main extends Component {
     }
     return toRender
    } else {
-    console.log("empty")
+    // console.log("empty")
 
       let toRender = []
       let staticFilesArr = this.state.staticFilesArr;

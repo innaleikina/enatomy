@@ -38,9 +38,12 @@ passport.deserializeUser(function (userId, done) {
 
 //auth definitions and variables end -----------------------------------------------------------------
 
-// Matches with "/user"
 router.route("/api/")
   .post(userController.create);
+
+  router.route("/api/validation")
+  .post(userController.checkUser);
+
 
 ///user/all
 router.route("/api/all")

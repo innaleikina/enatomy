@@ -11,9 +11,8 @@ class SignUp extends Component {
     email: "",
     password: "",
     username: "",
-    role:"",
     newUserId:"",
-    userSuccessPopUp:false
+    resCheckUser: ""
   }
 
   handleInputChange = event => {
@@ -23,6 +22,8 @@ class SignUp extends Component {
     });
   };
 
+
+
   handleFormSubmit = (event) => {
     event.preventDefault();
     if (this.state.name && this.state.email && this.state.password) {
@@ -30,13 +31,19 @@ class SignUp extends Component {
         name: this.state.name,
         email: this.state.email,
         password: this.state.password,
-        role:this.state.role
       }
-      API.createUser(newUser)
-        .then(res => API.sendWelcomeEmail(this.state.name, this.state.email, res.data._id), this.setState({
-          userSuccessPopUp:true
-        }))
-        .catch(err => {alert("Please put in a valid email.")});
+      API.checkUser(newUser)
+        .then(res =>    
+        this.setState({
+          userSuccessPopUp:true,
+          resCheckUser: res
+        }, () => {if(!res.data.confirmed){
+          API.sendWelcomeEmail(this.state.name, this.state.email, res.data._id)
+          .catch(err => console.log("email cant be sent"))
+         }} )
+         )
+        .catch(err => console.log(err))
+        
     } else {
       alert("Please fill in your name, email, and password.")
     }
@@ -57,6 +64,7 @@ class SignUp extends Component {
 
 
   render() {
+    console.log(this.state.resCheckUser)
     return (
  <div className="signup-page">
          {!this.state.userSuccessPopUp ?
@@ -110,7 +118,9 @@ class SignUp extends Component {
             <Button className="form-button" onClick={(event) => this.handleFormSubmit(event)}> Sign Up
             </Button>
        
-          </form> : <div className="success-msg-container"> <p className="success-msg">Successful sign up! Please check your email to confirm</p> </div>}
+          </form> : <div className="success-msg-container"> 
+                      <p className="success-msg">{this.state.resCheckUser.data.signUpMessage}</p> 
+                    </div>}
         </div>
     )
   }

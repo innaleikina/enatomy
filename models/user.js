@@ -13,9 +13,6 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
-  role: {
-    type: String
-  },
   email: {
     type: String,
     required: true,
@@ -39,6 +36,10 @@ const UserSchema = new Schema({
     confirmed: {
       type: Boolean,
       default: false
+    },
+    signUpMessage:{
+      type:String,
+      default: "Welcome to Enatomy, please check your email to confirm"
     }
   
 });
