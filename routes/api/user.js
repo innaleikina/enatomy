@@ -44,6 +44,9 @@ router.route("/api/")
   router.route("/api/validation")
   .post(userController.checkUser);
 
+  router.route("/nodemailer/confirm/:id")
+  .post(userController.confirm);
+
 
 ///user/all
 router.route("/api/all")
