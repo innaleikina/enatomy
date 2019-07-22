@@ -106,7 +106,7 @@ class App extends Component {
             <Route exact path="/store"  render={(props) => <Store {...props} fetchUser={this.fetchUser}/>}/>
             <Route exact path="/cart"  render={(props) => <Cart {...props} fetchUser={this.fetchUser}/>}/>
             <Route exact path="/set/:id"  render={(props) => <OneSet {...props} fetchUser={this.fetchUser}/>}/>
-            <Route exact path="/nodemailer/confirm/:id"  render={(props) => <Confirm {...props} fetchUser={this.fetchUser}/>}/>
+            <Route exact path="/user/nodemailer/confirm/:id"  render={(props) => <Confirm {...props} fetchUser={this.fetchUser}/>}/>
           </Switch>
           
           
