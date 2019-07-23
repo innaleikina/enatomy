@@ -7,7 +7,7 @@ const nodemailerController = require("../../controllers/nodemailerController");
 router.route("/sendwelcomeemail/:name/:email/:id")
   .post(nodemailerController.sendWelcomeEmail);
 
-  router.route("/confirm/:id/")
-  .put(nodemailerController.confirmFromEmail);
+  // router.route("/confirm/:id/")
+  // .put(nodemailerController.confirmFromEmail);
 
   module.exports = router;
