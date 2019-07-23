@@ -1,9 +1,9 @@
 const router = require("express").Router();
-const aws= require('aws-sdk');
-const config = require("../../config.json");
+// const aws= require('aws-sdk');
+// const config = require("../../config.json");
 const s3Controller = require("../../controllers/s3Controller");
 
-const s3 = new aws.S3()
+// const s3 = new aws.S3()
 
 
 //allows user to access the image for 20 seconds and then expires! yay
