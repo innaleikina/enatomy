@@ -6,7 +6,7 @@ export default {
   },
 
   confirm: function(id){
-    return axios.post("/user/nodemailer/confirm", id)
+    return axios.post("/user/nodemailer/confirm/" +  id)
   },
 
    checkUser: function(userData){

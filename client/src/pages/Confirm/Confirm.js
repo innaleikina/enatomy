@@ -19,20 +19,23 @@ class Confirm extends Component {
 
 
      componentWillMount() {
-    //    this.getUser();
-    //    this.getFiles();
-    //   //  this.getTotal();
-    //   //  this.getImagesInCart();
+       this.confirmUser();
+   
 
      }
 
-   getUser = () => {
-    API.fetchUser() 
-      .then(res => this.setState({
-        user:res.data,
-        cart:res.data.cart
-      }))
-      .catch(err => console.log(err))
+   confirmUser = () => {
+    // API.fetchUser() 
+    //   .then(res => this.setState({
+    //     user:res.data,
+    //     cart:res.data.cart
+    //   }))
+    //   .catch(err => console.log(err))
+
+    API.confirm(this.props.match.params.id)
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+    // console.log(this.props.match.params.id)
   };
 
   
