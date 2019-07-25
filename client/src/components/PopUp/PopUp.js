@@ -31,7 +31,6 @@ class PopUp extends Component {
             {this.props.buttonClicked === "sign up" ? <SignUp></SignUp> : <div></div>}
             {this.props.buttonClicked === "purchase" ? 
               this.props.paymentForm : <div></div>}
-              {this.props.signIn === "signIn" ? this.props.signInMessage :<div></div>}
           </div>
         </div>
     )
