@@ -51,7 +51,7 @@ class SignIn extends Component {
             })               
           
           } else if (!res.data.confirmed){
-            //add logic to send another confirmation link email
+            //add logic to send  confirmation link email
             this.setState({
               allowed:false,
               alertMessage:"please confirm you account. And email has been sent"
