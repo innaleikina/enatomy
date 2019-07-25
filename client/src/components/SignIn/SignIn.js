@@ -55,7 +55,7 @@ class SignIn extends Component {
             this.setState({
               allowed:false,
               alertMessage:"please confirm you account. And email has been sent"
-            })    
+            },  () => API.sendWelcomeEmail(res.data.name, res.data.email, res.data._id))    
           }})
         .catch(err => console.log(err));
     } else {
