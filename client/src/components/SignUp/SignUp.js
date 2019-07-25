@@ -38,6 +38,7 @@ class SignUp extends Component {
           userSuccessPopUp:true,
           resCheckUser: res
         }, () => {if(!res.data.confirmed){
+          console.log("email is being sent")
           API.sendWelcomeEmail(this.state.name, this.state.email, res.data._id)
           .catch(err => console.log("email cant be sent"))
          }} )
@@ -64,7 +65,7 @@ class SignUp extends Component {
 
 
   render() {
-    console.log(this.state.resCheckUser)
+    // console.log(this.state.resCheckUser)
     return (
  <div className="signup-page">
          {!this.state.userSuccessPopUp ?
