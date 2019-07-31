@@ -1,5 +1,5 @@
 const config = require("../config.json");
-const stripe = require("stripe")(config.stripe.secretKey);
+// const stripe = require("stripe")(config.stripe.secretKey);
 
 
 module.exports = {

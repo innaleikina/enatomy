@@ -60,6 +60,21 @@ module.exports = {
         }
       })
   },
+  confirm: function(req,res){
+    db.User
+    .findOneAndUpdate({
+      _id: req.params.id
+  }, {
+      $set: {
+          confirmed: true
+      }},
+      {
+          new: true
+      }
+  )
+  .then(dbUser => res.json(dbUser))
+  .catch(err => res.status(422).json(err));
+  },
   findByEmail: function (req, res) {
     db.User
       .findOne({

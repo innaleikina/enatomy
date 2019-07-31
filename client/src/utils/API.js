@@ -5,6 +5,10 @@ export default {
     return axios.post("/user/api/", userData);
   },
 
+  confirm: function(id){
+    return axios.post("/user/nodemailer/confirm/" +  id)
+  },
+
    checkUser: function(userData){
      return axios.post("user/api/validation", userData)
    },

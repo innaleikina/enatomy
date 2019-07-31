@@ -54,6 +54,7 @@ class Store extends Component {
     return (
         <div >
           <div className="grid">
+            {/* <p> this is a store </p> */}
             {this.renderItems()}
           </div>
            
