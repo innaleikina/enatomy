@@ -43,6 +43,36 @@ module.exports = {
   },
   sendPasswordReset: function (req, res) {
 
+      const transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true, // true for 465, false for other ports
+        auth: {
+          user: config.gmail.MAIL_USER,
+          pass: config.gmail.MAIL_PASS
+        },
+        tls: {
+          // do not fail on invalid certs
+          rejectUnauthorized: false
+        }
+      });
+  
+      var mailOptions = {
+        from: config.gmail.MAIL_USER,
+        to: req.params.email,
+        subject: 'Enatomy password reset',
+        html: '<h1>' + req.params.name + ', </h1> <p>click <a href="http://localhost:3000/user/passreset/' + req.params.id + '">here</a> to reset your password. </p>'
+  
+  
+      };
+  
+      transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
   },
 
   sendPurchaseReceipt: function (req, res) {
