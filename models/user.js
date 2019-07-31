@@ -40,6 +40,10 @@ const UserSchema = new Schema({
     signUpMessage:{
       type:String,
       default: "Welcome to Enatomy, please check your email to confirm"
+    },
+    encryptedId: {
+      type:String,
+      required:true
     }
   
 });
@@ -54,7 +58,7 @@ UserSchema.methods.validPassword = function(password) {
 UserSchema.virtual("password").set(function(value) {
   this.passwordHash = bcrypt.hashSync(value, 12);
 });
-
+ 
 const User = mongoose.model("User", UserSchema);
 
 module.exports = User;
