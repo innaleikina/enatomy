@@ -17,7 +17,8 @@ class SignIn extends Component {
     loggedIn:false,
     popUpOpen:false,
     alertMessage:"",
-    allowed:true
+    allowed:true,
+    forgotPassword:false
   }
 
   handleInputChange = event => {
@@ -63,7 +64,13 @@ class SignIn extends Component {
     }
   };
 
+handleForgotPassword = (event) =>{
+  event.preventDefault();
+  this.setState({
+    forgotPassword:true
+  })
 
+}
 
   render() {
   // if(this.state.loggedIn === true){
@@ -71,41 +78,46 @@ class SignIn extends Component {
   // }
     return (
        <div >
-         {this.state.allowed ?  <form className="sign-in-form">
+         {!this.state.forgotPassword ? 
+            this.state.allowed ?  
+              <form className="sign-in-form">
+                 <div className="input-continer">
+                    <label className="label"> email </label>
+                    <Input
+                        className = "input"
+                        id="username"
+                        placeholder="john@smith.com"
+                        type="email"
+                        name="username"
+                        value={this.state.username}
+                        onChange={this.handleInputChange}
+                      >
+                      </Input>
+                  </div>
 
-<div className="input-continer">
-    <label className="label"> email </label>
-    <Input
-        className = "input"
-        id="username"
-        placeholder="john@smith.com"
-        type="email"
-        name="username"
-        value={this.state.username}
-        onChange={this.handleInputChange}
-      >
-      </Input>
-  </div>
 
+                  <div className="input-continer">
+                      <label className="label"> password </label>
+                      <Input
+                      className = "input"
 
-  <div className="input-continer">
-      <label className="label"> password </label>
-      <Input
-      className = "input"
-
-        id="passwordLogin"
-        placeholder="password"
-        name="passwordLogin"
-        type="password"
-        value={this.state.passwordLogin}
-        onChange={this.handleInputChange}
-      >
-      
-      </Input>
-  </div>
-  <Button className="form-button" onClick={(event) => this.handleLogin(event)}> Sign In </Button>
-   <Button className="pass-reset-btn"> forgot password? </Button>
-</form> : this.state.alertMessage}
+                        id="passwordLogin"
+                        placeholder="password"
+                        name="passwordLogin"
+                        type="password"
+                        value={this.state.passwordLogin}
+                        onChange={this.handleInputChange}
+                      >
+                      
+                      </Input>
+                  </div>
+                  <Button className="form-button" onClick={(event) => this.handleLogin(event)}> Sign In </Button>
+                  <Button onClick={this.handleForgotPassword} className="pass-reset-btn"> forgot password? </Button>
+                </form> : this.state.alertMessage : 
+                         <div className="password-reset"> 
+                                An email to reset your password has been sent.
+                          </div>}
+         
          
 
 
