@@ -3,6 +3,7 @@ import API from "../../utils/API";
 import "./MyAccount.css";
 import { Link } from 'react-router-dom';
 import CoverPhoto from '../../components/CoverPhoto';
+import PasswordReset from '../../components/PasswordReset';
 
 
 
@@ -64,7 +65,7 @@ class MyAccount extends Component {
 
               {/* when button is clicked a pop up shows up to change password */}
               <div className="buttons-containe-account">
-                  <button className="button-account"> change password </button>
+                  <PasswordReset cssClass="button-account" buttonText="reset password"></PasswordReset>
 
                     { /* pop up to confirm */}
                     <button className="button-account" id="delete-account"> delete account </button>
