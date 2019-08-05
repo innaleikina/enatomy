@@ -4,6 +4,8 @@ import API from "../../utils/API";
 import {Input, Button} from "../../components/Form"
 // import { Redirect} from "react-router-dom";
 import "./signin.css";
+import PasswordReset from '../../components/PasswordReset';
+
 
 
 
@@ -18,7 +20,6 @@ class SignIn extends Component {
     popUpOpen:false,
     alertMessage:"",
     allowed:true,
-    forgotPassword:false
   }
 
   handleInputChange = event => {
@@ -64,13 +65,6 @@ class SignIn extends Component {
     }
   };
 
-handleForgotPassword = (event) =>{
-  event.preventDefault();
-  this.setState({
-    forgotPassword:true
-  })
-
-}
 
   render() {
   // if(this.state.loggedIn === true){
@@ -112,7 +106,7 @@ handleForgotPassword = (event) =>{
                       </Input>
                   </div>
                   <Button className="form-button" onClick={(event) => this.handleLogin(event)}> Sign In </Button>
-                  <Button onClick={this.handleForgotPassword} className="pass-reset-btn"> forgot password? </Button>
+                  <PasswordReset  cssClass="pass-reset-btn" buttonText="forgot password?"> </PasswordReset>
                 </form> : this.state.alertMessage : 
                          <div className="password-reset"> 
                                 An email to reset your password has been sent.
