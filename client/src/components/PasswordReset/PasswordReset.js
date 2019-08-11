@@ -5,8 +5,7 @@ import React, { Component } from 'react';
 
 class PasswordReset extends Component {
   state = {
-    buttonsShown:true,
-    authed:false
+   
   }
 
 

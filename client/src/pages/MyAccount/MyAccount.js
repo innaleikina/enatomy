@@ -55,6 +55,7 @@ class MyAccount extends Component {
        }
 
   render() {
+    console.log(this.props.location)
     return (
         <div id="timeline-wrap" >
 
