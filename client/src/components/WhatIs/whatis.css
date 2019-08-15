@@ -7,6 +7,14 @@
     /* border:1px red solid; */
 }
 
+@media only screen and (max-width:1200px){
+    .what-is{
+        width:420px;
+        margin-top:60px;
+    }
+}
+
+
 .text{
     color:white;
     line-height:1.5;
