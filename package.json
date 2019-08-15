@@ -21,6 +21,7 @@
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
     "react-stripe-elements": "^3.0.0",
+    "react-transition-group": "^4.2.2",
     "stripe": "^6.31.1"
   },
   "scripts": {

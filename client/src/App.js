@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+import {withRouter} from 'react-router-dom';
+
 import Main from "./pages/Main";
 import Store from "./pages/Store";
 import MyAccount from "./pages/MyAccount";
@@ -12,7 +15,6 @@ import Cart from "./pages/Cart";
 import {NavBar, NavItem} from "./components/Nav";
 import LogInSignUp from "./components/LogInSignUp";
 import Footer from "./components/Footer";
-
 import "./normalize.css";
 import LogOut from "./components/LogOut";
 import "./components/Nav/nav.css";
@@ -81,9 +83,8 @@ class App extends Component {
 
   render() {    
 
-    // console.log("app " + this.props)
     return (
-      <Router>
+      <Router >
       <div className="App">
          <NavBar>
             <ul className="nav-items">
@@ -97,18 +98,19 @@ class App extends Component {
          </NavBar>
 
           {this.state.loggedOut ?  <Redirect to='/'/> : <div></div> }
-         
-         
-        
-         <Switch>
-            <Route exact path="/"  render={(props) => <Main {...props} fetchUser={this.fetchUser}/> }/>
-            <Route exact path="/myaccount"  render={(props) => <MyAccount {...props} fetchUser={this.fetchUser}/>}/>
-            <Route exact path="/store"  render={(props) => <Store {...props} fetchUser={this.fetchUser}/>}/>
-            <Route exact path="/cart"  render={(props) => <Cart {...props} fetchUser={this.fetchUser}/>}/>
-            <Route exact path="/set/:id"  render={(props) => <OneSet {...props} fetchUser={this.fetchUser}/>}/>
-            <Route exact path="/user/nodemailer/confirm/:id"  render={(props) => <Confirm {...props} fetchUser={this.fetchUser}/>}/>
-          </Switch>
-          
+
+            
+            <Switch >
+                <Route exact path="/"  render={withRouter((props) => <Main {...props} fetchUser={this.fetchUser}/> )}/>
+                <Route exact path="/myaccount"  render={(props) => <MyAccount {...props} fetchUser={this.fetchUser}/>}/>
+                <Route exact path="/store"  render={(props) => <Store {...props} fetchUser={this.fetchUser}/>}/>
+                <Route exact path="/cart"  render={(props) => <Cart {...props} fetchUser={this.fetchUser}/>}/>
+                <Route exact path="/set/:id"  render={(props) => <OneSet {...props} fetchUser={this.fetchUser}/>}/>
+                <Route exact path="/user/nodemailer/confirm/:id"  render={(props) => <Confirm {...props} fetchUser={this.fetchUser}/>}/>
+              </Switch>
+           
+
+       
           
           <Footer></Footer>
 
