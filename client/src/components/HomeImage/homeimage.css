@@ -6,3 +6,12 @@ border:4px #EB5E28 solid;
 
 }
 
+@media only screen and (max-width: 600px) {
+    .home-model{
+        height:300px;
+        width:auto;
+
+        
+        }
+  }
+

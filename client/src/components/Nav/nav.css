@@ -9,9 +9,14 @@ nav {
     align-items: center;
     padding-right:40px;
     padding-left:40px;
-
-    
 }
+
+@media only screen and (max-width: 600px) {
+    nav {
+      flex-direction:column;
+      /* border:1px red solid; */
+    }
+  }
 
 .nav-items {
     display: flex;
@@ -22,6 +27,17 @@ nav {
 
 }
 
+@media only screen and (max-width: 600px) {
+    .nav-items {
+      justify-content:space-between;
+      /* border:1px green solid; */
+      padding-left:0px;
+      width:100%;
+      margin-left:0;
+    }
+  }
+
+
 .nav-item {
     /* border:1px blue solid; */
     margin-left: 20px;
@@ -30,9 +46,13 @@ nav {
     text-decoration: none;
     font-weight: bold;
     letter-spacing: 2px;
-
-
 }
+
+@media only screen and (max-width: 600px) {
+    .nav-item {
+      margin:0;
+    }
+  }
 
 .nav-item:hover {
     color: #EB5E28;

@@ -3,7 +3,15 @@
     padding:60px;
     background-color:#EB5E28;
     padding-bottom:40px;
+    padding-top:40px;
     /* border:1px red solid; */
+}
+
+@media only screen and (max-width:1200px){
+    .about-us{
+        width:420px;
+        padding-bottom:60px;
+    }
 }
 
 .text{
