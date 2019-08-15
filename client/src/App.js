@@ -98,15 +98,9 @@ class App extends Component {
          </NavBar>
 
           {this.state.loggedOut ?  <Redirect to='/'/> : <div></div> }
-          <Route
-              render={({ location }) => (
-          <TransitionGroup>
-            <CSSTransition
-              key={location.key}
-              timeout={{ enter: 300, exit: 300 }}
-              classNames="fade">
+
             
-            <Switch loaction={location} >
+            <Switch >
                 <Route exact path="/"  render={withRouter((props) => <Main {...props} fetchUser={this.fetchUser}/> )}/>
                 <Route exact path="/myaccount"  render={(props) => <MyAccount {...props} fetchUser={this.fetchUser}/>}/>
                 <Route exact path="/store"  render={(props) => <Store {...props} fetchUser={this.fetchUser}/>}/>
@@ -114,10 +108,9 @@ class App extends Component {
                 <Route exact path="/set/:id"  render={(props) => <OneSet {...props} fetchUser={this.fetchUser}/>}/>
                 <Route exact path="/user/nodemailer/confirm/:id"  render={(props) => <Confirm {...props} fetchUser={this.fetchUser}/>}/>
               </Switch>
-            </CSSTransition>
-         </TransitionGroup>
-         )}
-            />
+           
+
+       
           
           <Footer></Footer>
 

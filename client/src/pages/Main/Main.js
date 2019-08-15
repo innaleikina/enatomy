@@ -26,7 +26,9 @@ class Main extends Component {
 
    getFiles = () => {
 
-
+    this.setState({
+      fileNameArr:[]
+    })
 
     API.getFiles() 
       .then(res => this.setState({
@@ -38,6 +40,7 @@ class Main extends Component {
 
 
   componentWillMount() {
+
     this.getFiles()
  }
 
@@ -68,14 +71,13 @@ class Main extends Component {
      let jpgFiles = [];
      let toRender = [];
      this.shuffle(this.state.fileNameArr);
-    
 
      if(this.state.fileNameArr.length !== 0) {
       //  console.log("not empty")
     for(var i=0; i < this.state.fileNameArr.length; i++){
       // console.log(this.state.fileNameArr[i]);
       if(this.state.fileNameArr[i].filename.endsWith("jpg")){
-        // console.log("this is a jpg file " + this.state.fileNameArr[i].filename);
+        console.log("this is a jpg file " + this.state.fileNameArr[i].filename);
         jpgFiles.push( this.state.fileNameArr[i].filename); 
       }
     }
@@ -103,6 +105,7 @@ class Main extends Component {
   }
 
     render() {
+      console.log(this.state.fileNameArr );
         return (
          <div > 
             <div className="home-image-container">
