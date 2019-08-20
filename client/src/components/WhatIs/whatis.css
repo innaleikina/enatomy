@@ -7,9 +7,11 @@
     /* border:1px red solid; */
 }
 
-@media only screen and (max-width:1200px){
+@media only screen and (max-width:600px){
     .what-is{
         width:420px;
+        margin:0 auto;
+
         margin-top:60px;
     }
 }
