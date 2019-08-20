@@ -25,11 +25,27 @@ const UserSchema = new Schema({
     required: true
   },
   purchased: [{
-    type: Array,
+    type: String,
   }],
   credits: {
       type:Number
-  }
+  },
+  cart:[{
+      type:String,
+    }],
+    confirmed: {
+      type: Boolean,
+      default: false
+    },
+    signUpMessage:{
+      type:String,
+      default: "Welcome to Enatomy, please check your email to confirm"
+    },
+    encryptedId: {
+      type:String,
+      required:true
+    }
+  
 });
 
 //bcrpyt - password encryption
@@ -42,7 +58,7 @@ UserSchema.methods.validPassword = function(password) {
 UserSchema.virtual("password").set(function(value) {
   this.passwordHash = bcrypt.hashSync(value, 12);
 });
-
+ 
 const User = mongoose.model("User", UserSchema);
 
 module.exports = User;

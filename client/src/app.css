@@ -1,0 +1,44 @@
+body{
+    font-family:"Source Sans Pro";
+    padding-top:0;
+}
+
+
+
+h2{
+    font-variant: small-caps;
+    color:#FFFFFF;
+    letter-spacing: 2px;
+}
+
+button:focus{
+    outline:0;
+}
+
+.fade-enter {
+    opacity: 0.01;
+}
+
+.fade-enter.fade-enter-active {
+    opacity: 1;
+    transition: opacity 300ms ease-in;
+}
+
+.fade-exit {
+    opacity: 1;
+}
+
+.fade-exit.fade-exit-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-in;
+}
+
+div.transition-group {
+    position: relative;
+}
+section.route-section {
+ position: absolute;
+ width: 100%;
+ top: 0;
+ left: 0;
+}

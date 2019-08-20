@@ -1,0 +1,24 @@
+.footer-container{
+    display:flex;
+    justify-content: space-between;
+    height:100px;
+    align-items: center;
+    padding-left:40px;
+    padding-right:40px;
+    border-top:.5px #403D39 solid;
+    border-bottom:.5px #403D39 solid;
+
+    
+}
+
+.icon{
+    width:20px;
+    height:20px;
+}
+
+
+.icons-container{
+    display:flex;
+    width:100px;
+    justify-content: space-between;
+}

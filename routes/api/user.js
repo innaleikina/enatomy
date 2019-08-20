@@ -38,12 +38,18 @@ passport.deserializeUser(function (userId, done) {
 
 //auth definitions and variables end -----------------------------------------------------------------
 
-// Matches with "/user"
-router.route("/")
+router.route("/api/")
   .post(userController.create);
 
+  router.route("/api/validation")
+  .post(userController.checkUser);
+
+  router.route("/nodemailer/confirm/:id")
+  .post(userController.confirm);
+
+
 ///user/all
-router.route("/all")
+router.route("/api/all")
   .get(userController.findAll);
 
 //auth /user/login
@@ -57,12 +63,21 @@ router.route("/login")
 
 //logout
 router.route("/logout")
-  .get(function(req, res){
+  .get(function (req, res) {
     req.logout();
     res.redirect('/');
   })
 
 router.route('/fetch').get(userController.fetch);
+
+router
+  .route("/:id")
+  .get(userController.findById)
+  .delete(userController.remove);
+
+router
+  .route("/email/:email")
+  .get(userController.findByEmail)
 
 
 module.exports = router;
