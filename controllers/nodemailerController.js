@@ -15,8 +15,8 @@ module.exports = {
       port: 465,
       secure: true, // true for 465, false for other ports
       auth: {
-        user: config.gmail.MAIL_USER,
-        pass: config.gmail.MAIL_PASS
+        user: config.MAIL_USER,
+        pass: config.MAIL_PASS
       },
       tls: {
         // do not fail on invalid certs
@@ -25,7 +25,7 @@ module.exports = {
     });
 
     var mailOptions = {
-      from: config.gmail.MAIL_USER,
+      from: config.MAIL_USER,
       to: req.params.email,
       subject: 'Welcome to Enatomy',
       html: '<h1>' + req.params.name + ', </h1> <p>click <a href="http://localhost:3000/user/nodemailer/confirm/' + req.params.id + '">here</a> to confirm your account</p>'
@@ -48,8 +48,8 @@ module.exports = {
         port: 465,
         secure: true, // true for 465, false for other ports
         auth: {
-          user: config.gmail.MAIL_USER,
-          pass: config.gmail.MAIL_PASS
+          user: config.MAIL_USER,
+          pass: config.MAIL_PASS
         },
         tls: {
           // do not fail on invalid certs
@@ -58,7 +58,7 @@ module.exports = {
       });
   
       var mailOptions = {
-        from: config.gmail.MAIL_USER,
+        from: config.MAIL_USER,
         to: req.params.email,
         subject: 'Enatomy password reset',
         html: '<h1>' + req.params.name + ', </h1> <p>click <a href="http://localhost:3000/user/passreset/' + req.params.id + '">here</a> to reset your password. </p>'

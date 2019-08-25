@@ -10,8 +10,8 @@ module.exports = {
         try {
             aws.config.setPromisesDependency();
             aws.config.update({
-              accessKeyId: config.aws.accessKey,
-              secretAccessKey: config.aws.secretKey,
+              accessKeyId: config.AWS_ACCESS_KEY,
+              secretAccessKey: config.AWS_SECRET_KEY,
               region: "us-east-1"
           });
     
@@ -43,13 +43,13 @@ module.exports = {
   download: function(req,res){
     aws.config.setPromisesDependency();
     aws.config.update({
-      accessKeyId: config.aws.accessKey,
-      secretAccessKey: config.aws.secretKey,
+      accessKeyId: config.AWS_ACCESS_KEY,
+      secretAccessKey: config.AWS_SECRET_KEY,
       region: "us-east-1"
   });
      const s3 = new aws.S3();
       var params = {
-        Bucket:config.aws.bucket, 
+        Bucket:config.AWS_BUCKET, 
         Key: req.params.setname + "zip", 
         Expires: 60}
       s3.getSignedUrl('getObject', params, function (err, url) {
