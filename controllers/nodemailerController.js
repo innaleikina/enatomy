@@ -1,5 +1,7 @@
-const config = require("../config.json");
+// const config = require("../config.json");
 const nodemailer = require("nodemailer");
+require('dotenv').config()
+
 
 // const User = require('../user.model')
 // const sendEmail = require('./email.send')
@@ -15,8 +17,8 @@ module.exports = {
       port: 465,
       secure: true, // true for 465, false for other ports
       auth: {
-        user: process.env.MAIL_USER || config.MAIL_USER,
-        pass: process.env.MAIL_PASS || config.MAIL_PASS
+        user: process.env.REACT_APP_MAIL_USER,
+        pass: process.env.REACT_APP_MAIL_PASS
       },
       tls: {
         // do not fail on invalid certs
@@ -25,7 +27,7 @@ module.exports = {
     });
 
     var mailOptions = {
-      from: process.env.MAIL_USER || config.MAIL_USER,
+      from: process.env.REACT_APP_MAIL_USER,
       to: req.params.email,
       subject: 'Welcome to Enatomy',
       html: '<h1>' + req.params.name + ', </h1> <p>click <a href="http://localhost:3000/user/nodemailer/confirm/' + req.params.id + '">here</a> to confirm your account</p>'
@@ -48,8 +50,8 @@ module.exports = {
         port: 465,
         secure: true, // true for 465, false for other ports
         auth: {
-          user: process.env.MAIL_USER || config.MAIL_USER,
-          pass: process.env.MAIL_PASS || config.MAIL_PASS
+          user: process.env.REACT_APP_MAIL_USER,
+          pass: process.env.REACT_APP_MAIL_PASS
         },
         tls: {
           // do not fail on invalid certs
@@ -58,7 +60,7 @@ module.exports = {
       });
   
       var mailOptions = {
-        from: process.env.MAIL_USER || config.MAIL_USER,
+        from: process.env.REACT_APP_MAIL_USER,
         to: req.params.email,
         subject: 'Enatomy password reset',
         html: '<h1>' + req.params.name + ', </h1> <p>click <a href="http://localhost:3000/user/passreset/' + req.params.id + '">here</a> to reset your password. </p>'
