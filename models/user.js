@@ -41,10 +41,10 @@ const UserSchema = new Schema({
       type:String,
       default: "Welcome to Enatomy, please check your email to confirm"
     },
-    encryptedId: {
-      type:String,
-      required:true
-    }
+    // encryptedId: {
+    //   type:String,
+    //   required:true
+    // }
   
 });
 

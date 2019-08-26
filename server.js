@@ -4,7 +4,7 @@ const routes = require('./routes');
 const passport = require("passport");
 const bodyParser = require('body-parser');
 const config = require("./config.json");
- const stripe = require("stripe")(config.STRIPE_KEY);
+ const stripe = require("stripe")(process.env.STRIPE_KEY || config.STRIPE_KEY);
 
 
 const app = express();
