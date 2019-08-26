@@ -3,8 +3,10 @@ const mongoose = require('mongoose');
 const routes = require('./routes');
 const passport = require("passport");
 const bodyParser = require('body-parser');
-const config = require("./config.json");
- const stripe = require("stripe")(process.env.STRIPE_KEY || config.STRIPE_KEY);
+// const config = require("./config.json");
+ const stripe = require("stripe")(process.env.STRIPE_KEY);
+ require('dotenv').config()
+
 
 
 const app = express();
@@ -62,4 +64,6 @@ app.post("/charge/:amount/", async (req, res) => {
 
 app.listen(PORT, () => {
   console.log('Running on port:', PORT)
+  console.log(process.env.REACT_APP_AWS_ACCESS_KEY)
+           
 })

@@ -1,5 +1,10 @@
 const aws= require('aws-sdk');
-const config = require("../config.json");
+// const ACCESS_KEY = process.env.REACT_APP_AWS_ACCESS_KEY
+// const SECRET_KEY = process.env.REACT_APP_AWS_SECRET_KEY
+// const AWS_BUCKET = process.env.REACT_APP_AWS_BUCKET
+require('dotenv').config()
+
+
 let fileNames = [];
 
 module.exports = {
@@ -10,8 +15,8 @@ module.exports = {
         try {
             aws.config.setPromisesDependency();
             aws.config.update({
-              accessKeyId: process.env.AWS_ACCESS_KEY || config.AWS_ACCESS_KEY,
-              secretAccessKey: process.env.AWS_SECRET_KEY || config.AWS_SECRET_KEY,
+              accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY,
+              secretAccessKey:  process.env.REACT_APP_AWS_SECRET_KEY,
               region: "us-east-1"
           });
     
@@ -31,8 +36,12 @@ module.exports = {
         }   
         console.log("________");
 
+
           } catch (e){
             console.log("error", e );
+            console.log(process.env.REACT_APP_AWS_ACCESS_KEY)
+           
+
         }
     })()
     
@@ -43,13 +52,13 @@ module.exports = {
   download: function(req,res){
     aws.config.setPromisesDependency();
     aws.config.update({
-      accessKeyId: process.env.AWS_ACCESS_KEY || config.AWS_ACCESS_KEY,
-      secretAccessKey:process.env.AWS_SECRET_KEY || config.AWS_SECRET_KEY,
+      accessKeyId:  process.env.REACT_APP_AWS_ACCESS_KEY,
+      secretAccessKey: process.env.REACT_APP_AWS_SECRET_KEY,
       region: "us-east-1"
   });
      const s3 = new aws.S3();
       var params = {
-        Bucket:process.env.AWS_BUCKET || config.AWS_BUCKET, 
+        Bucket:process.env.REACT_APP_AWS_BUCKET, 
         Key: req.params.setname + "zip", 
         Expires: 60}
       s3.getSignedUrl('getObject', params, function (err, url) {
