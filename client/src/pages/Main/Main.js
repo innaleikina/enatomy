@@ -109,7 +109,9 @@ class Main extends Component {
         return (
          <div > 
             <div className="home-image-container">
-            {this.renderItems()}
+              <div className="images-inner">
+                 {this.renderItems()}
+              </div>
             </div>
             <div className="about-container">
              <AboutUs></AboutUs>
