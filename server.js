@@ -64,6 +64,5 @@ app.post("/charge/:amount/", async (req, res) => {
 
 app.listen(PORT, () => {
   console.log('Running on port:', PORT)
-  console.log(process.env.REACT_APP_AWS_ACCESS_KEY)
            
 })
