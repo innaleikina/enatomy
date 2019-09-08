@@ -1,7 +1,6 @@
 // const config = require("../config.json");
 const nodemailer = require("nodemailer");
 require('dotenv').config()
-const http=  "https://enatomy.herokuapp.com" || "http://localhost:3000";
 
 
 // const User = require('../user.model')
@@ -31,7 +30,7 @@ module.exports = {
       from: process.env.REACT_APP_MAIL_USER,
       to: req.params.email,
       subject: 'Welcome to Enatomy',
-      html: '<h1>' + req.params.name + ', </h1> <p>click <a href=' + http + '/user/nodemailer/confirm/' + req.params.id + '>here</a> to confirm your account</p>'
+      html: '<h1>' + req.params.name + ', </h1> <p>click <a href="http://localhost:3000/user/nodemailer/confirm/' + req.params.id + '">here</a> to confirm your account</p>'
 
 
     };
