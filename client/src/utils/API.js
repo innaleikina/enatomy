@@ -10,7 +10,7 @@ export default {
   },
 
    checkUser: function(userData){
-     return axios.post("user/api/validation", userData)
+     return axios.post("/user/api/validation", userData)
    },
 
   getUser: function(userLogin) {
