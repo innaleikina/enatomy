@@ -3,5 +3,52 @@
 }
 
 #model-name{
-    color:black;
+    color: #EB5E28;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 16px;
+}
+
+.oneSet-wrap{
+    /* border:1px red solid; */
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom:100px;
+}
+
+.cart-btn{
+    /* width: 80px;
+    height: 30px; */
+    padding:10px;
+    border: 1px #EB5E28 solid;
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    color: #EB5E28;
+    cursor:pointer;
+    margin-top:30px;
+}
+
+.cart-btn:hover{
+    background-color: #EB5E28;
+    color: white;
+    transition: .2s linear;
+}
+
+.name-price{
+    display:flex;
+    margin-bottom:20px;
+    /* border:1px red solid; */
+    width:140px;
+    justify-content: space-between;
+}
+
+.oneSet-message{
+    color:#EB5E28;
+    font-size:16px;
+}
+
+#oneSet-price{
+    font-weight:bold;
 }

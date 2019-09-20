@@ -24,7 +24,8 @@ class OneSet extends Component {
       .then(res => this.setState({
         user:res.data,
         cart:res.data.cart,
-        purchased:res.data.purchased
+        purchased:res.data.purchased,
+        cartLength:0
       }))
       .catch(err => console.log(err))
   };
@@ -40,7 +41,7 @@ class OneSet extends Component {
 checkIfPurchased = () => {
 
   if(this.state.user === ""){
-    return <p> you must be signed in to purchase </p>
+    return <p className="oneSet-message">  you must be signed in to purchase </p>
   } else {
     if(this.state.purchased.includes(this.props.match.params.id)){
       return <button onClick={this.downloadSet} className="cart-btn"> download this set</button>
@@ -84,10 +85,10 @@ addToCart = () => {
         let modelName = jpgName.substring(0, jpgName.length - 4);
         
         return (
-         <div > 
-           <h2 id="model-name">{modelName}</h2>
+         <div className="oneSet-wrap"> 
+          <div className="name-price"> <span id="model-name">{modelName}</span> / <span id="oneSet-price"> {this.state.price}</span> </div>
            <CoverPhoto fileName={this.props.match.params.id}> </CoverPhoto>
-            <h4>{this.state.price}</h4>
+      
            {/* <button onClick={this.addToCart} className="cart-btn"> add to cart </button> */}
            {this.checkIfPurchased()}
         </div>

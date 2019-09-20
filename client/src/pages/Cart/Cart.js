@@ -125,7 +125,7 @@ render() {
           return (
                 <div className="cart-container">
                   <div className="title-empty-container">
-                    <span id="title-cart">items in your cart</span>
+                    <span id="title-cart">items in your cart ({this.state.imagesInCart.length})</span>
                     {(this.state.imagesInCart.length > 0) ?  <button className="empty-cart-btn" onClick = {this.onEmptyClick}>empty your cart</button>: <div></div>}
                   </div>
                   {/* <h2> first in cart is {this.state.cart[0]}</h2> */}

@@ -13,6 +13,14 @@
     border-radius: 10px;
 }
 
+@media only screen and  (max-width: 600px){
+    .popUp{
+        left:15%;
+        margin:0 auto;
+        margin-top:-150px;
+    }
+}
+
 #close-pop-up {
     background-color: #EB5E28;
     color: white;
