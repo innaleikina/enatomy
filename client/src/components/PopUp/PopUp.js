@@ -29,6 +29,8 @@ class PopUp extends Component {
             {this.props.buttonClicked === "sign up" ? <SignUp></SignUp> : <div></div>}
             {this.props.buttonClicked === "purchase" ? 
               this.props.paymentForm : <div></div>}
+               {this.props.buttonClicked === "emptyCart" ? 
+              this.props.emptyCart : <div></div>}
           </div>
         </div>
     )

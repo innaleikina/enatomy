@@ -21,6 +21,7 @@ class Cart extends Component {
       price:10,
       total:0,
       purchaseClicked:false,
+      emptyCartClicked:false
      }
 
 
@@ -62,15 +63,28 @@ class Cart extends Component {
   }
 
   onEmptyClick = () => {
-    API.emptyCart(this.state.user._id)
+   this.setState({
+      emptyCartClicked:true
+    })
+
+  }
+
+  onCartEmptyConfirm = () => {
+     this.setState({  
+       cart:[]
+      })
+     API.emptyCart(this.state.user._id)
     .then(this.getUser(), this.getFiles())
     .catch(err => console.log(err))
-
+    this.setState({
+      emptyCartClicked:false
+    })
   }
 
   closePopUp = () => {
     this.setState({
        purchaseClicked:false,
+       emptyCartClicked:false
       })
  }
 
@@ -166,6 +180,18 @@ render() {
                         </Elements>
                        </div>
                    </StripeProvider>}>
+                   
+                   </PopUp>: <div></div>}
+
+                   {this.state.emptyCartClicked ? <PopUp buttonClicked="emptyCart" fetchUser={this.props.fetchUser} closePopUp={this.closePopUp} emptyCart={
+                     <div className="empty-cart-pop-up-wrap">
+                       <span className="empty-cart"> Do you want to empty your cart?</span>
+                       <div className="empty-cart-button-wrap">
+                         <button className="empty-cart-pop-up-button" onClick={this.onCartEmptyConfirm}> yes </button>
+                         <button className="empty-cart-pop-up-button" onClick={this.closePopUp}> no </button>
+                       </div>
+                     </div>
+                   }>
                    
                    </PopUp>: <div></div>}
                    
