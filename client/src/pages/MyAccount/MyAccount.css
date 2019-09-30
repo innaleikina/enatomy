@@ -73,3 +73,9 @@
     letter-spacing:.5px;
 }
 
+.button-account:hover{
+  cursor:pointer;
+  color:#EB5E28;
+  border-color:#EB5E28;
+}
+

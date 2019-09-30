@@ -64,6 +64,10 @@ export default {
     return axios.post("/nodemailer/sendwelcomeemail/" + name + "/" + email + "/" + id)
   },
 
+  deleteUser:function(id){
+    return axios.delete("/user/" + id)
+  }
+
   // emailConfirmURL:function(id){
   //   return axios.get("sendgrid/confirm/" + id )
   // }
