@@ -126,7 +126,7 @@ class Cart extends Component {
       console.log(this.state.imagesInCart[i])
       API.downloadSet(this.state.imagesInCart[i].slice(0, -3))
       // .then(res=> console.log(res.data))
-      .then(res => window.open(res.data), this.onEmptyClick())
+      .then(res => window.open(res.data), this.onCartEmptyConfirm())
       .catch(err => console.log(err))
     }
 

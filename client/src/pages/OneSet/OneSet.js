@@ -43,13 +43,17 @@ checkIfPurchased = () => {
   if(this.state.user === ""){
     return <p className="oneSet-message">  you must be signed in to purchase </p>
   } else {
-    if(this.state.purchased.includes(this.props.match.params.id)){
-      return <button onClick={this.downloadSet} className="cart-btn"> download this set</button>
+      if(this.state.purchased.includes(this.props.match.params.id)){
+          return <button onClick={this.downloadSet} className="cart-btn"> download this set</button>
+       } else if(this.state.cart.includes(this.props.match.params.id)){
+        return <span className="item-in-cart-message"> item is in your cart </span>
 
-    } else {
-     return <button onClick={this.addToCart} className="cart-btn"> add to cart </button>
 
-    }
+       }
+       else {
+          return <button onClick={this.addToCart} className="cart-btn"> add to cart </button>
+
+       }
   }
 }
 
@@ -59,7 +63,7 @@ addToCart = () => {
    if (this.state.cart.length === 0) {
     API.addToCart(this.state.user._id, this.props.match.params.id)
       .catch(err => console.log(err))
-    // console.log("the cart length is zero!")
+    this.getUser()
   } else {
    //console.log("cart is longer than zero!");
     if (this.state.cart.includes(this.props.match.params.id)) {
