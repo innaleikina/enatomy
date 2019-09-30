@@ -47,8 +47,10 @@ class App extends Component {
   componentDidMount() {
 
     this.fetchUser();
-    
+
   };
+
+
 
   logoutButton = () => {
     this.setState({
@@ -67,6 +69,9 @@ class App extends Component {
       myAccount.style.display = "none";
       myCart.style.display = "none";
     }
+
+ 
+    
   };
 
   handleLogout = () => {
@@ -82,7 +87,7 @@ class App extends Component {
 
 
   render() {    
-
+  
     return (
       <Router >
       <div className="App">

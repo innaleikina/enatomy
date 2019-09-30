@@ -4,6 +4,7 @@ import "./MyAccount.css";
 import { Link } from 'react-router-dom';
 import CoverPhoto from '../../components/CoverPhoto';
 import PasswordReset from '../../components/PasswordReset';
+import PopUp from "../../components/PopUp";
 
 
 
@@ -13,7 +14,8 @@ class MyAccount extends Component {
        user:"",
        purchased:"",
        allS3Files:[],
-       imagesPurchased:[]
+       imagesPurchased:[],
+       deleteAccountClicked:false
       }
 
     componentWillMount() {
@@ -54,6 +56,24 @@ class MyAccount extends Component {
         }) 
        }
 
+       onDeleteAccountClick = () => {
+        this.setState({
+          deleteAccountClicked:true
+        })
+       }
+
+       onDeleteAccountConfirm = () => {
+         API.deleteUser(this.state.user._id);
+         window.location.reload();
+
+       }
+
+       closePopUp = () => {
+        this.setState({
+           deleteAccountClicked:false,
+          })
+     }
+
   render() {
     console.log(this.props.location)
     return (
@@ -69,7 +89,7 @@ class MyAccount extends Component {
                   <PasswordReset cssClass="button-account" buttonText="reset password"></PasswordReset>
 
                     { /* pop up to confirm */}
-                    <button className="button-account" id="delete-account"> delete account </button>
+                    <button className="button-account" id="delete-account" onClick={this.onDeleteAccountClick}> delete account </button>
               </div>
            </div>
           
@@ -89,7 +109,23 @@ class MyAccount extends Component {
                           : <div>You haven't purchased any sets yet</div>}
               </div>
            </div>
+
+           {this.state.deleteAccountClicked ? <PopUp buttonClicked="deleteUser" fetchUser={this.props.fetchUser} closePopUp={this.closePopUp} deleteUser={
+                     <div className="delete-user-pop-up-wrap">
+                       <span className="empty-cart"> If you want to delete your account all of your information will be lost, including access to already purchased sets. Are you sure you want to delete your account? </span>
+                       <div className="empty-cart-button-wrap">
+                         <button className="empty-cart-pop-up-button" onClick={this.onDeleteAccountConfirm}> yes </button>
+                         <button className="empty-cart-pop-up-button" onClick={this.closePopUp}> no </button>
+                       </div>
+                     </div>
+                   }>
+                   
+                   </PopUp>: <div></div>}
+
+
         </div>
+
+
 
 
     );

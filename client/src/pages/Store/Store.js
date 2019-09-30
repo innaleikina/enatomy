@@ -42,7 +42,7 @@ class Store extends Component {
       </CoverPhoto></Link>)
     } 
   }
-  console.log(jpgCoverShotsArr);
+  // console.log(jpgCoverShotsArr);
   return jpgCoverShotsArr
  }
     

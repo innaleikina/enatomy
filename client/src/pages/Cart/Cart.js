@@ -21,6 +21,7 @@ class Cart extends Component {
       price:10,
       total:0,
       purchaseClicked:false,
+      emptyCartClicked:false
      }
 
 
@@ -62,15 +63,28 @@ class Cart extends Component {
   }
 
   onEmptyClick = () => {
-    API.emptyCart(this.state.user._id)
+   this.setState({
+      emptyCartClicked:true
+    })
+
+  }
+
+  onCartEmptyConfirm = () => {
+     this.setState({  
+       cart:[]
+      })
+     API.emptyCart(this.state.user._id)
     .then(this.getUser(), this.getFiles())
     .catch(err => console.log(err))
-
+    this.setState({
+      emptyCartClicked:false
+    })
   }
 
   closePopUp = () => {
     this.setState({
        purchaseClicked:false,
+       emptyCartClicked:false
       })
  }
 
@@ -112,7 +126,7 @@ class Cart extends Component {
       console.log(this.state.imagesInCart[i])
       API.downloadSet(this.state.imagesInCart[i].slice(0, -3))
       // .then(res=> console.log(res.data))
-      .then(res => window.open(res.data), this.onEmptyClick())
+      .then(res => window.open(res.data), this.onCartEmptyConfirm())
       .catch(err => console.log(err))
     }
 
@@ -125,7 +139,7 @@ render() {
           return (
                 <div className="cart-container">
                   <div className="title-empty-container">
-                    <span id="title-cart">items in your cart</span>
+                    <span id="title-cart">items in your cart ({this.state.imagesInCart.length})</span>
                     {(this.state.imagesInCart.length > 0) ?  <button className="empty-cart-btn" onClick = {this.onEmptyClick}>empty your cart</button>: <div></div>}
                   </div>
                   {/* <h2> first in cart is {this.state.cart[0]}</h2> */}
@@ -166,6 +180,18 @@ render() {
                         </Elements>
                        </div>
                    </StripeProvider>}>
+                   
+                   </PopUp>: <div></div>}
+
+                   {this.state.emptyCartClicked ? <PopUp buttonClicked="emptyCart" fetchUser={this.props.fetchUser} closePopUp={this.closePopUp} emptyCart={
+                     <div className="empty-cart-pop-up-wrap">
+                       <span className="empty-cart"> Do you want to empty your cart?</span>
+                       <div className="empty-cart-button-wrap">
+                         <button className="empty-cart-pop-up-button" onClick={this.onCartEmptyConfirm}> yes </button>
+                         <button className="empty-cart-pop-up-button" onClick={this.closePopUp}> no </button>
+                       </div>
+                     </div>
+                   }>
                    
                    </PopUp>: <div></div>}
                    
