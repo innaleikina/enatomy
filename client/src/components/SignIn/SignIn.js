@@ -51,7 +51,8 @@ class SignIn extends Component {
             this.setState({
               loggedIn:true
             })               
-          
+            window.location.reload();
+
           } else if (!res.data.confirmed){
             //add logic to send  confirmation link email
             this.setState({
