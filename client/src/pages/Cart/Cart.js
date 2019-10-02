@@ -34,6 +34,8 @@ class Cart extends Component {
      }
 
    getUser = () => {
+    // console.log("got user");
+
     API.fetchUser() 
       .then(res => this.setState({
         user:res.data,
@@ -43,6 +45,7 @@ class Cart extends Component {
   };
 
   getFiles = () => {
+    // console.log("got files");
     API.getFiles() 
       .then(res => this.setState({
         allS3Files:res.data
@@ -53,23 +56,29 @@ class Cart extends Component {
   };
 
   onRemoveClick = (e) => {
-    // console.log(e.target.getAttribute('data-id'));
+    // console.log("remove item clicked")
+
+    e.preventDefault();
     API.removeOneFromCart(this.state.user._id, e.target.getAttribute('data-id'))
-   .then( this.getUser(), this.getFiles(),this.getImagesInCart())
+   .then(this.getUser(), this.getFiles()
+   //window.location.reload()
+   )
     .catch(err => console.log(err))
-    // .then(this.getUser())
-    // .then(this.getImagesInCart())
-    .catch(err => console.log(err));
+   
   }
 
-  onEmptyClick = () => {
+  onEmptyClick = (e) => {
+    e.preventDefault();
+
    this.setState({
       emptyCartClicked:true
     })
 
   }
 
-  onCartEmptyConfirm = () => {
+  onCartEmptyConfirm = (e) => {
+    e.preventDefault();
+
      this.setState({  
        cart:[]
       })
@@ -107,7 +116,7 @@ class Cart extends Component {
  }
 
  getImagesInCart = () => {
-  //  console.log("got images in cart!")
+   console.log("get images in cart");
   let s3FilesArr = []
   let cart = this.state.cart;
    for (var i = 0; i < this.state.allS3Files.length; i++){
