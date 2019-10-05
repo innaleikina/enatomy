@@ -87,11 +87,12 @@ addToCart = () => {
       //  console.log("right before render " + this.state.user.cart)
         let jpgName = this.props.match.params.id;
         let modelName = jpgName.substring(0, jpgName.length - 4);
+        let gifName = modelName + ".gif"
         
         return (
          <div className="oneSet-wrap"> 
           <div className="name-price"> <span id="model-name">{modelName}</span> / <span id="oneSet-price"> {this.state.price}</span> </div>
-           <CoverPhoto fileName={this.props.match.params.id}> </CoverPhoto>
+           <CoverPhoto fileName={gifName}> </CoverPhoto>
       
            {/* <button onClick={this.addToCart} className="cart-btn"> add to cart </button> */}
            {this.checkIfPurchased()}
