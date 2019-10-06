@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {CardElement, injectStripe} from 'react-stripe-elements';
 import API from "../../utils/API";
+import "./checkout.css";
 
 
 
@@ -35,13 +36,20 @@ class CheckoutForm extends Component {
     headers: {"Content-Type": "text/plain"},
     body: token.id
   });
-  if (response.ok) this.addToPurchased();
-  if (response.ok) this.props.downloadAllSets();
-  // if (response.ok) this.props.emptyCart();
+  // if (response.ok) this.addToPurchased();
+  // if (response.ok) this.props.downloadAllSets();
 
 
-  if (response.ok) console.log("Purchase Complete!")
-  if (response.ok) this.setState({complete: true});
+  // if (response.ok) console.log("Purchase Complete!")
+  // if (response.ok) this.setState({complete: true});
+
+
+  if(response.ok){
+    this.addToPurchased();
+    this.props.downloadAllSets();
+    console.log("Purchase Complete!")
+    this.setState({complete: true});
+  }
   }
 
   render() {
@@ -51,9 +59,9 @@ class CheckoutForm extends Component {
     return (
     
       <div className="checkout">
-        <p>Would you like to complete the purchase?</p>
+        <p className="checkout-text">Please enter your credit card number</p>
         <CardElement />
-        <button onClick={this.submit}>Send</button>
+        <button className="complete-btn" onClick={this.submit}>Complete</button>
       </div>
     );
   }

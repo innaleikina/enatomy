@@ -72,7 +72,7 @@ class SignIn extends Component {
   //   return <Redirect to="/myaccount"/>
   // }
     return (
-       <div >
+       <div className="signin-wrap" >
          {!this.state.forgotPassword ? 
             this.state.allowed ?  
               <form className="sign-in-form">
@@ -107,12 +107,13 @@ class SignIn extends Component {
                       </Input>
                   </div>
                   <Button className="form-button" onClick={(event) => this.handleLogin(event)}> Sign In </Button>
-                  <PasswordReset  cssClass="pass-reset-btn" buttonText="forgot password?"> </PasswordReset>
                 </form> : this.state.alertMessage : 
                          <div className="password-reset"> 
                                 An email to reset your password has been sent.
                           </div>}
-         
+            
+             <PasswordReset  cssClass="pass-reset-btn" buttonText="forgot password?"> </PasswordReset>
+
          
 
 

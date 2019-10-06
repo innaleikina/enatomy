@@ -1,7 +1,8 @@
 .popUp {
     border: 3px white solid;
     background-color: #EB5E28;
-    /* display:none; */
+    display:flex;
+    flex-direction:column;
     width: 400px;
     height: 300px;
     top: 50%;
@@ -24,10 +25,12 @@
 #close-pop-up {
     background-color: #EB5E28;
     color: white;
-    float: right;
+    width:30px;
     border: none;
     margin-top: 5px;
     border-radius: 5px;
+    /* margin-right:10px; */
+    margin-left:90%;
     margin-right:10px;
     /* padding:10px; */
 }

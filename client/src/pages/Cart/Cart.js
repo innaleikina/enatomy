@@ -57,7 +57,7 @@ class Cart extends Component {
 
   onRemoveClick = (e) => {
     // console.log("remove item clicked")
-
+ 
     e.preventDefault();
     API.removeOneFromCart(this.state.user._id, e.target.getAttribute('data-id'))
    .then(this.getUser(), this.getFiles()
@@ -88,6 +88,18 @@ class Cart extends Component {
     this.setState({
       emptyCartClicked:false
     })
+  }
+
+  emptyCart = () => {
+    this.setState({  
+      cart:[]
+     })
+    API.emptyCart(this.state.user._id)
+   .then(this.getUser(), this.getFiles())
+   .catch(err => console.log(err))
+   this.setState({
+     emptyCartClicked:false
+   })
   }
 
   closePopUp = () => {
@@ -135,7 +147,7 @@ class Cart extends Component {
       console.log(this.state.imagesInCart[i])
       API.downloadSet(this.state.imagesInCart[i].slice(0, -3))
       // .then(res=> console.log(res.data))
-      .then(res => window.open(res.data), this.onCartEmptyConfirm())
+      .then(res => window.open(res.data), this.emptyCart())
       .catch(err => console.log(err))
     }
 
