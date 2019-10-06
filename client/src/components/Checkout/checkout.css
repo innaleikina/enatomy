@@ -1,0 +1,30 @@
+.checkout-text{
+    color:white;
+    text-align:center;
+    letter-spacing:.2px;
+    margin-bottom:30px;
+}
+
+.complete-btn{
+    display:block;
+   margin:40px auto;
+   color:#EB5E28;
+    background-color:rgba(255,255,2555,.9);
+    text-transform: uppercase;
+    border-radius:5px;
+    box-shadow:5px 5px 5px rgba(0, 0, 0, 0.2);
+    padding-top:10px;
+    padding-bottom:10px;
+    text-align: center;
+}
+
+.complete-btn:hover{
+    background-color:rgba(255,255,2555,1);
+    cursor:pointer;
+
+}
+
+
+.complete-button:active{
+    box-shadow:none;
+}
