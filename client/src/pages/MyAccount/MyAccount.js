@@ -85,7 +85,7 @@ class MyAccount extends Component {
               
 
               {/* when button is clicked a pop up shows up to change password */}
-              <div className="buttons-containe-account">
+              <div className="buttons-container-account">
                   <PasswordReset cssClass="button-account" buttonText="reset password"></PasswordReset>
 
                     { /* pop up to confirm */}

@@ -55,7 +55,7 @@
 
 }
 
-.buttons-containe-account{
+.buttons-container-account{
     width:250px;
     display:flex;
     justify-content: space-between;
@@ -71,6 +71,9 @@
     font-weight:bold;
     font-size:12px;
     letter-spacing:.5px;
+    background-color:white;
+    border:1px #403D39 solid;
+    color:#403D39;
 }
 
 .button-account:hover{
