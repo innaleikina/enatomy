@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import API from "../../utils/API";
+import API from "../../utils/API";
 import PopUp from "../PopUp";
 
 
@@ -7,7 +7,18 @@ class PasswordReset extends Component {
 
   state = {
     passResetClicked:false,
+    email:"",
+    user:"",
+    token:""
+
   }
+
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
 
   onPassResetClick = () => {
     console.log("pass reset clicked");
@@ -23,8 +34,28 @@ class PasswordReset extends Component {
       })
  }
 
-  render() {
+ onSendEmailClick = () => {
+  // console.log(this.state.email)
+  API.findUserByEmail(this.state.email).then(
+    res => {
+      if (res.data) {
+        // this.setState({
+        //   user:res.data,
+        //   token:res.data.passwordHash.concat(res.data.created_at)
+        // console.log(res.data.passwordHash)
+        // console.log(res.data.created_at)
+        let passHash = res.data.passwordHash.concat(res.data.created_at)
+        let cleanPassHash = passHash.replace(/\//g, "")
+        console.log(cleanPassHash)
+        API.sendPassReset(res.data.name, res.data.email, res.data._id, cleanPassHash )
+      }
+    }
+  )
+ }
 
+
+  render() {
+  //  console.log(this.state.token)
 
     return (
              <div>
@@ -35,8 +66,13 @@ class PasswordReset extends Component {
               <span> Enter email to reset password </span>
                 <form>
                   <label> email </label>
-                  <input></input>
+                  <input 
+                     id="email"
+                    name="email"
+                    value={this.state.email}
+                    onChange={this.handleInputChange}></input>
                 </form>
+                <button onClick={this.onSendEmailClick}> send email </button>
               </div>
           
             }>

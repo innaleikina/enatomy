@@ -41,6 +41,10 @@ const UserSchema = new Schema({
       type:String,
       default: "Welcome to Enatomy, please check your email to confirm"
     },
+    created_at:{ 
+      type: Date, 
+      required: true, 
+      default: Date.now }
     // encryptedId: {
     //   type:String,
     //   required:true

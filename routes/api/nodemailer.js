@@ -8,7 +8,7 @@ router.route("/sendwelcomeemail/:name/:email/:id")
   .post(nodemailerController.sendWelcomeEmail);
 
 
-router.route("/sendpassreset/:name/:email/:id")
+router.route("/sendpassreset/:name/:email/:id/:token")
   .post(nodemailerController.sendPassReset);
 
 
