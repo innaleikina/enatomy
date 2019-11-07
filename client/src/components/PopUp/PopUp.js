@@ -37,6 +37,9 @@ class PopUp extends Component {
 
              {this.props.buttonClicked === "deleteUser" ? 
               this.props.deleteUser : <div></div>}
+
+             {this.props.buttonClicked === "resetPass" ? 
+              this.props.resetPass : <div></div>}
           </div>
         </div>
     )
