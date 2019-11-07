@@ -82,3 +82,17 @@
   border-color:#EB5E28;
 }
 
+.delete-account{
+
+        color:white;
+        font-weight:300;
+        letter-spacing:1.5px;
+         text-align: center;
+         /* border:1px red solid; */
+         line-height:1.4;
+         padding:20px;
+         width:90%;
+    
+    
+}
+

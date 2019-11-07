@@ -74,8 +74,10 @@ class MyAccount extends Component {
           })
      }
 
+
+
   render() {
-    console.log(this.props.location)
+    // console.log(this.props.location)
     return (
         <div id="timeline-wrap" >
 
@@ -112,7 +114,7 @@ class MyAccount extends Component {
 
            {this.state.deleteAccountClicked ? <PopUp buttonClicked="deleteUser" fetchUser={this.props.fetchUser} closePopUp={this.closePopUp} deleteUser={
                      <div className="delete-user-pop-up-wrap">
-                       <span className="empty-cart"> If you want to delete your account all of your information will be lost, including access to already purchased sets. Are you sure you want to delete your account? </span>
+                       <p className="delete-account"> If you want to delete your account all of your information will be lost, including access to already purchased sets. Are you sure you want to delete your account? </p>
                        <div className="empty-cart-button-wrap">
                          <button className="empty-cart-pop-up-button" onClick={this.onDeleteAccountConfirm}> yes </button>
                          <button className="empty-cart-pop-up-button" onClick={this.closePopUp}> no </button>

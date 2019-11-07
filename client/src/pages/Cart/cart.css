@@ -203,5 +203,6 @@ top:2px;
 
 .empty-cart-pop-up-button:hover { 
     cursor:pointer;
+    box-shadow:none;
 }
 

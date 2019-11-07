@@ -7,6 +7,11 @@ const nodemailerController = require("../../controllers/nodemailerController");
 router.route("/sendwelcomeemail/:name/:email/:id")
   .post(nodemailerController.sendWelcomeEmail);
 
+
+router.route("/sendpassreset/:name/:email/:id")
+  .post(nodemailerController.sendPassReset);
+
+
   // router.route("/confirm/:id/")
   // .put(nodemailerController.confirmFromEmail);
 

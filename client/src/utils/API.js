@@ -66,6 +66,10 @@ export default {
 
   deleteUser:function(id){
     return axios.delete("/user/" + id)
+  },
+
+  sendPassReset:function(name,email,id){
+    return axios.post("/nodemailer/sendpassreset/" + name + "/" + email + "/" + id)
   }
 
   // emailConfirmURL:function(id){
