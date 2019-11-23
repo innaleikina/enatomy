@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import API from "../../utils/API";
 import PopUp from "../PopUp";
+import "./passreset.css"
 
 
 class PasswordReset extends Component {
@@ -9,7 +10,8 @@ class PasswordReset extends Component {
     passResetClicked:false,
     email:"",
     user:"",
-    token:""
+    token:"",
+    emailSent:false,
 
   }
 
@@ -22,9 +24,10 @@ class PasswordReset extends Component {
 
   onPassResetClick = () => {
     console.log("pass reset clicked");
+    this.props.closeSignIn();
     this.setState({
       passResetClicked:true
-    })
+        })
   }
 
 
@@ -47,7 +50,8 @@ class PasswordReset extends Component {
         let passHash = res.data.passwordHash.concat(res.data.created_at)
         let cleanPassHash = passHash.replace(/\//g, "")
         console.log(cleanPassHash)
-        API.sendPassReset(res.data.name, res.data.email, res.data._id, cleanPassHash )
+        API.sendPassReset(res.data.name, res.data.email, res.data._id, cleanPassHash );
+        this.closePopUp()
       }
     }
   )

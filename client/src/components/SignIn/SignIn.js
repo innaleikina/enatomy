@@ -17,7 +17,6 @@ class SignIn extends Component {
     username: "",
     passwordLogin: "",
     loggedIn:false,
-    popUpOpen:false,
     alertMessage:"",
     allowed:true,
   }
@@ -28,6 +27,8 @@ class SignIn extends Component {
       [name]: value
     });
   };
+
+ 
 
   //handling user login
   handleLogin = (event) => {
@@ -73,8 +74,7 @@ class SignIn extends Component {
   // }
     return (
        <div className="signin-wrap" >
-         {!this.state.forgotPassword ? 
-            this.state.allowed ?  
+            {this.state.allowed ?  
               <form className="sign-in-form">
                  <div className="input-continer">
                     <label className="label"> email </label>
@@ -107,12 +107,9 @@ class SignIn extends Component {
                       </Input>
                   </div>
                   <Button className="form-button" onClick={(event) => this.handleLogin(event)}> Sign In </Button>
-                </form> : this.state.alertMessage : 
-                         <div className="password-reset"> 
-                                An email to reset your password has been sent.
-                          </div>}
+                </form> : this.state.alertMessage }
             
-             <PasswordReset  cssClass="pass-reset-btn" buttonText="forgot password?"> </PasswordReset>
+             <PasswordReset closeSignIn={this.props.closeSignIn} cssClass="pass-reset-btn" buttonText="forgot password?"> </PasswordReset>
 
          
 

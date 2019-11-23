@@ -26,7 +26,7 @@ class PopUp extends Component {
           <button id="close-pop-up" onClick={this.props.closePopUp}> X </button>
           <div id="form">
             
-            {this.props.buttonClicked === "log in" ? <SignIn fetchUser={this.props.fetchUser}></SignIn> : <div></div>}
+            {this.props.buttonClicked === "log in" ? <SignIn closeSignIn={this.props.closePopUp} fetchUser={this.props.fetchUser}></SignIn> : <div></div>}
             
             {this.props.buttonClicked === "sign up" ? <SignUp></SignUp> : <div></div>}
             
