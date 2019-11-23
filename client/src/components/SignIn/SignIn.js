@@ -109,7 +109,7 @@ class SignIn extends Component {
                   <Button className="form-button" onClick={(event) => this.handleLogin(event)}> Sign In </Button>
                 </form> : this.state.alertMessage }
             
-             <PasswordReset closeSignIn={this.props.closeSignIn} cssClass="pass-reset-btn" buttonText="forgot password?"> </PasswordReset>
+             <PasswordReset cssClass="pass-reset-btn" buttonText="forgot password?"> </PasswordReset>
 
          
 

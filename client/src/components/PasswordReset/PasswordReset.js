@@ -24,7 +24,6 @@ class PasswordReset extends Component {
 
   onPassResetClick = () => {
     console.log("pass reset clicked");
-    this.props.closeSignIn();
     this.setState({
       passResetClicked:true
         })
@@ -42,6 +41,9 @@ class PasswordReset extends Component {
   API.findUserByEmail(this.state.email).then(
     res => {
       if (res.data) {
+        this.setState({
+          emailSent:true
+        })
         // this.setState({
         //   user:res.data,
         //   token:res.data.passwordHash.concat(res.data.created_at)
@@ -51,7 +53,9 @@ class PasswordReset extends Component {
         let cleanPassHash = passHash.replace(/\//g, "")
         console.log(cleanPassHash)
         API.sendPassReset(res.data.name, res.data.email, res.data._id, cleanPassHash );
-        this.closePopUp()
+  
+    
+
       }
     }
   )
@@ -81,7 +85,7 @@ class PasswordReset extends Component {
           
             }>
             
-            </PopUp>: <div></div>}
+            </PopUp>: this.state.emailSent ? <PopUp> <p> Email was sent!</p> </PopUp> : <div></div>}
 
             </div>
 
