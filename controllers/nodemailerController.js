@@ -43,7 +43,9 @@ module.exports = {
       }
     });
   },
-  sendPasswordReset: function (req, res) {
+ 
+ 
+  sendPassReset: function (req, res) {
 
       const transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
@@ -63,7 +65,7 @@ module.exports = {
         from: process.env.REACT_APP_MAIL_USER,
         to: req.params.email,
         subject: 'Enatomy password reset',
-        html: '<h1>' + req.params.name + ', </h1> <p>click <a href="http://localhost:3000/user/passreset/' + req.params.id + '">here</a> to reset your password. </p>'
+        html: '<h1>' + req.params.name + ', </h1> <p>click <a href="http://localhost:3000/user/sendpassreset/' + req.params.id + "/" + req.params.token + '">here</a> to reset your password. </p>'
   
   
       };
