@@ -40,6 +40,9 @@ class PopUp extends Component {
 
              {this.props.buttonClicked === "resetPass" ? 
               this.props.resetPass : <div></div>}
+
+             {this.props.buttonClicked === "sendPassEmail" ? 
+              this.props.sentPassEmail: <div></div>}        
           </div>
         </div>
     )

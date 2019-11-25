@@ -12,6 +12,7 @@ class PasswordReset extends Component {
     user:"",
     token:"",
     emailSent:false,
+    message:""
 
   }
 
@@ -42,7 +43,9 @@ class PasswordReset extends Component {
     res => {
       if (res.data) {
         this.setState({
+          message:"email has been sent",
           emailSent:true
+
         })
         // this.setState({
         //   user:res.data,
@@ -51,8 +54,15 @@ class PasswordReset extends Component {
         // console.log(res.data.created_at)
         let passHash = res.data.passwordHash.concat(res.data.created_at)
         let cleanPassHash = passHash.replace(/\//g, "")
-        console.log(cleanPassHash)
-        API.sendPassReset(res.data.name, res.data.email, res.data._id, cleanPassHash );
+        // console.log(cleanPassHash)
+        API.sendPassReset(res.data.name, res.data.email, res.data._id, cleanPassHash ).then(
+          res=> {
+            if(res.data){
+              console.log(res.data + " data that email has been sent ")
+      
+            }
+          }
+        );
   
     
 
@@ -64,12 +74,12 @@ class PasswordReset extends Component {
 
   render() {
   //  console.log(this.state.token)
-
+  console.log(this.state.message)
     return (
              <div>
             <button onClick={this.onPassResetClick} className={this.props.cssClass}> {this.props.buttonText}</button>
 
-            {this.state.passResetClicked ? <PopUp buttonClicked="resetPass" fetchUser={this.props.fetchUser} closePopUp={this.closePopUp} resetPass={
+            {this.state.passResetClicked ? !this.state.emailSent ? <PopUp buttonClicked="resetPass" fetchUser={this.props.fetchUser} closePopUp={this.closePopUp} resetPass={
               <div>
               <span> Enter email to reset password </span>
                 <form>
@@ -85,7 +95,7 @@ class PasswordReset extends Component {
           
             }>
             
-            </PopUp>: this.state.emailSent ? <PopUp> <p> Email was sent!</p> </PopUp> : <div></div>}
+            </PopUp>: <PopUp buttonClicked="sendPassEmail" closePopUp={this.closePopUp} sentPassEmail={this.state.message}></PopUp> : <div> </div>}
 
             </div>
 

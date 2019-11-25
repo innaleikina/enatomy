@@ -39,7 +39,7 @@ class Main extends Component {
 
 
 
-  componentWillMount() {
+  componentDidMount() {
 
     this.getFiles()
  }
