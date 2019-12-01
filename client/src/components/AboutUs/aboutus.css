@@ -4,14 +4,28 @@
     background-color:#EB5E28;
     padding-bottom:40px;
     padding-top:40px;
-    /* border:1px red solid; */
+    border:1px red solid;
 }
+
+
+
+@media only screen and (max-width:1400px){
+    .about-us{
+        width:91%;
+        /* border:3px purple solid; */
+        padding-bottom:60px;
+        margin:0 auto;
+        display:flex;
+        align-items: center;
+        flex-direction:column;
+        /* text-align: center; */
+    }
+}
+
 
 @media only screen and (max-width:600px){
     .about-us{
         width:420px;
-        padding-bottom:60px;
-        margin:0 auto;
     }
 }
 
@@ -19,11 +33,64 @@
     color:white;
     line-height:1.5;
     font-weight:300;
+    /* border:1px red solid; */
 }
+
+@media only screen and (max-width:1400px){
+    .text{
+        width:50%;
+       
+    }
+}
+
+
+@media only screen and (max-width:1000px){
+    .text{
+        width:80%;
+        /* border:1px green solid; */
+    }
+}
+
+@media only screen and (max-width:600px){
+    .text{
+        width:100%;
+    }
+}
+
+
 
 .art-container{
     display:flex;
     width:100%;
     justify-content: space-between;
     margin-top:40px;
+}
+
+
+@media only screen and (max-width:1400px){
+    .art-container{
+        width:50%;
+        padding-top:40px;
+        margin:0 auto;
+        /* border:1px red solid; */
+        /* text-align: center; */
+    }
+}
+
+
+@media only screen and (max-width:1000px){
+    .art-container{
+        width:80%;
+        /* border:1px red solid; */
+        /* text-align: center; */
+    }
+}
+
+
+@media only screen and (max-width:600px){
+    .art-container{
+        width:100%;
+        border:1px red solid;
+        /* text-align: center; */
+    }
 }
