@@ -27,7 +27,7 @@ nav {
 
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
     .nav-items {
       justify-content:space-between;
       /* border:1px green solid; */
