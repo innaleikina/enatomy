@@ -103,7 +103,7 @@ class MyAccount extends Component {
                           this.state.imagesPurchased.map((image,index) => (
                             <div className="purchased-img" key={index}>
                               <Link key={index} to={`/set/${image}`}>
-                                  <CoverPhoto id="purchased-img-border" key={index} fileName={image}>
+                                  <CoverPhoto  id="purchased-img" key={index} fileName={image}>
                                   </CoverPhoto>
                               </Link> 
                             </div>

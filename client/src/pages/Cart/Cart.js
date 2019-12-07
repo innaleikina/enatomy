@@ -170,7 +170,7 @@ render() {
                   this.state.imagesInCart.map((image,index) => (
                     <div className="image-info-container" key={index}>
                     <Link key={index} to={`/set/${image}`}>
-                         <CoverPhoto key={index} fileName={image}>
+                         <CoverPhoto id="cart-image" key={index} fileName={image}>
                          </CoverPhoto>
                     </Link> 
                     <div className="name-price-container">
