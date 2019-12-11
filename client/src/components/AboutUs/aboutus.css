@@ -25,7 +25,7 @@
 
 @media only screen and (max-width:600px){
     .about-us{
-        width:420px;
+        width:370px;
     }
 }
 
@@ -90,7 +90,7 @@
 @media only screen and (max-width:600px){
     .art-container{
         width:100%;
-        border:1px red solid;
+        /* border:1px red solid; */
         /* text-align: center; */
     }
 }
