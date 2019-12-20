@@ -48,7 +48,8 @@ const UserSchema = new Schema({
     token: {
       type:String,
       required:true
-    }
+    },
+    tokenExpires:Date.now+360000
   
 });
 
