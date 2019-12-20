@@ -8,6 +8,7 @@ import Store from "./pages/Store";
 import MyAccount from "./pages/MyAccount";
 import OneSet from "./pages/OneSet";
 import Confirm from "./pages/Confirm";
+import PassReset from "./pages/PassReset";
 
 import API from "./utils/API";
 import Cart from "./pages/Cart";
@@ -112,6 +113,7 @@ class App extends Component {
                 <Route exact path="/cart"  render={(props) => <Cart {...props} fetchUser={this.fetchUser}/>}/>
                 <Route exact path="/set/:id"  render={(props) => <OneSet {...props} fetchUser={this.fetchUser}/>}/>
                 <Route exact path="/user/nodemailer/confirm/:id"  render={(props) => <Confirm {...props} fetchUser={this.fetchUser}/>}/>
+                <Route exact path="/user/sendpassreset/:id/:token"  render={(props) => <PassReset {...props} fetchUser={this.fetchUser}/>}/>
               </Switch>
            
 
