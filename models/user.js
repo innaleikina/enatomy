@@ -44,11 +44,11 @@ const UserSchema = new Schema({
     created_at:{ 
       type: Date, 
       required: true, 
-      default: Date.now }
-    // encryptedId: {
-    //   type:String,
-    //   required:true
-    // }
+      default: Date.now },
+    token: {
+      type:String,
+      required:true
+    }
   
 });
 

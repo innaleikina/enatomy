@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import API from "../../utils/API";
 import PopUp from "../PopUp";
 import "./passreset.css"
+const crypto = require('crypto');
 
 
 class PasswordReset extends Component {
@@ -10,11 +11,16 @@ class PasswordReset extends Component {
     passResetClicked:false,
     email:"",
     user:"",
-    token:"",
+    token:"11",
     emailSent:false,
     message:""
 
   }
+  componentDidMount() {
+    this.generateToken()
+ }
+
+
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -37,44 +43,44 @@ class PasswordReset extends Component {
       })
  }
 
+ generateToken = () => { crypto.randomBytes(16, (err, buf) => {
+  if (err) throw err;
+  // console.log(`${buf.toString('hex')}`);
+  this.setState({
+    token: buf.toString('hex')
+  })
+});
+}
+
  onSendEmailClick = () => {
   // console.log(this.state.email)
   API.findUserByEmail(this.state.email).then(
     res => {
       if (res.data) {
         this.setState({
-          message:"email has been sent",
+          message:"if this user exists the email has been sent",
           emailSent:true
 
         })
-        // this.setState({
-        //   user:res.data,
-        //   token:res.data.passwordHash.concat(res.data.created_at)
-        // console.log(res.data.passwordHash)
-        // console.log(res.data.created_at)
-        let passHash = res.data.passwordHash.concat(res.data.created_at)
-        let cleanPassHash = passHash.replace(/\//g, "")
+    }
+
+
+       // let cleanPassHash = passHash.replace(/\//g, "")
         // console.log(cleanPassHash)
-        API.sendPassReset(res.data.name, res.data.email, res.data._id, cleanPassHash ).then(
+        API.sendPassReset(res.data.name, res.data.email, res.data._id, this.state.token ).then(
           res=> {
             if(res.data){
               console.log(res.data + " data that email has been sent ")
       
             }
-          }
-        );
-  
-    
-
-      }
-    }
-  )
+          });
+      })
  }
 
 
   render() {
-  //  console.log(this.state.token)
-  console.log(this.state.message)
+    // this.generateToken()
+   console.log(this.state.token)
     return (
              <div>
             <button onClick={this.onPassResetClick} className={this.props.cssClass}> {this.props.buttonText}</button>
