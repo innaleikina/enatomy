@@ -29,9 +29,20 @@ state = {
 
   };
 
+  checkCredentials = () => {
+    console.log("running check credentials")
+    console.log(this.props.match.params.token)
+    console.log(this.state.user.token)
+     if(this.state.user.token === this.props.match.params.token){
+       console.log("user has correct token")
+     }
+    }
+  
+
 
   render() {
-    // console.log(this.props.location)
+    this.checkCredentials()
+    console.log(this.state.user)
     return (
      <form id="pass-reset-form">
        <p> Password Reset Page </p>

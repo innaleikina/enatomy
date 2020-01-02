@@ -79,5 +79,12 @@ router
   .route("/email/:email")
   .get(userController.findByEmail)
 
+  router
+  .route("/passwordReset/:id/:token")
+  .post(userController.resetPass)
+
+  router
+  .route("/addToken/:id/:token")
+  .put(userController.addToken)
 
 module.exports = router;

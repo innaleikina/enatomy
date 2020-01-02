@@ -1,4 +1,8 @@
 const db = require("../models");
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+// const uniqueValidator = require("mongoose-unique-validator");
+const bcrypt = require("bcrypt");
 
 // Defining methods for the booksController
 module.exports = {
@@ -100,5 +104,36 @@ module.exports = {
   },
   fetch: function (req, res) {
     res.json(req.user);
-  }
+  },
+  addToken:function(req,res){
+    db.User
+    .findOneAndUpdate({
+      _id: req.params.id
+  }, {
+      $set: {
+          token:req.params.token
+      }},
+      {
+          new: true
+      }
+  )
+  .then(dbUser => res.json(dbUser))
+  .catch(err => res.status(422).json(err));
+  },
+  resetPass: function(req,req){
+    db.User
+    .findOneAndUpdate({
+      _id: req.params.id
+  }, {
+      $set: {
+          passworrdHash:bcrypt.hashSync(req.body.password,12)
+      }},
+      {
+          new: true
+      }
+  )
+  .then(dbUser => res.json(dbUser))
+  .catch(err => res.status(422).json(err));
+  },
 }
+

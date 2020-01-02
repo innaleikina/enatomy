@@ -70,8 +70,15 @@ export default {
 
   sendPassReset:function(name,email,id, token){
     return axios.post("/nodemailer/sendpassreset/" + name + "/" + email + "/" + id + "/" + token)
-  }
+  },
 
+  resetPassword:function(id, token){
+    return axios.put("/user/resetPassword/" + id + "/" + token )
+  },
+
+  addToken:function(id,token){
+    return axios.put("/user/addToken/" +id + "/"+ token)
+  }
   // emailConfirmURL:function(id){
   //   return axios.get("sendgrid/confirm/" + id )
   // }

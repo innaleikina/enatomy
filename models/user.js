@@ -49,7 +49,10 @@ const UserSchema = new Schema({
       type:String,
       required:true
     },
-    tokenExpires:Date.now+360000
+    tokenExpires:{
+      type: Date, 
+      default: Date.now
+    }
   
 });
 

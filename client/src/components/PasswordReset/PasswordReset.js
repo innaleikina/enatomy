@@ -64,6 +64,15 @@ class PasswordReset extends Component {
         })
     }
 
+    API.addToken(res.data._id,  this.state.token).then(
+      res=> {
+        if(res.data){
+          console.log(res.data + " token is set")
+  
+        }
+      });
+
+
 
        // let cleanPassHash = passHash.replace(/\//g, "")
         // console.log(cleanPassHash)
