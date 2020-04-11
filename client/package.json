@@ -18,7 +18,7 @@
     "react-scripts": "^3.1.2",
     "react-select": "^2.1.1",
     "selz-js-sdk": "^1.0.15",
-    "yarn": "^1.19.0"
+    "yarn": "^1.22.0"
   },
   "scripts": {
     "start": "react-scripts start",
