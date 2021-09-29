@@ -8,7 +8,7 @@
   "proxy": "http://localhost:8001/",
   "dependencies": {
     "axios": "^0.18.0",
-    "i": "^0.3.6",
+    "i": "^0.3.7",
     "interweave": "^10.0.0",
     "npm": "^6.13.4",
     "query-string": "^6.8.3",
