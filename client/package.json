@@ -15,7 +15,7 @@
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "^3.1.2",
+    "react-scripts": "^5.0.1",
     "react-select": "^2.1.1",
     "selz-js-sdk": "^1.0.15",
     "yarn": "^1.19.0"
